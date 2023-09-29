@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:LudumDare50/Assets/Sounds/music_maximum_overdrive 1.mp3.meta
+guid: 0b577d9ae6ed4e049a3f7116a8bf406c
+=======
+guid: 65e5b938d1e43ff4380435bf001b5a3b
+>>>>>>> 56960189e49b928e4a302e1170b57d8807c89e37:LudumDare50/Assets/Sounds/sfx_hit-marker.mp3.meta
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

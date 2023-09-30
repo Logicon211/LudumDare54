@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   position: {x: 0, y: 0}
+  hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
   grid: {fileID: 0}
   manager: {fileID: 0}
   MovementCooldown: 0.1

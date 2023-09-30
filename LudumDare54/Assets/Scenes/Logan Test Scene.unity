@@ -129,12 +129,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1671623110}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &89107045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5263947730915695935, guid: 62146846e95150b49b528e20887bcc86,
-    type: 3}
-  m_PrefabInstance: {fileID: 1671623110}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323118022
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +289,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614817128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5251440170808813850, guid: 62146846e95150b49b528e20887bcc86,
+    type: 3}
+  m_PrefabInstance: {fileID: 1671623110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcde3c6d3973674382214306e541a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1089573520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,6 +314,16 @@ PrefabInstance:
       propertyPath: battleOptionMenu
       value: 
       objectReference: {fileID: 9033766}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: abilityRefreshBar
+      value: 
+      objectReference: {fileID: 614817128}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: abilityQueueMenuObject
+      value: 
+      objectReference: {fileID: 2088237822}
     - target: {fileID: 1688189896142580202, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_Name
@@ -459,11 +475,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5251440170808813850, guid: 62146846e95150b49b528e20887bcc86,
-        type: 3}
-      propertyPath: abilityRefreshText
-      value: 
-      objectReference: {fileID: 89107045}
     - target: {fileID: 7675927589442381185, guid: 62146846e95150b49b528e20887bcc86,
         type: 3}
       propertyPath: m_Name
@@ -579,6 +590,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62146846e95150b49b528e20887bcc86, type: 3}
+--- !u!1 &2088237822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7217433359200362686, guid: 62146846e95150b49b528e20887bcc86,
+    type: 3}
+  m_PrefabInstance: {fileID: 1671623110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4291284304496710937
 PrefabInstance:
   m_ObjectHideFlags: 0

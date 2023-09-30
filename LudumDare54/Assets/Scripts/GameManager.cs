@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour {
 	private bool changeToShopMusic;
 
 	public GameObject battleOptionMenu;
+	public GameObject abilityQueueMenuObject;
+	public AbilityRefreshBar abilityRefreshBar;
+	private AbilityQueueMenu abilityQueueMenu;
+
 
 	public GameObject[] powerupObjects;
 
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
 	public bool firstLevelUp = true;
 	public bool isInBattleOptionScreen = false;
+	public bool isInAbilityQueueScreen = false;
 
 	private void Awake() {
 		// Load powerups
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour {
 		AS = GetComponent<AudioSource>();
 		lpFilter = GetComponent<AudioLowPassFilter>();
 		// enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+		abilityQueueMenu = abilityQueueMenuObject.GetComponent<AbilityQueueMenu>();
 
 	}
 	
@@ -81,6 +87,10 @@ public class GameManager : MonoBehaviour {
 
 		if (Input.GetKeyUp(KeyCode.LeftShift)) {
 			NextBattlePopup();
+		}
+
+		if (Input.GetKeyUp(KeyCode.E)) {
+			EnableAbilityQueueMenu();
 		}
 	}
 
@@ -252,6 +262,29 @@ public class GameManager : MonoBehaviour {
 
 	public void SetNextBattle(/*battleInfo*/) {
 		Debug.Log("TODO: Setting next battle");
+	}
+
+	public void EnableAbilityQueueMenu() {
+		if (abilityRefreshAvailable && !isInBattleOptionScreen) {
+			abilityQueueMenuObject.SetActive(true);
+			abilityQueueMenu.AddRandomAbilitiesToSelection();
+			isInAbilityQueueScreen = true;
+			enableLowPassFilter();
+			Time.timeScale = 0;	
+		} else {
+			// TODO: Add error sound or something
+		}
+	}
+
+	public void DisableAbilityQueueMenu() {
+		abilityQueueMenuObject.SetActive(false);
+		disableLowPassFilter();
+		Time.timeScale = 1;
+	}
+
+	public void ResetAbilityCountdown() {
+		abilityRefreshAvailable = false;
+		abilityRefreshBar.resetAbilityCountdown();
 	}
 
 	// public void DecreaseEnemyCount() {

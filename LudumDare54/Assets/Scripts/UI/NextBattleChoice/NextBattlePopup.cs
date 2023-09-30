@@ -46,6 +46,9 @@ public class NextBattlePopup : MonoBehaviour
 	}
 
 	public void ClosePopUp() {
+		choice1.clearMutationButton();
+		choice2.clearMutationButton();
+		choice3.clearMutationButton();
 		gameObject.SetActive(false);
 		gameManager.disableLowPassFilter();
 		gameManager.isInBattleOptionScreen = false;

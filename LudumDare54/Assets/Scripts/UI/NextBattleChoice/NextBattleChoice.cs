@@ -22,6 +22,8 @@ public class NextBattleChoice : MonoBehaviour
 
     private GameObject mutationButtonObject;
 
+    private NextBattleObject battleObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class NextBattleChoice : MonoBehaviour
         // } else {
         //     Debug.Log("ERROR: no powerup associated...");
         // }
-        // Time.timeScale = 1f;
+        Time.timeScale = 1f;
         nextBattlePopup.ClosePopUp();
     }
 
@@ -70,5 +72,9 @@ public class NextBattleChoice : MonoBehaviour
 
     public void clearMutationButton() {
         Destroy(mutationButtonObject);
+    }
+
+    public void SetBattleObject(NextBattleObject bObject) {
+        battleObject = bObject;
     }
 }

@@ -21,7 +21,13 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     //Prevent us from dying twice
     private bool isDead = false;
 
-        private Rigidbody2D enemyBody;
+    private Rigidbody2D enemyBody;
+
+    private float decisionCooldown; // Hand in on initialization
+    private float currentDecisionCooldown = 2.5f; // May need to be tweaked.
+    private float attackCooldown; // Hand in on initialization
+    private float currentAttackCooldown = 2f; // May need to be tweaked.
+
 
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -41,36 +47,48 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     }
 
      private void Update () {
+
     }
 
     private void FixedUpdate() {
-
         //Countdown decision cooldown
-        
+        if (currentDecisionCooldown > 0f) {
+            currentDecisionCooldown -= Time.deltaTime;
+        }
+
         //Countdown attack cooldown
+        if (currentAttackCooldown > 0f) {
+            currentAttackCooldown -= Time.deltaTime;
+        }
 
-        //if both cooldowns, check player position
-        var playerPos = battleGrid.getPlayerTile();
-            //If player position lined up
-                var alignment = AlignedWithPlayer(playerPos);
-                if(alignment == 0){
+
+        if( currentDecisionCooldown <= 0){
+
+            // If both cooldowns, check player position
+            var playerTile = battleGrid.getPlayerTile();
+            // If player position lined up
+            var alignment = AlignedWithPlayer(playerTile);
+            if(alignment == 0){
+                if( currentAttackCooldown <= 0){
                     // If sight is clear
-                    VisionToPlayer(playerPos);
-                        //Attack, reset both cooldowns
-    
+                    if(ClearLineToPlayer(playerTile)){
+                        Attack();
+                    }
+                    else{
+                        Move(playerTile, alignment);
+                    }
                 }
-            //else move
-
-                //Reset decision cooldown
-        // else if decision cooldown
-            //if player position not lined up
-                //move
-            //else
-                //Do nothing, reset decision cooldown but halved?
+                // else move
+                else{
+                    Move(playerTile, alignment);
+                }
+            // else player position not lined up
+            }
+            else{
+                Move(playerTile, alignment);
+            }
+        }
     }
-
-
-
 
     // Incoming damage
     public void Damage(int damageTaken)
@@ -99,17 +117,16 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         return playerTile.gridY - yPosition;
     }
 
-    private bool VisionToPlayer(Tile playerTile){
+    private bool ClearLineToPlayer(Tile playerTile){
         for(int x = xPosition-1; x> playerTile.gridX; x--) {
             if(battleGrid.grid[x-1, yPosition].entityOnTile != null){
                 return false;
             }
         }
-
         return true;
     }
 
-    public void Move(Tile playerTile)
+    public void Move(Tile playerTile, int alignment)
     {
         // Determine difference between player and us.        
         int yMove = AlignedWithPlayer(playerTile);
@@ -126,10 +143,18 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 // 
 
 
-        //
-
 
         // get player position
+        // Reset decision cooldown
+        currentDecisionCooldown = decisionCooldown;
+    }
+
+    public void Attack(){
+        // Choose a random attack from the (list) of passed in attacks
+
+        // Reset both cooldowns
+        currentDecisionCooldown = decisionCooldown;
+        currentAttackCooldown = attackCooldown;
     }
 
 

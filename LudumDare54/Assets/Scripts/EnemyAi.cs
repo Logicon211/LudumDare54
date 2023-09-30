@@ -137,8 +137,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     // 0 means we are aligned
     // Positive means the player is higher
     private int AlignedWithPlayer(Tile playerTile){
-        Debug.Log("Player Y: " + playerTile.gridY + "     Enemy Y: " + gridPosition.y);
-        return gridPosition.y - playerTile.gridY;
+        var combined = gridPosition.y - playerTile.gridY;
+        Debug.Log("Player Y: " + playerTile.gridY + "     Enemy Y: " + gridPosition.y + ". Outcome: " + combined);
+        return playerTile.gridY - gridPosition.y;
     }
 
     private bool ClearLineToPlayer(Tile playerTile){
@@ -187,8 +188,8 @@ Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
         else if(alignment < 0){
             Debug.Log("Lower than player");
             // Move down if that is a legal move.
-            if(legalMoveList.Contains(legalMoves.Down)){
-                chosenMovement = legalMoves.Down;
+            if(legalMoveList.Contains(legalMoves.Up)){
+                chosenMovement = legalMoves.Up;
             }
             else{
                 //Choose a random legal option.
@@ -199,8 +200,8 @@ Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
         else if(alignment > 0){
             Debug.Log("Higher than player");
             // Move Up if that is a legal move.
-            if(legalMoveList.Contains(legalMoves.Up)){
-                chosenMovement = legalMoves.Up;
+            if(legalMoveList.Contains(legalMoves.Down)){
+                chosenMovement = legalMoves.Down;
             }
             else{
                 //Choose a random legal option.
@@ -303,7 +304,7 @@ Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
             } 
         }
         // If our x position is not at the playerArea limit.
-        if(gridPosition.x > playerArea){
+        if(gridPosition.x != playerArea+1){
             // And the location is empty
             if(battleGrid.grid[gridPosition.x-1, gridPosition.y].entityOnTile == null){
                 legalMoveList.Add(legalMoves.Left);

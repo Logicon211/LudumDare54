@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.7356706, y: 2.8204832, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 427155779, guid: b3704a68f702102429efd796259c8746, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,9 +124,9 @@ MonoBehaviour:
   health: 20
   battleGrid: {fileID: 0}
   enemyGameObject: {fileID: 7082877181016011367}
-  decisionCooldown: 1.5
+  decisionCooldown: 3
   currentDecisionCooldown: 2.5
-  attackCooldown: 2.2
+  attackCooldown: 3.2
   currentAttackCooldown: 2
 --- !u!61 &8473140654478024816
 BoxCollider2D:

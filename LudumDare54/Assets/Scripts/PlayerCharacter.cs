@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public int health;
     public Vector2Int position = new Vector2Int();
+    public GameObject hitEffect;
 
     public BattleGrid grid;
     public GameManager manager;
@@ -70,6 +71,7 @@ public class PlayerCharacter : MonoBehaviour
             if (attackTile.entityOnTile != null )
             {
                 Debug.Log("Enemy hit");
+                Instantiate(hitEffect, attackTile.GetTransform(), Quaternion.identity);
                 break;
             }
         }
@@ -79,6 +81,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (manager.mutationQueue.Count > 0)
         {
+            Debug.Log("Using " + manager.mutationQueue[0].GetName());
             manager.mutationQueue[0].useAbility();
             manager.mutationQueue.RemoveAt(0);
             Debug.Log("Mutations left: " + manager.mutationQueue.Count);
@@ -144,17 +147,14 @@ public class PlayerCharacter : MonoBehaviour
             Debug.Log("Bad Move: Entity on tile");
             return false;
         }
-        Debug.Log("Good Move " + newPosition);
         return true;
     }
 
     public void MovePlayerObject() {
-        Debug.Log("attempting to get tile at " + position.x + "," + position.y);
         Tile tile = grid.GetTile(position.x, position.y);
         transform.position = tile.GetTransform();
         tile.SetEntityOnTile(gameObject);
         if (currentTile != null) {
-            Debug.Log("wtf please jkust work");
             currentTile.RemoveEntityOnTile();
         }
         currentTile = tile;

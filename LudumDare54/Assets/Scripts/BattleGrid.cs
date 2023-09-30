@@ -21,7 +21,7 @@ public class BattleGrid : MonoBehaviour
     private Vector2Int playerGridBoundaries;
     private Vector2Int enemyGridBoundaries;
 
-
+    public bool isInitialized = false;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,7 @@ public class BattleGrid : MonoBehaviour
         // Calculate player and enemy grid boundaries.
         playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
         enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
+        isInitialized = true;
     }
 
     // Update is called once per frame

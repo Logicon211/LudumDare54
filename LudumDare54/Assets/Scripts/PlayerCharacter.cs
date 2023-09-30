@@ -21,7 +21,7 @@ public class PlayerCharacter : MonoBehaviour
     private Tile currentTile;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         GameObject g = GameObject.FindGameObjectWithTag("Grid");
         GameObject m = GameObject.FindGameObjectWithTag("GameController");
@@ -29,6 +29,7 @@ public class PlayerCharacter : MonoBehaviour
             Debug.Log("grid not found");
             grid = g.GetComponent<BattleGrid>();
         }
+        yield return new WaitUntil(() => grid.isInitialized);
         position.Set(1, 1);
         currentTile = grid.GetTile(1, 1);
         MovePlayerObject();

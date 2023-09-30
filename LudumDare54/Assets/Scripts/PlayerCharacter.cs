@@ -167,4 +167,9 @@ public class PlayerCharacter : MonoBehaviour
     {
         return health;
     }
+
+    public void DisableOnDeath()
+    {
+        //does something
+    }
 }

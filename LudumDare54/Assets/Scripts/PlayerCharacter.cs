@@ -32,7 +32,6 @@ public class PlayerCharacter : MonoBehaviour
         Move();
     }
 
-
     /*
         Fun time movement stuff
     */
@@ -42,37 +41,33 @@ public class PlayerCharacter : MonoBehaviour
             CurrentMovementCooldown -= Time.deltaTime;
             return;
         }
-        Direction dir = GetMovement();
-        Vector2Int newPosition = NewPosition(dir);
-        if (dir != Direction.None && IsValidMove(newPosition)) {
+        Vector2Int newPosition = GetMovement();
+        if (!Position.Equals(newPosition) && IsValidMove(newPosition)) {
             Position.Set(newPosition.x, newPosition.y);
             CurrentMovementCooldown = MovementCooldown;
         }
     }
 
-    Direction GetMovement()
+    Vector2Int GetMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        if (horizontal != 0) {
-            return horizontal < 0 ? Direction.Left : Direction.Right;
-        }
-        if (vertical != 0) {
-            return vertical < 0 ? Direction.Up : Direction.Down;
-        }
-        return Direction.None;
-    }
 
-    Vector2Int NewPosition(Direction dir)
-    {
-        switch (dir)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            case Direction.Up: return Position + Vector2Int.up;
-            case Direction.Right: return Position + Vector2Int.right;
-            case Direction.Down: return Position + Vector2Int.down;
-            case Direction.Left:  return Position + Vector2Int.left;
-            default: return Position; 
+            return Position + Vector2Int.up;
         }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            return Position + Vector2Int.right;
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            return Position + Vector2Int.down;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            return Position + Vector2Int.left;
+        }
+        return Position;
     }
 
     Vector2Int GetGridBoundaries(BattleGrid grid)

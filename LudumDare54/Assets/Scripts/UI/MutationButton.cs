@@ -11,6 +11,8 @@ public class MutationButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private Mutation mutation;
     public Image buttonIcon;
 
+    public bool nonInteractable = false;
+
     // public int buttonIndex;
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,19 @@ public class MutationButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     // Update is called once per frame
     void Update()
     {
-        
+        if(nonInteractable) {
+            buttonIcon.raycastTarget = false;
+        }
     }
 
     public void OnClick() {
-        if (isInQueue) {
-            abilityQueueMenu.UnsetQueuedAbility(this.gameObject);
-        } else {
-            abilityQueueMenu.SetAbilityAsQueued(this.gameObject);
-        } 
+        if(!nonInteractable) {
+            if (isInQueue) {
+                abilityQueueMenu.UnsetQueuedAbility(this.gameObject);
+            } else {
+                abilityQueueMenu.SetAbilityAsQueued(this.gameObject);
+            } 
+        }
     }
 
     public void SetAbilityQueueMenu(AbilityQueueMenu aqm) {

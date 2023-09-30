@@ -308,13 +308,14 @@ MonoBehaviour:
   battleOptionMenu: {fileID: 0}
   abilityQueueMenuObject: {fileID: 0}
   abilityRefreshBar: {fileID: 0}
-  powerupObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  inactivePowerups: []
-  activePowerups: []
-  powerupListForUI: []
   isInBattleOptionScreen: 0
   isInAbilityQueueScreen: 1
   mutationDeck:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  mutationQueue: []
+  allPossibleMutations:
+  - {fileID: 7124965926367856341, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}

@@ -13,12 +13,14 @@ public class NextBattleChoice : MonoBehaviour
     public NextBattlePopup nextBattlePopup;
 
     public Image buttonIcon;
+    public Transform mutationButtonPosition;
+    public GameObject mutationButton;
 
-    public Sprite testSprite;
-
-    private Powerup powerup;
+    private Mutation mutation;
 
     private GameManager gameManager;
+
+    private GameObject mutationButtonObject;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,15 @@ public class NextBattleChoice : MonoBehaviour
         buttonIcon.sprite = spriteIcon;
     }
 
-    public void setPowerUp(Powerup powerupIn) {
-        powerup = powerupIn;
+    public void setMutation(Mutation mutationIn) {
+        mutation = mutationIn;
+        mutationButtonObject = Instantiate(mutationButton, mutationButtonPosition);
+        mutationButtonObject.transform.localScale = new Vector3(mutationButtonObject.transform.localScale.x/2, mutationButtonObject.transform.localScale.y/2, mutationButtonObject.transform.localScale.z/2);
+        mutationButtonObject.GetComponent<MutationButton>().nonInteractable = true;
+        mutationButtonObject.GetComponent<MutationButton>().SetMutation(mutation);
+    }
+
+    public void clearMutationButton() {
+        Destroy(mutationButtonObject);
     }
 }

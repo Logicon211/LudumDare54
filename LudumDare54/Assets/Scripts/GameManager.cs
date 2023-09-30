@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour {
 
 	public List<Mutation> mutationQueue;
 
+	public List<Mutation> allPossibleMutations;
+
 	private void Awake() {
 		// Load powerups
 		// LoadPowerups();
@@ -258,7 +260,15 @@ public class GameManager : MonoBehaviour {
 			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();
 			enableLowPassFilter();
 			// popUp.PopUp(powerupList);
-			popUp.PopUp();
+			// TODO: Generate next battle options
+			NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
+			generatedBattleOptions[0] = new NextBattleObject();
+			generatedBattleOptions[0].SetValues(10f, new List<GameObject>(), allPossibleMutations[0]);
+			generatedBattleOptions[1] = new NextBattleObject();
+			generatedBattleOptions[1].SetValues(0f, new List<GameObject>(), allPossibleMutations[0]);
+			generatedBattleOptions[2] = new NextBattleObject();
+			generatedBattleOptions[2].SetValues(5f, new List<GameObject>(), allPossibleMutations[0]);
+			popUp.PopUp(generatedBattleOptions);
 		} else {
 			Debug.Log("No Battle Option menu set in scene, cant open menu...");
 		}

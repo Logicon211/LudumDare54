@@ -10,31 +10,37 @@ public class NextBattlePopup : MonoBehaviour
 	public NextBattleChoice choice2;
 	public NextBattleChoice choice3;
 
+	public MutationButton mutationButton;
+
 	private GameManager gameManager;
 	void Start() {
 		gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 	}
-	public void PopUp (/*List<Powerup> powerupList*/) {
-		// if (powerupList[0]) {
-		// 	choice1.setPowerUp(powerupList[0]);
-		// 	choice1.setTitle(powerupList[0].getPowerupName());
-		// 	choice1.setContent(powerupList[0].GetPowerupLevelDescription(powerupList[0].GetLevel()+1));
-		// 	choice1.setIcon(powerupList[0].getPowerupIcon());
-		// }
+	public void PopUp (NextBattleObject[] battleObjectList) {
+		if (battleObjectList[0] != null) {
+			choice1.setMutation(battleObjectList[0].mutation);
+			choice1.setTitle("Health gained: " + battleObjectList[0].amountOfHealthRegained);
+			// TODO: loop over enemy list and put it in the choice selection
+			choice1.setContent("battleObjectList[0].enemies[0].name or whatever");
+			// choice1.setContent(battleObjectList[0].GetPowerupLevelDescription(battleObjectList[0].GetLevel()+1));
+			// choice1.setIcon(battleObjectList[0].getPowerupIcon());
+		}
 
-		// if (powerupList[1]) {
-		// 	choice2.setPowerUp(powerupList[1]);
-		// 	choice2.setTitle(powerupList[1].getPowerupName());
-		// 	choice2.setContent(powerupList[1].GetPowerupLevelDescription(powerupList[1].GetLevel()+1));
-		// 	choice2.setIcon(powerupList[1].getPowerupIcon());
-		// }
+		if (battleObjectList[1] != null) {
+			choice2.setMutation(battleObjectList[1].mutation);
+			choice2.setTitle("Health gained: " + battleObjectList[1].amountOfHealthRegained);
+			choice1.setContent("battleObjectList[1].enemies[0].name or whatever");
+			// choice2.setContent(battleObjectList[1].GetPowerupLevelDescription(battleObjectList[1].GetLevel()+1));
+			// choice2.setIcon(battleObjectList[1].getPowerupIcon());
+		}
 
-		// if (powerupList[2]) {
-		// 	choice3.setPowerUp(powerupList[2]);
-		// 	choice3.setTitle(powerupList[2].getPowerupName());
-		// 	choice3.setContent(powerupList[2].GetPowerupLevelDescription(powerupList[2].GetLevel()+1));
-		// 	choice3.setIcon(powerupList[2].getPowerupIcon());
-		// }
+		if (battleObjectList[2] != null) {
+			choice3.setMutation(battleObjectList[2].mutation);
+			choice3.setTitle("Health gained: " + battleObjectList[2].amountOfHealthRegained);
+			choice1.setContent("battleObjectList[2].enemies[0].name or whatever");
+			// choice3.setContent(battleObjectList[2].GetPowerupLevelDescription(battleObjectList[2].GetLevel()+1));
+			// choice3.setIcon(battleObjectList[2].getPowerupIcon());
+		}
 
 		// Time.timeScale = 0f;
 	}

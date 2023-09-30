@@ -36,7 +36,6 @@ public class StatsScreen : MonoBehaviour
         // float cooldownPercentage = Mathf.FloorToInt((gameManager.GetPlayer().playerStats.cooldownPercentBonus - 1f) * 100f);
         // float speedPercentage = Mathf.FloorToInt((gameManager.GetPlayer().playerStats.speedBonus - 1f) * 100f);
 
-        string stats = "";
         // stats += "Max Health:      " + gameManager.GetPlayer().playerStats.maxPlayerHealth + "\n";
         // stats += "Armor:                " + gameManager.GetPlayer().playerStats.armor + "\n";
         // stats += "Speed:              +" + speedPercentage + "%\n";
@@ -54,8 +53,6 @@ public class StatsScreen : MonoBehaviour
 
         // HashSet<Mutation, int> totalCount = new HashSet<Mutation, int>();
         UpdateStatScreen();
-
-        stats += "TODO ADD STUFF:";
     }
 
     void UpdateStatScreen() {
@@ -65,7 +62,6 @@ public class StatsScreen : MonoBehaviour
         for(int i = 0; i < gameManager.mutationDeck.Count; i++) {
             Mutation mutation = gameManager.mutationDeck[i].GetComponent<Mutation>();
             string mutationName = mutation.mutationName;
-            Debug.Log(mutationName);
             if (!totalCount.ContainsKey(mutationName)) {
                 totalCount.TryAdd(mutationName, new MutationTuple(mutation, 1));
             } else {
@@ -80,7 +76,7 @@ public class StatsScreen : MonoBehaviour
             MutationTuple value = item.Value;
 
             iconAndContainers[currentColumn].GetComponent<Image>().sprite = value.mutation.icon;
-            iconTexts[currentColumn].GetComponent<TMP_Text>().text = value.mutation.description;
+            iconTexts[currentColumn].GetComponent<TMP_Text>().text = "x" + value.count +":  " + value.mutation.description;
 
             iconAndContainers[currentColumn].SetActive(true);
 

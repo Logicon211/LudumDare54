@@ -4,17 +4,17 @@ using UnityEngine;
 using Enemy.Interface;
 
 
-public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
+public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
 {
     //1, 2, 3
-    private X position;
+    private int xPosition;
     //1, 2, 3
-    private Y position;
-    private health;
+    private int yPosition;
+    private int health;
 
     //Player tracker (might not be needed, could just get player position from grid)
     private GameObject player;
-    private GameObject grid;
+    private BattleGrid grid;
 
     public GameObject healthPickup;
     
@@ -27,6 +27,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
         RB = this.GetComponent<Rigidbody2D>();
+        //TODO hand in grid correctly
+        grid = this.GetComponent<BattleGrid>();
     }
     
     private void Start()
@@ -66,10 +68,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     {
         currentHealth -= damageTaken;
 
-        if (currentHealth <= 0f && !isDead)
+        if (currentHealth <= 0f && !isDead) {
             Kill();
-        if (health > currentHealth) 
-        {
+            }
+        if (health > currentHealth) {
             Instantiate(hitEffect, transform.position, Quaternion.identity);
         }
     }
@@ -78,20 +80,32 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     public void Kill()
     {
         if(!isDead) {
-            
+            isDead = true;
+            Destroy(gameObject);
             
         }
     }
 
+    private int AlignedWithPlayer(){
+        var playerPos = grid.getPlayerTile();
+        return playerPos.gridY - yPosition;
+
+
+    }
+
     public void Move()
     {
-        player.getGridLocation()
 
-        // get player alignment player position
-        if(playerLocation){
+        // Determine difference between player and us.        
+        int yMove = AlignedWithPlayer();
 
-        }
-        
+        // If that's not zero, let's take that move if it's legal, otherwise continue.
+
+
+        // If that's zero, lets move forward or backwards if it's legal. Otherwise do nothing. Stretch goal, vibrate? shake? indicate you couldn't move.
+
+
+
         // Determine legal moves
             // determine edges
                 // 

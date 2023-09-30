@@ -8,8 +8,8 @@ public class PlayerCharacter : MonoBehaviour
     // Which way to move the character
     enum Direction {Up, Right, Down, Left, None};
 
-    public float Health { get; set; };
-    public Vector2 Position { get; set };
+    public float Health { get; set; }
+    public Vector2 Position { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -35,4 +35,5 @@ public class PlayerCharacter : MonoBehaviour
         }
         return Direction.None;
     }
+
 }

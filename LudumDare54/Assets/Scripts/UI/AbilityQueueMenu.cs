@@ -18,12 +18,16 @@ public class AbilityQueueMenu : MonoBehaviour
 
     private List<GameObject> destroyWhenClosed;
     // Start is called before the first frame update
-    void Start()
-    {
+
+    void Awake() {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         destroyWhenClosed = new List<GameObject>();
         drawnAbilities = new GameObject[5];
         selectedAbilities = new GameObject[3];
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -77,6 +81,10 @@ public class AbilityQueueMenu : MonoBehaviour
             // button.transform.position = new Vector3(queuedPositions[indexOfButton].position.x, queuedPositions[indexOfButton].position.y, queuedPositions[indexOfButton].position.z);
 
             button.GetComponent<MutationButton>().isInQueue = true;
+
+            if (GetSizeOfArray(selectedAbilities) >= 3) {
+                confirmButton.SetActive(true);
+            }
         } else {
             // TODO: Play error noise for trying to queue too much?
         }
@@ -92,6 +100,10 @@ public class AbilityQueueMenu : MonoBehaviour
         // button.transform.position = new Vector3(drawnPositions[indexOfButton].position.x, drawnPositions[indexOfButton].position.y, drawnPositions[indexOfButton].position.z);
     
         button.GetComponent<MutationButton>().isInQueue = false;
+
+        if (GetSizeOfArray(selectedAbilities) < 3) {
+            confirmButton.SetActive(false);
+        }
     }
 
     private int FindNextEmptyIndex(GameObject[] arrayToSearch) {

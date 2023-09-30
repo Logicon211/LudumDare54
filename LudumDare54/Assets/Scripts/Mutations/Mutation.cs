@@ -25,5 +25,8 @@ public abstract class Mutation : MonoBehaviour
         
     }
 
-
+    public string GetName()
+    {
+        return mutationName;
+    }
 }

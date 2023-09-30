@@ -42,7 +42,6 @@ public class NextBattlePopup : MonoBehaviour
 	public void ClosePopUp() {
 		gameObject.SetActive(false);
 		gameManager.disableLowPassFilter();
-		gameManager.firstLevelUp = false;
 		gameManager.isInBattleOptionScreen = false;
 	}
 

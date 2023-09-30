@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 	private GameObject cameraObject;
 	private AudioListener listener;
 
-	public float maxAbilityRefreshTime = 15f;
+	public float maxAbilityRefreshTime = 5f;
 	public bool abilityRefreshAvailable = false;
 
 	private bool paused = false;
@@ -46,20 +46,22 @@ public class GameManager : MonoBehaviour {
 	private AbilityQueueMenu abilityQueueMenu;
 
 
-	public GameObject[] powerupObjects;
+	// public GameObject[] powerupObjects;
 
-	public List<Powerup> inactivePowerups = new List<Powerup>();
-	public List<Powerup> activePowerups = new List<Powerup>();
+	// public List<Powerup> inactivePowerups = new List<Powerup>();
+	// public List<Powerup> activePowerups = new List<Powerup>();
 
-	public List<Powerup> powerupListForUI = new List<Powerup>();
+	// public List<Powerup> powerupListForUI = new List<Powerup>();
 
-	private EnemySpawner enemySpawner;
+	// private EnemySpawner enemySpawner;
 
 	private bool awaitingVictoryScreen = false;
 
-	public bool firstLevelUp = true;
+	// public bool firstLevelUp = true
 	public bool isInBattleOptionScreen = false;
 	public bool isInAbilityQueueScreen = false;
+
+	public List<GameObject> mutationDeck;
 
 	private void Awake() {
 		// Load powerups
@@ -172,10 +174,10 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	public void TimesUp() {
-		victory = true;
-		enemySpawner.SpawnFinalBoss();
-	}
+	// public void TimesUp() {
+	// 	victory = true;
+	// 	enemySpawner.SpawnFinalBoss();
+	// }
 
 	public void PauseGame() {
 		paused = true;
@@ -356,22 +358,22 @@ public class GameManager : MonoBehaviour {
 	// 	}
 	// }
 
-	public void SetPowerupToActive(Powerup powerup) {
-		powerup.SetPowerupActive();
-		inactivePowerups.Remove(powerup);
-		if(!activePowerups.Contains(powerup)) {
-			activePowerups.Add(powerup);
-			if(!powerup.isUtilityPowerup()) {
-				powerupListForUI.Add(powerup);
-			}
-		}
-	}
+	// public void SetPowerupToActive(Powerup powerup) {
+	// 	powerup.SetPowerupActive();
+	// 	inactivePowerups.Remove(powerup);
+	// 	if(!activePowerups.Contains(powerup)) {
+	// 		activePowerups.Add(powerup);
+	// 		if(!powerup.isUtilityPowerup()) {
+	// 			powerupListForUI.Add(powerup);
+	// 		}
+	// 	}
+	// }
 
-	public void SetPowerupToInactive(Powerup powerup) {
-		powerup.SetPowerupInActive();
-		activePowerups.Remove(powerup);
-		if(!inactivePowerups.Contains(powerup)) {
-			inactivePowerups.Add(powerup);
-		}
-	}
+	// public void SetPowerupToInactive(Powerup powerup) {
+	// 	powerup.SetPowerupInActive();
+	// 	activePowerups.Remove(powerup);
+	// 	if(!inactivePowerups.Contains(powerup)) {
+	// 		inactivePowerups.Add(powerup);
+	// 	}
+	// }
 }

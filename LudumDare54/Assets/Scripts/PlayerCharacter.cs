@@ -52,10 +52,10 @@ public class PlayerCharacter : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Mouse0)) {
             RegularAttack();
         }
-        if (Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Mouse1)) {
             SpecialAttack();
         }
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -105,19 +105,19 @@ public class PlayerCharacter : MonoBehaviour
     Vector2Int GetMovement()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             return position + Vector2Int.down;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             return position + Vector2Int.right;
         }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             return position + Vector2Int.up;
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             return position + Vector2Int.left;
         }

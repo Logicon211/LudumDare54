@@ -11,21 +11,25 @@ public class PlayerCharacter : MonoBehaviour
     public Vector2Int position = new Vector2Int();
 
     public BattleGrid grid;
+    public GameManager manager;
 
     public float MovementCooldown = .05f;
     public float CurrentMovementCooldown = 0f;
 
     // temp until we get something better
     private bool isDead = false;
+    private Tile currentTile;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject[] g = GameObject.FindGameObjectsWithTag("Grid");
-        if (g.Length > 0) {
-            grid = g[0].GetComponent<BattleGrid>();
+        GameObject g = GameObject.FindGameObjectWithTag("Grid");
+        GameObject m = GameObject.FindGameObjectWithTag("GameManager");
+        if (g != null) {
+            grid = g.GetComponent<BattleGrid>();
         }
         position.Set(1, 1);
+        currentTile = grid.GetTile(1, 1);
         MovePlayerObject();
     }
 
@@ -41,6 +45,7 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A)) {
             // Regular Attack
             Debug.Log("Attack Pressed");
+            RegularAttack();
         }
         if (Input.GetKeyDown(KeyCode.S)) {
             // Special Attack
@@ -51,15 +56,23 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
+    void RegularAttack()
+    {
+        for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
+            Tile attackTile = grid.GetTile(x, position.y);
+            if (attackTile.entityOnTile != null )
+            {
+                Debug.Log("Enemy hit");
+                break;
+            }
+        }
+    }
+
     /*
         Fun time movement stuff
     */
     void Move()
     {
-        // if (CurrentMovementCooldown > 0f) {
-        //     CurrentMovementCooldown -= Time.deltaTime;
-        //     return;
-        // }
         Vector2Int newPosition = GetMovement();
         if (!position.Equals(newPosition) && IsValidMove(newPosition)) {
             position.Set(newPosition.x, newPosition.y);
@@ -100,8 +113,14 @@ public class PlayerCharacter : MonoBehaviour
         Vector2Int boundaries = grid.getPlayerBoundaries();
         Debug.Log(boundaries.x);
         // Vector2Int boundaries = GetGridBoundaries(grid);
+        // Check if its in the boundaries
         if (newPosition.x < 0 || newPosition.x > boundaries.x || newPosition.y < 0 || newPosition.y > boundaries.y ) {
             Debug.Log("Bad Move " + newPosition);
+            return false;
+        }
+        // Check if theres no entity on the new tile
+        if (grid.GetTile(newPosition.x, newPosition.y).entityOnTile != null) {
+            Debug.Log("Bad Move: Entity on tile");
             return false;
         }
         Debug.Log("Good Move " + newPosition);
@@ -112,10 +131,15 @@ public class PlayerCharacter : MonoBehaviour
         Debug.Log("attempting to get tile at " + position.x + "," + position.y);
         Tile tile = grid.GetTile(position.x, position.y);
         transform.position = tile.GetTransform();
+        tile.SetEntityOnTile(gameObject);
+        if (currentTile != null) {
+            Debug.Log("wtf please jkust work");
+            currentTile.RemoveEntityOnTile();
+        }
+        currentTile = tile;
     }
 
     public Vector2Int GetPosition() { return position; }
-
 
     // Incoming damage
     public void Damage(int damageTaken)
@@ -130,7 +154,6 @@ public class PlayerCharacter : MonoBehaviour
         }   
     }
 
-    
     public void Kill()
     {
         if(!isDead) {
@@ -138,5 +161,10 @@ public class PlayerCharacter : MonoBehaviour
             Debug.Log("dead lol");
             
         }
+    }
+
+    public int GetHealth() 
+    {
+        return health;
     }
 }

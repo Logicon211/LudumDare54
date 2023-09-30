@@ -14,10 +14,14 @@ public class BattleGrid : MonoBehaviour
     private float tileXDistance = 2.9f;
     private float tileYDistance = -1.5f;
 
+    public float middle;
+
     // Number of tiles the plater currently owns. Enemies own 6 minus this value.
     public int playerTileLength = 2; //Gives the player 0, 1, 2. Could be changed to be fed into the script to allow for different arena starts?
     private Vector2Int playerGridBoundaries;
     private Vector2Int enemyGridBoundaries;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -26,15 +30,18 @@ public class BattleGrid : MonoBehaviour
             for (int y = 0; y < grid.GetLength(1); y++) {
                 float xPos = tileXDistance * x;
                 float yPos = tileYDistance * y;
-                Tile newTile = Instantiate(tile, new Vector3(xPos, yPos, 0), Quaternion.identity).GetComponent<Tile>();
+                
+                Tile newTile = Instantiate(tile, new Vector3(xPos, yPos, 0), Quaternion.identity, this.gameObject.transform).GetComponent<Tile>();
+                
                 newTile.gridX = x;
                 newTile.gridY = y;
                 grid[x, y] = newTile;
                 // 0, 1, 2
-                if(x >= playerTileLength) {
+                if(x > playerTileLength) {
                     newTile.isPlayerTile = false;
                 }
             }
+            middle = tileXDistance * gridXLength /2;
         }
         // Calculate player and enemy grid boundaries.
         playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);

@@ -34,4 +34,15 @@ public class Tile : MonoBehaviour
     public Vector3 GetTransform() {
         return gameObject.transform.position;
     }
+
+    public void SetEntityOnTile(GameObject entity)
+    {
+        entityOnTile = entity;   
+    }
+
+    public void RemoveEntityOnTile()
+    {
+        entityOnTile = null;
+        Debug.Log("Removing entity from tile " + entityOnTile);
+    }
 }

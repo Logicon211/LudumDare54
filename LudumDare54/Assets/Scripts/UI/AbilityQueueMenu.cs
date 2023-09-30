@@ -74,6 +74,7 @@ public class AbilityQueueMenu : MonoBehaviour
         // Clear out lists
         drawnAbilities = new GameObject[5];
         selectedAbilities = new GameObject[3];
+        confirmButton.SetActive(false);
         gameManager.DisableAbilityQueueMenu();
     }
 

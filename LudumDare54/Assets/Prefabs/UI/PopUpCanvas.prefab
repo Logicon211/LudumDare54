@@ -1557,12 +1557,14 @@ MonoBehaviour:
   - {fileID: 770991511}
   - {fileID: 1617976773}
   - {fileID: 2005287251}
+  - {fileID: 5814428623009786883}
   iconTexts:
   - {fileID: 1209110970}
   - {fileID: 733568546}
   - {fileID: 1757232396}
   - {fileID: 106956142}
   - {fileID: 2140072298}
+  - {fileID: 8535808464410358242}
 --- !u!1 &1617976773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,7 +2884,7 @@ GameObject:
   - component: {fileID: 8599191589885306443}
   - component: {fileID: 8535808464410358242}
   m_Layer: 5
-  m_Name: text5
+  m_Name: text6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

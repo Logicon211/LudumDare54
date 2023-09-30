@@ -8,6 +8,7 @@ public abstract class Mutation : MonoBehaviour
 
     [SerializeField] public Sprite icon;
     [SerializeField] public string description;
+    [SerializeField] public string mutationName;
 
 
     public abstract void useAbility();

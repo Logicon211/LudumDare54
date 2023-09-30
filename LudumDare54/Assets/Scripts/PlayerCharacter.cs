@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-
-    // Which way to move the character
+    // Which way to move the character, not used anymore
     enum Direction {Up, Right, Down, Left, None};
 
     public float Health { get; set; }

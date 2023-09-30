@@ -13,7 +13,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public BattleGrid grid;
 
-    public float MovementCooldown = .5f;
+    public float MovementCooldown = .05f;
     public float CurrentMovementCooldown = 0f;
 
     // Start is called before the first frame update
@@ -42,15 +42,15 @@ public class PlayerCharacter : MonoBehaviour
             CurrentMovementCooldown -= Time.deltaTime;
             return;
         }
-        Direction dir = CheckMovement();
+        Direction dir = GetMovement();
         Vector2Int newPosition = NewPosition(dir);
-        if (IsValidMove(newPosition)) {
+        if (dir != Direction.None && IsValidMove(newPosition)) {
             Position.Set(newPosition.x, newPosition.y);
             CurrentMovementCooldown = MovementCooldown;
         }
     }
 
-    Direction CheckMovement()
+    Direction GetMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -90,4 +90,6 @@ public class PlayerCharacter : MonoBehaviour
         Debug.Log("Good Move " + newPosition);
         return true;
     }
+
+    public Vector2Int GetPosition() { return Position; }
 }

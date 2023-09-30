@@ -25,14 +25,6 @@ public class AbilityRefreshBar : MonoBehaviour
         currentTimeRemaining = gameManager.maxAbilityRefreshTime;
     }
 
-    // public float SetCooldown(float normalizedCooldown)
-    // {
-    //     // currentCooldown = Mathf.Clamp(normalizedCooldown, 0f, 1f);
-    //     // bar.localScale = new Vector3(currentCooldown, 1f);
-    //     // barRenderer.color = new Color(currentCooldown, 0f, 1f - currentCooldown, 1f);
-    //     // return currentCooldown;
-    // }
-
     // Update is called once per frame
     void Update()
     {

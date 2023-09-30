@@ -148,45 +148,83 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public void Move(Tile playerTile, int alignment)
     {
         
-        var chosenMovement;
+        legalMoves chosenMovement = legalMoves.NoLegalMove;
 
         // Build the list of legalMovement options. Pray we never conflict with another enemy.
-        var legalMoveList = determineLegalMoves();
-        // If player is aligned, then vision was unclear.
-            //Choose a random legal option.
-        if(alignment == 0){
-            var index = random.Next(legalMoveList.Count);
-            chosenMovement = legalMoveList[index];
+        List<legalMoves> legalMoveList = determineLegalMoves();
+        
+
+        // We could end up in a corner with no legal moves.
+        if(legalMoveList.Count == 0){
+            // No action to take, vibrate in place?
         }
 
-        if(alignment <){
-            
+        // If player is aligned, then vision was unclear.
+        else if(alignment == 0){
+            //Choose a random legal option.
+            chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
         }
-        // If player is unaligned, let's move towards the player.
-            // If the player is unaligned, and we cannot move towards the player, move either backwards or forwards.
+
+        // Negative alignment -> player is lower
+        else if(alignment < 0){
+            // Move down if that is a legal move.
+            if(legalMoveList.Contains(legalMoves.Down)){
+                chosenMovement = legalMoves.Down;
+            }
+            else{
+                //Choose a random legal option.
+                chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
+            }
+        }
+        // Positive alignment -> player is higher
+        else if(alignment > 0){
+            // Move Up if that is a legal move.
+            if(legalMoveList.Contains(legalMoves.Up)){
+                chosenMovement = legalMoves.Up;
+            }
+            else{
+                //Choose a random legal option.
+                chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
+            }
+        }
 
         
-        // If the player is aligned, 
+        if(chosenMovement == legalMoves.NoLegalMove) {
+            // We had no legal moves.
+            // TODO vibrate in place to indicate we couldn't move?
+            // Decision cooldown halved.
+            currentDecisionCooldown = decisionCooldown / 2;
+        }
+        
+        
+        else {
+            var newXposition = gridPosition.x;
+            var newYposition = gridPosition.y;
 
-
-
-
-        // If that's not zero, let's take that move if it's legal, otherwise continue.
-
-
-        // If that's zero, lets move forward or backwards if it's legal. Otherwise do nothing. Stretch goal, vibrate? shake? indicate you couldn't move.
-
-
-
-        // Determine legal moves
-            // determine edges
-                // 
-
-        //battleGrid.moveEnemyIntoTile();
-
-        // get player position
-        // Reset decision cooldown
-        currentDecisionCooldown = decisionCooldown;
+            if(chosenMovement == legalMoves.Up){
+                newYposition++;
+            }
+            else if(chosenMovement == legalMoves.Down){
+                newYposition--;
+            }
+            else if(chosenMovement == legalMoves.Right){
+                newXposition++;
+            }
+            else{
+                newXposition++;
+            }
+            
+            
+            // Take that movement decision
+            if(!battleGrid.moveEnemyIntoTile(this, newXposition, newYposition)){
+                Debug.Log("We were unable to move this enemy into a valid tile after having calculated legal tiles because it was occupied. Need to synchronize sooner.");
+                
+                currentDecisionCooldown = decisionCooldown / 2;
+            }
+            else{
+                currentDecisionCooldown = decisionCooldown;
+            }
+        }
     }
 
     public void Attack(){
@@ -244,7 +282,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         Up = 1,
         Right = 1,
         Down = -1,
-        Left = -1
+        Left = -1,
+        NoLegalMove = 0
     }
 
 }

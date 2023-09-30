@@ -32,7 +32,7 @@ public class TimerScript : MonoBehaviour
                 Debug.Log("TIMES UP");
                 TimerOn = false;
                 // TODO: Something when time's up
-                gameManager.TimesUp();
+                // gameManager.TimesUp();
             }
         }
     }

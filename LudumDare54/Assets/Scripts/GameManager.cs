@@ -123,23 +123,23 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void CheckGameOver() {
-		if (SceneManager.GetActiveScene().name != "GameOverScreen" && !victory){
-			if (playerScript.GetHealth() <= 0f && !loss){
-				loss = true;
-				oneShotAudioSource.PlayOneShot(deathSound);
-				playerScript.DisableOnDeath();
-				IEnumerator coroutine = GameOverCoRoutine(1.5f);
-				StartCoroutine(coroutine);
-			}
-		} else if(SceneManager.GetActiveScene().name != "VictoryScene" && victory && playerScript.GetHealth() <= 0f) {
-			if(!awaitingVictoryScreen) {
-				awaitingVictoryScreen = true;
-				oneShotAudioSource.PlayOneShot(deathSound);
-				playerScript.DisableOnDeath();
-				IEnumerator coroutine = VictoryCoRoutine(0.5f);
-				StartCoroutine(coroutine);
-			}
-		}
+		// if (SceneManager.GetActiveScene().name != "GameOverScreen" && !victory){
+		// 	if (playerScript.GetHealth() <= 0f && !loss){
+		// 		loss = true;
+		// 		oneShotAudioSource.PlayOneShot(deathSound);
+		// 		playerScript.DisableOnDeath();
+		// 		IEnumerator coroutine = GameOverCoRoutine(1.5f);
+		// 		StartCoroutine(coroutine);
+		// 	}
+		// } else if(SceneManager.GetActiveScene().name != "VictoryScene" && victory && playerScript.GetHealth() <= 0f) {
+		// 	if(!awaitingVictoryScreen) {
+		// 		awaitingVictoryScreen = true;
+		// 		oneShotAudioSource.PlayOneShot(deathSound);
+		// 		playerScript.DisableOnDeath();
+		// 		IEnumerator coroutine = VictoryCoRoutine(0.5f);
+		// 		StartCoroutine(coroutine);
+		// 	}
+		// }
 	}
 
 	// public void GoToGameOverScreen() {

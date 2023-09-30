@@ -4,7 +4,7 @@ using UnityEngine;
 using Enemy.Interface;
 
 
-public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
+public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 {
     //1, 2, 3
     private int xPosition;
@@ -14,21 +14,23 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
 
     //Player tracker (might not be needed, could just get player position from grid)
     private GameObject player;
-    private BattleGrid grid;
+    private BattleGrid battleGrid;
 
     public GameObject healthPickup;
     
     //Prevent us from dying twice
     private bool isDead = false;
 
+        private Rigidbody2D enemyBody;
+
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
-        audio = GetComponent<AudioSource>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // audio = GetComponent<AudioSource>();
+        // spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        RB = this.GetComponent<Rigidbody2D>();
-        //TODO hand in grid correctly
-        grid = this.GetComponent<BattleGrid>();
+        // RB = this.GetComponent<Rigidbody2D>();
+        // //TODO hand in grid correctly
+        battleGrid = this.GetComponent<BattleGrid>();
     }
     
     private void Start()
@@ -48,10 +50,17 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
         //Countdown attack cooldown
 
         //if both cooldowns, check player position
+        var playerPos = battleGrid.getPlayerTile();
             //If player position lined up
-                // If sight is clear
-                    //Attack, reset both cooldowns
+                var alignment = AlignedWithPlayer(playerPos);
+                if(alignment == 0){
+                    // If sight is clear
+                    VisionToPlayer(playerPos);
+                        //Attack, reset both cooldowns
+    
+                }
             //else move
+
                 //Reset decision cooldown
         // else if decision cooldown
             //if player position not lined up
@@ -64,16 +73,16 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
 
 
     // Incoming damage
-    public void Damage(float damageTaken)
+    public void Damage(int damageTaken)
     {
-        currentHealth -= damageTaken;
+        health -= damageTaken;
 
-        if (currentHealth <= 0f && !isDead) {
+        if (health <= 0f && !isDead) {
             Kill();
-            }
-        if (health > currentHealth) {
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
         }
+        else{
+            //Instantiate(hitEffect, transform.position, Quaternion.identity);
+        }   
     }
 
     
@@ -86,18 +95,24 @@ public class EnemyAi: MonoBehaviour, IDamageable<float>, IKillable
         }
     }
 
-    private int AlignedWithPlayer(){
-        var playerPos = grid.getPlayerTile();
-        return playerPos.gridY - yPosition;
-
-
+    private int AlignedWithPlayer(Tile playerTile){
+        return playerTile.gridY - yPosition;
     }
 
-    public void Move()
-    {
+    private bool VisionToPlayer(Tile playerTile){
+        for(int x = xPosition-1; x> playerTile.gridX; x--) {
+            if(battleGrid.grid[x-1, yPosition].entityOnTile != null){
+                return false;
+            }
+        }
 
+        return true;
+    }
+
+    public void Move(Tile playerTile)
+    {
         // Determine difference between player and us.        
-        int yMove = AlignedWithPlayer();
+        int yMove = AlignedWithPlayer(playerTile);
 
         // If that's not zero, let's take that move if it's legal, otherwise continue.
 

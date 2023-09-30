@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     public Sprite playerTile;
     public Sprite enemyTile;
 
+    // Tile the player is allowed to go onto. False means it's an enemy tile.
     public bool isPlayerTile = true;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;

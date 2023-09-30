@@ -37,4 +37,6 @@ public class BattleGrid : MonoBehaviour
         // TODO: get player's tile
         return grid[0,0];
     }
+
+
 }

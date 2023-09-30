@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public int health;
     public Vector2Int position = new Vector2Int();
+    public GameObject hitEffect;
 
     public BattleGrid grid;
     public GameManager manager;
@@ -70,6 +71,7 @@ public class PlayerCharacter : MonoBehaviour
             if (attackTile.entityOnTile != null )
             {
                 Debug.Log("Enemy hit");
+                Instantiate(hitEffect, attackTile.GetTransform(), Quaternion.identity);
                 break;
             }
         }

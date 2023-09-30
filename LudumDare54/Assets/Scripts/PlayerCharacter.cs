@@ -72,7 +72,7 @@ public class PlayerCharacter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            return position + Vector2Int.up;
+            return position + Vector2Int.down;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -80,7 +80,7 @@ public class PlayerCharacter : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            return position + Vector2Int.down;
+            return position + Vector2Int.up;
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
@@ -91,7 +91,7 @@ public class PlayerCharacter : MonoBehaviour
 
     Vector2Int GetGridBoundaries(BattleGrid grid)
     {
-        return new Vector2Int(this.grid.grid.GetLength(0), this.grid.grid.GetLength(1));
+        return new Vector2Int(this.grid.grid.GetLength(0) - 1, this.grid.grid.GetLength(1) - 1);
     }
 
     bool IsValidMove(Vector2Int newPosition)
@@ -105,10 +105,10 @@ public class PlayerCharacter : MonoBehaviour
         return true;
     }
 
-    public MovePlayerObject() {
-        Tile tile = grid.grid[position.x, position.y];
-        Debug.log(tile.transform.position);
-        transorm.position(new Vector3(, 0f, 0f));
+    public void MovePlayerObject() {
+        Debug.Log("attempting to get tile at " + position.x + "," + position.y);
+        Tile tile = grid.GetTile(position.x, position.y);
+        transform.position = tile.GetTransform();
     }
 
     public Vector2Int GetPosition() { return position; }

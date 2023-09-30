@@ -29,13 +29,13 @@ public class BattleGrid : MonoBehaviour
                 Tile newTile = Instantiate(tile, new Vector3(xPos, yPos, 0), Quaternion.identity).GetComponent<Tile>();
                 newTile.gridX = x;
                 newTile.gridY = y;
+                grid[x, y] = newTile;
                 // 0, 1, 2
                 if(x >= playerTileLength) {
                     newTile.isPlayerTile = false;
                 }
             }
         }
-
         // Calculate player and enemy grid boundaries.
         playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1));
         enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1));
@@ -52,6 +52,9 @@ public class BattleGrid : MonoBehaviour
         return grid[0,0];
     }
 
+    public Tile GetTile(int x, int y) {
+        return grid[x, y];
+    }
 
     public void SetPlayerTileLength(int playerTileLength){
         this.playerTileLength = playerTileLength;
@@ -105,6 +108,4 @@ public class BattleGrid : MonoBehaviour
             }
         }
     }
-
-
 }

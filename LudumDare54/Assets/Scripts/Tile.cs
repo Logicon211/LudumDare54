@@ -30,4 +30,8 @@ public class Tile : MonoBehaviour
             spriteRenderer.sprite = enemyTile;
         }
     }
+
+    public Vector3 GetTransform() {
+        return gameObject.transform.position;
+    }
 }

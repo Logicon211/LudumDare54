@@ -254,7 +254,8 @@ public class GameManager : MonoBehaviour {
 			// 		}
 			// 	}
 			// }
-
+			Time.timeScale = 0;	
+			
 			battleOptionMenu.SetActive(true);
 			isInBattleOptionScreen = true;
 			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();

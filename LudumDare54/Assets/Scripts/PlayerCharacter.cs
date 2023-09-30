@@ -19,20 +19,28 @@ public class PlayerCharacter : MonoBehaviour
     // temp until we get something better
     private bool isDead = false;
     private Tile currentTile;
+    public SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         GameObject g = GameObject.FindGameObjectWithTag("Grid");
         GameObject m = GameObject.FindGameObjectWithTag("GameController");
+
+        playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+
         if (g != null) {
             Debug.Log("grid not found");
             grid = g.GetComponent<BattleGrid>();
+        }
+        if (m != null) {
+            manager = m.GetComponent<GameManager>();
         }
         yield return new WaitUntil(() => grid.isInitialized);
         position.Set(1, 1);
         currentTile = grid.GetTile(1, 1);
         MovePlayerObject();
+        playerSprite.enabled = true;
     }
 
     // Update is called once per frame
@@ -45,13 +53,10 @@ public class PlayerCharacter : MonoBehaviour
     void Attack()
     {
         if (Input.GetKeyDown(KeyCode.A)) {
-            // Regular Attack
-            Debug.Log("Attack Pressed");
             RegularAttack();
         }
         if (Input.GetKeyDown(KeyCode.S)) {
-            // Special Attack
-            Debug.Log("Special Pressesd");
+            SpecialAttack();
         }
         if (Input.GetKeyDown(KeyCode.P)) {
             Damage(10);
@@ -67,6 +72,20 @@ public class PlayerCharacter : MonoBehaviour
                 Debug.Log("Enemy hit");
                 break;
             }
+        }
+    }
+
+    void SpecialAttack()
+    {
+        if (manager.mutationQueue.Count > 0)
+        {
+            manager.mutationQueue[0].useAbility();
+            manager.mutationQueue.RemoveAt(0);
+            Debug.Log("Mutations left: " + manager.mutationQueue.Count);
+        }
+        else 
+        {
+            Debug.Log("Can't use special: No Mutations Left");
         }
     }
 

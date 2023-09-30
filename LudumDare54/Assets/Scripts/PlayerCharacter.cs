@@ -26,6 +26,7 @@ public class PlayerCharacter : MonoBehaviour
             grid = g[0].GetComponent<BattleGrid>();
         }
         position.Set(1, 1);
+        MovePlayerObject();
     }
 
     // Update is called once per frame
@@ -55,10 +56,10 @@ public class PlayerCharacter : MonoBehaviour
     */
     void Move()
     {
-        if (CurrentMovementCooldown > 0f) {
-            CurrentMovementCooldown -= Time.deltaTime;
-            return;
-        }
+        // if (CurrentMovementCooldown > 0f) {
+        //     CurrentMovementCooldown -= Time.deltaTime;
+        //     return;
+        // }
         Vector2Int newPosition = GetMovement();
         if (!position.Equals(newPosition) && IsValidMove(newPosition)) {
             position.Set(newPosition.x, newPosition.y);
@@ -96,7 +97,9 @@ public class PlayerCharacter : MonoBehaviour
 
     bool IsValidMove(Vector2Int newPosition)
     {
-        Vector2Int boundaries = GetGridBoundaries(grid);
+        Vector2Int boundaries = grid.getPlayerBoundaries();
+        Debug.Log(boundaries.x);
+        // Vector2Int boundaries = GetGridBoundaries(grid);
         if (newPosition.x < 0 || newPosition.x > boundaries.x || newPosition.y < 0 || newPosition.y > boundaries.y ) {
             Debug.Log("Bad Move " + newPosition);
             return false;

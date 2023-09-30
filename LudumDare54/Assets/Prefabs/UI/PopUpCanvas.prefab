@@ -2228,7 +2228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: 42.999992}
+  m_AnchoredPosition: {x: 280, y: 62.999992}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &815089580811238594
@@ -2263,7 +2263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 42.999992}
+  m_AnchoredPosition: {x: -20, y: 62.999992}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1118628581738601667
@@ -2402,7 +2402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: 43}
+  m_AnchoredPosition: {x: -320, y: 63}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3128671188502465238
@@ -2826,7 +2826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: 42.999992}
+  m_AnchoredPosition: {x: 130, y: 62.999992}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5242723079136187235
@@ -3713,8 +3713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2caf79f025eec7b41b43f072e7b718a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawnAbilities: []
-  selectedAbilities: []
   confirmButton: {fileID: 6607445268270228215}
   mutationButton: {fileID: 2235889265750247915, guid: a1613d68ea93c5e46b0318c1d42b5424,
     type: 3}
@@ -3960,7 +3958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: 42.999992}
+  m_AnchoredPosition: {x: -170, y: 62.999992}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8948804826909804306

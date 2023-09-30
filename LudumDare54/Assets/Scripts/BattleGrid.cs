@@ -7,7 +7,7 @@ public class BattleGrid : MonoBehaviour
     public Tile[,] grid = new Tile[6,3];
     public GameObject tile;
 
-    private float tileXDistance = 2.5f;
+    private float tileXDistance = 2.9f;
     private float tileYDistance = -1.5f;
     
     // Start is called before the first frame update
@@ -20,6 +20,9 @@ public class BattleGrid : MonoBehaviour
                 Tile newTile = Instantiate(tile, new Vector3(xPos, yPos, 0), Quaternion.identity).GetComponent<Tile>();
                 newTile.gridX = x;
                 newTile.gridY = y;
+                if(x >= 3) {
+                    newTile.isPlayerTile = false;
+                }
             }
         }
     }

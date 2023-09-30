@@ -129,6 +129,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1671623110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &89107045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5263947730915695935, guid: 62146846e95150b49b528e20887bcc86,
+    type: 3}
+  m_PrefabInstance: {fileID: 1671623110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323118022
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +459,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5251440170808813850, guid: 62146846e95150b49b528e20887bcc86,
+        type: 3}
+      propertyPath: abilityRefreshText
+      value: 
+      objectReference: {fileID: 89107045}
     - target: {fileID: 7675927589442381185, guid: 62146846e95150b49b528e20887bcc86,
         type: 3}
       propertyPath: m_Name

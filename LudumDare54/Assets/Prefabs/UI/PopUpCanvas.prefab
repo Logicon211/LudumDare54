@@ -2571,6 +2571,7 @@ GameObject:
   - component: {fileID: 3679471468388054390}
   - component: {fileID: 2165243556207735844}
   - component: {fileID: 7496957357553651021}
+  - component: {fileID: 5010712007808419039}
   m_Layer: 5
   m_Name: QueueNextAbilityAlert
   m_TagString: Untagged
@@ -2594,8 +2595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49.3}
-  m_SizeDelta: {x: 454.53, y: 50}
+  m_AnchoredPosition: {x: -43.51, y: 49.3}
+  m_SizeDelta: {x: 541.55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3679471468388054390
 CanvasRenderer:
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Queue next mutations!
+  m_text: Queue next mutations! Press E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a45ed483403b4050a137cf4553f9af1, type: 2}
   m_sharedMaterial: {fileID: 8088079628875772496, guid: 8a45ed483403b4050a137cf4553f9af1,
@@ -2710,6 +2711,27 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!95 &5010712007808419039
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263947730915695935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9cc98d27e0b7b7540a1ebc5bd49c17ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5464675492922851304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,6 +3425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcde3c6d3973674382214306e541a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityRefreshText: {fileID: 5263947730915695935}
 --- !u!1001 &8345908580095226467
 PrefabInstance:
   m_ObjectHideFlags: 0

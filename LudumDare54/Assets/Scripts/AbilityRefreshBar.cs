@@ -12,6 +12,8 @@ public class AbilityRefreshBar : MonoBehaviour
     private GameManager gameManager;
 
     private float maxAbilityRefreshTime;
+
+    public GameObject abilityRefreshText;
     
     // Start is called before the first frame update
     void Start()
@@ -39,8 +41,13 @@ public class AbilityRefreshBar : MonoBehaviour
             gameManager.abilityRefreshAvailable = true;
             currentTimeRemaining = 0f;
         }
+
+        if (gameManager.abilityRefreshAvailable) {
+            abilityRefreshText.SetActive(true);
+        } else {
+            abilityRefreshText.SetActive(false);
+        }
         SetBar();
-        Debug.Log(currentTimeRemaining);
     }
 
     public void resetAbilityCountdown() {

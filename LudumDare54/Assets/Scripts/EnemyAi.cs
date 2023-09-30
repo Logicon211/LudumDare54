@@ -14,7 +14,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     //Player tracker (might not be needed, could just get player position from grid)
     private GameObject player;
-    public BattleGrid battleGrid;
+    private BattleGrid battleGrid;
     
     //Prevent us from dying twice
     private bool isDead = false;
@@ -26,6 +26,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public float currentDecisionCooldown = 2.5f; // May need to be tweaked.
     public float attackCooldown; // Hand in on initialization
     public float currentAttackCooldown = 2f; // May need to be tweaked.
+
+    private Animator animator;
 
 
     private void Awake() {
@@ -53,12 +55,14 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 player = GameObject.FindGameObjectWithTag("Player");
         // RB = this.GetComponent<Rigidbody2D>();
         // //TODO hand in grid correctly
-        battleGrid = battleGrid.GetComponent<BattleGrid>();
+        battleGrid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
         yield return new WaitUntil(() => battleGrid.isInitialized);
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);
         gridPosition.x = spawnLocation.gridX;
         gridPosition.y = spawnLocation.gridY;
         enemyGameObject.transform.position = spawnLocation.transform.position;
+        animator = enemyGameObject.GetComponent<Animator>();
+
     }
 
      private void Update () {
@@ -263,10 +267,17 @@ Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
 
     public void Attack(){
         // Choose a random attack from the (list) of passed in attacks
+        animator.SetTrigger("AttackAnimation");
 
         // Reset both cooldowns
         currentDecisionCooldown = decisionCooldown;
         currentAttackCooldown = attackCooldown;
+    }
+
+    public void SpawnAttack(){
+
+        Debug.Log("Skeleton attak spawned.");
+
     }
 
     // This method might belong on the BattleGrid instead.

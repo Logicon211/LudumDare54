@@ -122,12 +122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
   health: 20
-  battleGrid: {fileID: 0}
   enemyGameObject: {fileID: 7082877181016011367}
   decisionCooldown: 3
   currentDecisionCooldown: 2.5
   attackCooldown: 3.2
   currentAttackCooldown: 2
+  attacks:
+  - {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5, type: 3}
 --- !u!61 &8473140654478024816
 BoxCollider2D:
   m_ObjectHideFlags: 0

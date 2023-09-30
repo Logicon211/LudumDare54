@@ -28,6 +28,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public float currentAttackCooldown = 2f; // May need to be tweaked.
 
     private Animator animator;
+    public List<GameObject> attacks;
 
 
     private void Awake() {
@@ -175,7 +176,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         List<legalMoves> legalMoveList = determineLegalMoves();
         
 
-Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
+        Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
 
         // We could end up in a corner with no legal moves.
         if(legalMoveList.Count == 0){
@@ -277,6 +278,8 @@ Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
     public void SpawnAttack(){
 
         Debug.Log("Skeleton attak spawned.");
+
+        Instantiate(attacks[Random.Range(0, attacks.Count)], transform.position, Quaternion.identity);
 
     }
 

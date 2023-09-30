@@ -18,6 +18,7 @@ public class NextBattlePopup : MonoBehaviour
 	}
 	public void PopUp (NextBattleObject[] battleObjectList) {
 		if (battleObjectList[0] != null) {
+			choice1.SetBattleObject(battleObjectList[0]);
 			choice1.setMutation(battleObjectList[0].mutation);
 			choice1.setTitle("Health gained: " + battleObjectList[0].amountOfHealthRegained);
 			// TODO: loop over enemy list and put it in the choice selection
@@ -27,6 +28,7 @@ public class NextBattlePopup : MonoBehaviour
 		}
 
 		if (battleObjectList[1] != null) {
+			choice2.SetBattleObject(battleObjectList[1]);
 			choice2.setMutation(battleObjectList[1].mutation);
 			choice2.setTitle("Health gained: " + battleObjectList[1].amountOfHealthRegained);
 			choice1.setContent("battleObjectList[1].enemies[0].name or whatever");
@@ -35,6 +37,7 @@ public class NextBattlePopup : MonoBehaviour
 		}
 
 		if (battleObjectList[2] != null) {
+			choice3.SetBattleObject(battleObjectList[2]);
 			choice3.setMutation(battleObjectList[2].mutation);
 			choice3.setTitle("Health gained: " + battleObjectList[2].amountOfHealthRegained);
 			choice1.setContent("battleObjectList[2].enemies[0].name or whatever");

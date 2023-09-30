@@ -47,8 +47,10 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Attack();
+        if(!manager.IsPaused()) {
+            Move();
+            Attack();
+        }
     }
 
     void Attack()

@@ -254,8 +254,8 @@ public class GameManager : MonoBehaviour {
 			// 		}
 			// 	}
 			// }
-			Time.timeScale = 0;	
-			
+			PauseGame();	
+
 			battleOptionMenu.SetActive(true);
 			isInBattleOptionScreen = true;
 			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();
@@ -275,8 +275,12 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void SetNextBattle(/*battleInfo*/) {
-		Debug.Log("TODO: Setting next battle");
+	public void SetNextBattle(NextBattleObject battleObject) {
+		Debug.Log("TODO: Setting next battle: " + battleObject.amountOfHealthRegained);
+
+		UnPauseGame();
+		// TODO: Add the mutation selection to current deck;
+		// TODO: use select battle object to do something
 	}
 
 	public void EnableAbilityQueueMenu() {
@@ -285,7 +289,7 @@ public class GameManager : MonoBehaviour {
 			abilityQueueMenu.AddRandomAbilitiesToSelection();
 			isInAbilityQueueScreen = true;
 			enableLowPassFilter();
-			Time.timeScale = 0;	
+			PauseGame();
 		} else {
 			// TODO: Add error sound or something
 		}
@@ -294,7 +298,7 @@ public class GameManager : MonoBehaviour {
 	public void DisableAbilityQueueMenu() {
 		abilityQueueMenuObject.SetActive(false);
 		disableLowPassFilter();
-		Time.timeScale = 1;
+		UnPauseGame();
 	}
 
 	public void ResetAbilityCountdown() {

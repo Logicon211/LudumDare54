@@ -38,14 +38,14 @@ public class NextBattleChoice : MonoBehaviour
 
     public void ChooseBattleOption() {
         // TODO: Put some logic here on level up selection
-        Debug.Log("Chose level up title: " + title.text);
         // if(powerup) {
         //     powerup.LevelUp(1);
         //     powerup.getGameManager().SetPowerupToActive(powerup);
         // } else {
         //     Debug.Log("ERROR: no powerup associated...");
         // }
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
+        gameManager.SetNextBattle(battleObject);
         nextBattlePopup.ClosePopUp();
     }
 

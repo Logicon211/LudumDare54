@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-
-    // Which way to move the character
+    // Which way to move the character, not used anymore
     enum Direction {Up, Right, Down, Left, None};
 
-    public float Health { get; set; }
-    public Vector2Int Position = new Vector2Int();
+    public int health;
+    public Vector2Int position = new Vector2Int();
 
     public BattleGrid grid;
 
     public float MovementCooldown = .05f;
     public float CurrentMovementCooldown = 0f;
+
+    // temp until we get something better
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,66 +25,81 @@ public class PlayerCharacter : MonoBehaviour
         if (g.Length > 0) {
             grid = g[0].GetComponent<BattleGrid>();
         }
-        Position.Set(1, 1);
+        position.Set(1, 1);
+        MovePlayerObject();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        Attack();
     }
 
+    void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            // Regular Attack
+            Debug.Log("Attack Pressed");
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            // Special Attack
+            Debug.Log("Special Pressesd");
+        }
+        if (Input.GetKeyDown(KeyCode.P)) {
+            Damage(10);
+        }
+    }
 
     /*
         Fun time movement stuff
     */
     void Move()
     {
-        if (CurrentMovementCooldown > 0f) {
-            CurrentMovementCooldown -= Time.deltaTime;
-            return;
-        }
-        Direction dir = GetMovement();
-        Vector2Int newPosition = NewPosition(dir);
-        if (dir != Direction.None && IsValidMove(newPosition)) {
-            Position.Set(newPosition.x, newPosition.y);
+        // if (CurrentMovementCooldown > 0f) {
+        //     CurrentMovementCooldown -= Time.deltaTime;
+        //     return;
+        // }
+        Vector2Int newPosition = GetMovement();
+        if (!position.Equals(newPosition) && IsValidMove(newPosition)) {
+            position.Set(newPosition.x, newPosition.y);
+            MovePlayerObject();
             CurrentMovementCooldown = MovementCooldown;
         }
     }
 
-    Direction GetMovement()
+    Vector2Int GetMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        if (horizontal != 0) {
-            return horizontal < 0 ? Direction.Left : Direction.Right;
-        }
-        if (vertical != 0) {
-            return vertical < 0 ? Direction.Up : Direction.Down;
-        }
-        return Direction.None;
-    }
 
-    Vector2Int NewPosition(Direction dir)
-    {
-        switch (dir)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            case Direction.Up: return Position + Vector2Int.up;
-            case Direction.Right: return Position + Vector2Int.right;
-            case Direction.Down: return Position + Vector2Int.down;
-            case Direction.Left:  return Position + Vector2Int.left;
-            default: return Position; 
+            return position + Vector2Int.down;
         }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            return position + Vector2Int.right;
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            return position + Vector2Int.up;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            return position + Vector2Int.left;
+        }
+        return position;
     }
 
     Vector2Int GetGridBoundaries(BattleGrid grid)
     {
-        return new Vector2Int(this.grid.grid.GetLength(0), this.grid.grid.GetLength(1));
+        return new Vector2Int(this.grid.grid.GetLength(0) - 1, this.grid.grid.GetLength(1) - 1);
     }
 
     bool IsValidMove(Vector2Int newPosition)
     {
-        Vector2Int boundaries = GetGridBoundaries(grid);
+        Vector2Int boundaries = grid.getPlayerBoundaries();
+        Debug.Log(boundaries.x);
+        // Vector2Int boundaries = GetGridBoundaries(grid);
         if (newPosition.x < 0 || newPosition.x > boundaries.x || newPosition.y < 0 || newPosition.y > boundaries.y ) {
             Debug.Log("Bad Move " + newPosition);
             return false;
@@ -91,5 +108,35 @@ public class PlayerCharacter : MonoBehaviour
         return true;
     }
 
-    public Vector2Int GetPosition() { return Position; }
+    public void MovePlayerObject() {
+        Debug.Log("attempting to get tile at " + position.x + "," + position.y);
+        Tile tile = grid.GetTile(position.x, position.y);
+        transform.position = tile.GetTransform();
+    }
+
+    public Vector2Int GetPosition() { return position; }
+
+
+    // Incoming damage
+    public void Damage(int damageTaken)
+    {
+        health -= damageTaken;
+
+        if (health <= 0f && !isDead) {
+            Kill();
+        }
+        else{
+            // hit animation or something
+        }   
+    }
+
+    
+    public void Kill()
+    {
+        if(!isDead) {
+            isDead = true;
+            Debug.Log("dead lol");
+            
+        }
+    }
 }

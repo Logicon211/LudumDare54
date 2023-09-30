@@ -6,6 +6,9 @@ using Enemy.Interface;
 
 public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 {
+
+
+    public Vector2Int gridPosition;
     //1, 2, 3
     private int xPosition;
     //1, 2, 3
@@ -22,6 +25,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     private bool isDead = false;
 
     private Rigidbody2D enemyBody;
+    public GameObject enemyGameObject;
 
     private float decisionCooldown; // Hand in on initialization
     private float currentDecisionCooldown = 2.5f; // May need to be tweaked.
@@ -30,6 +34,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
 
     private void Awake() {
+        enemyGameObject = GetComponent<GameObject>();
         enemyBody = GetComponent<Rigidbody2D>();
         // audio = GetComponent<AudioSource>();
         // spriteRenderer = GetComponent<SpriteRenderer>();
@@ -113,13 +118,27 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         }
     }
 
+    // Negative means the player is lower
+    // 0 means we are aligned
+    // Positive means the player is higher
     private int AlignedWithPlayer(Tile playerTile){
-        return playerTile.gridY - yPosition;
+        return playerTile.gridY - gridPosition.y;
     }
 
     private bool ClearLineToPlayer(Tile playerTile){
-        for(int x = xPosition-1; x> playerTile.gridX; x--) {
-            if(battleGrid.grid[x-1, yPosition].entityOnTile != null){
+
+        // Worried this logic is incorrect, too many changes to x during loop, should calculate it up front.
+        // For as many spaces as there are between this character (minus one to not count ourselves) and the player character. 
+        for(int x = gridPosition.x-1; x> playerTile.gridX; x--) {
+            
+            // Get the entity on that tile (could be null)
+            var entity = battleGrid.grid[x, gridPosition.y].entityOnTile;
+            //If the field has an entity on it.
+            if(entity != null){
+                // Is it the player?
+                if(entity == player){
+                    return true;
+                }
                 return false;
             }
         }
@@ -128,25 +147,84 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public void Move(Tile playerTile, int alignment)
     {
-        // Determine difference between player and us.        
-        int yMove = AlignedWithPlayer(playerTile);
+        
+        legalMoves chosenMovement = legalMoves.NoLegalMove;
 
-        // If that's not zero, let's take that move if it's legal, otherwise continue.
+        // Build the list of legalMovement options. Pray we never conflict with another enemy.
+        List<legalMoves> legalMoveList = determineLegalMoves();
+        
 
+        // We could end up in a corner with no legal moves.
+        if(legalMoveList.Count == 0){
+            // No action to take, vibrate in place?
+        }
 
-        // If that's zero, lets move forward or backwards if it's legal. Otherwise do nothing. Stretch goal, vibrate? shake? indicate you couldn't move.
+        // If player is aligned, then vision was unclear.
+        else if(alignment == 0){
+            //Choose a random legal option.
+            chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
+        }
 
+        // Negative alignment -> player is lower
+        else if(alignment < 0){
+            // Move down if that is a legal move.
+            if(legalMoveList.Contains(legalMoves.Down)){
+                chosenMovement = legalMoves.Down;
+            }
+            else{
+                //Choose a random legal option.
+                chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
+            }
+        }
+        // Positive alignment -> player is higher
+        else if(alignment > 0){
+            // Move Up if that is a legal move.
+            if(legalMoveList.Contains(legalMoves.Up)){
+                chosenMovement = legalMoves.Up;
+            }
+            else{
+                //Choose a random legal option.
+                chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
+            }
+        }
 
+        
+        if(chosenMovement == legalMoves.NoLegalMove) {
+            // We had no legal moves.
+            // TODO vibrate in place to indicate we couldn't move?
+            // Decision cooldown halved.
+            currentDecisionCooldown = decisionCooldown / 2;
+        }
+        
+        
+        else {
+            var newXposition = gridPosition.x;
+            var newYposition = gridPosition.y;
 
-        // Determine legal moves
-            // determine edges
-                // 
-
-
-
-        // get player position
-        // Reset decision cooldown
-        currentDecisionCooldown = decisionCooldown;
+            if(chosenMovement == legalMoves.Up){
+                newYposition++;
+            }
+            else if(chosenMovement == legalMoves.Down){
+                newYposition--;
+            }
+            else if(chosenMovement == legalMoves.Right){
+                newXposition++;
+            }
+            else{
+                newXposition++;
+            }
+            
+            
+            // Take that movement decision
+            if(!battleGrid.moveEnemyIntoTile(this, newXposition, newYposition)){
+                Debug.Log("We were unable to move this enemy into a valid tile after having calculated legal tiles because it was occupied. Need to synchronize sooner.");
+                
+                currentDecisionCooldown = decisionCooldown / 2;
+            }
+            else{
+                currentDecisionCooldown = decisionCooldown;
+            }
+        }
     }
 
     public void Attack(){
@@ -157,5 +235,55 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         currentAttackCooldown = attackCooldown;
     }
 
+    // This method might belong on the BattleGrid instead.
+    private List<legalMoves> determineLegalMoves(){
+        // Get the boundaries from the battleGrid.
+        Vector2 legalBoundaries = battleGrid.getEnemyBoundaries();
+        // Get the tiles the player owns.
+        var playerArea = battleGrid.playerTileLength;
+
+        List<legalMoves> legalMoveList = new List<legalMoves>();
+        if(gridPosition.y == legalBoundaries.y){
+            // Do nothing
+        }
+        // If our position is not the top, we can move up.
+        if(gridPosition.y < legalBoundaries.y){
+            // And the location is empty
+            if(battleGrid.grid[gridPosition.x, gridPosition.y+1].entityOnTile == null){
+                legalMoveList.Add(legalMoves.Up);
+            } 
+        }
+        // If our position is not the bottom, we can move down.
+        if(gridPosition.y > 0){
+            // And the location is empty
+            if(battleGrid.grid[gridPosition.x, gridPosition.y-1].entityOnTile == null){
+                legalMoveList.Add(legalMoves.Down);
+            } 
+        }
+        // If our x position is not at the rightmost enemy boundary, we can move right.
+        if(gridPosition.x < legalBoundaries.x){
+            // And the location is empty
+            if(battleGrid.grid[gridPosition.x+1, gridPosition.y].entityOnTile == null){
+                legalMoveList.Add(legalMoves.Right);  
+            } 
+        }
+        // If our x position is not at the playerArea limit.
+        if(gridPosition.x > playerArea){
+            // And the location is empty
+            if(battleGrid.grid[gridPosition.x-1, gridPosition.y].entityOnTile == null){
+                legalMoveList.Add(legalMoves.Left);
+            } 
+        }
+
+        return legalMoveList;
+    }
+
+    private enum legalMoves : int {
+        Up = 1,
+        Right = 1,
+        Down = -1,
+        Left = -1,
+        NoLegalMove = 0
+    }
 
 }

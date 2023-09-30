@@ -33,13 +33,13 @@ public class XPOrb : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-       if (other.gameObject.tag == "Player") {
-           Player player = other.gameObject.GetComponent<Player>();
-           player.GainXP(xpGained);
-           Destroy(this.gameObject);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //    if (other.gameObject.tag == "Player") {
+    //        Player player = other.gameObject.GetComponent<Player>();
+    //        player.GainXP(xpGained);
+    //        Destroy(this.gameObject);
+    //     }
+    // }
 
     // private void OnCollisionEnter2D(Collision2D other) {
     //    if (other.gameObject.tag == "Player") {

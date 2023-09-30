@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 166442701}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -167,7 +166,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1617976774}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -305,7 +303,6 @@ RectTransform:
   m_Children:
   - {fileID: 38032053}
   m_Father: {fileID: 1742668557}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -437,7 +434,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1742668557}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -573,7 +569,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1237688552}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -710,7 +705,6 @@ RectTransform:
   m_Children:
   - {fileID: 1757232395}
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -786,7 +780,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -936,7 +929,6 @@ RectTransform:
   m_Children:
   - {fileID: 1209110969}
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1012,7 +1004,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1742668557}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1148,7 +1139,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1187483121}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1285,7 +1275,6 @@ RectTransform:
   m_Children:
   - {fileID: 733568545}
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1361,7 +1350,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1505,7 +1493,6 @@ RectTransform:
   - {fileID: 1617976774}
   - {fileID: 2005287252}
   m_Father: {fileID: 7675927588573158447}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1607,7 +1594,6 @@ RectTransform:
   m_Children:
   - {fileID: 106956141}
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1686,7 +1672,6 @@ RectTransform:
   - {fileID: 683667470}
   - {fileID: 166442701}
   m_Father: {fileID: 1885424505}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1762,7 +1747,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 770991512}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1898,7 +1882,6 @@ RectTransform:
   m_Children:
   - {fileID: 1742668557}
   m_Father: {fileID: 7675927589442381309}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1950,7 +1933,6 @@ RectTransform:
   m_Children:
   - {fileID: 2140072297}
   m_Father: {fileID: 1360902781}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2026,7 +2008,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2005287252}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2162,7 +2143,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7095302265026585841}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2238,7 +2218,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7675927588576377141}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2314,7 +2293,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7135683961813401239}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2372,7 +2350,7 @@ GameObject:
   - component: {fileID: 7675927588573158441}
   - component: {fileID: 7675927588573158443}
   m_Layer: 5
-  m_Name: LevelUpPopUp
+  m_Name: BattleOptionPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,7 +2373,6 @@ RectTransform:
   - {fileID: 7135683961979245340}
   - {fileID: 1360902781}
   m_Father: {fileID: 7675927589442381309}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2489,7 +2466,6 @@ RectTransform:
   - {fileID: 7675927588573158447}
   - {fileID: 1885424505}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2513,7 +2489,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1626492625
   m_SortingOrder: 200
   m_TargetDisplay: 0
@@ -2562,6 +2540,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7675927588573158447}
     m_Modifications:
     - target: {fileID: 1825295798016068436, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
@@ -2583,12 +2562,12 @@ PrefabInstance:
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChooseLevelUp
+      value: ChooseBattleOption
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelUpChoice, Assembly-CSharp
+      value: NextBattleChoice, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -2746,7 +2725,7 @@ PrefabInstance:
     - target: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_Name
-      value: LevelUpOption1
+      value: BattleOption1
       objectReference: {fileID: 0}
     - target: {fileID: 1825295800039805154, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -2781,7 +2760,23 @@ PrefabInstance:
       propertyPath: levelUpPopup
       value: 
       objectReference: {fileID: 7675927588573158443}
+    - target: {fileID: 2459107173602590754, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      propertyPath: nextBattlePopup
+      value: 
+      objectReference: {fileID: 7675927588573158443}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6612249722231801583}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 30813004}
   m_SourcePrefab: {fileID: 100100000, guid: 3140e4ddd30ec2248a05ef622cb08dcf, type: 3}
 --- !u!114 &5904816492566245953 stripped
 MonoBehaviour:
@@ -2852,8 +2847,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5904816492566245953}
-        m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: ChooseLevelUp
+        m_TargetAssemblyTypeName: NextBattleChoice, Assembly-CSharp
+        m_MethodName: ChooseBattleOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2886,6 +2881,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7675927588573158447}
     m_Modifications:
     - target: {fileID: 1825295798016068436, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
@@ -2907,12 +2903,12 @@ PrefabInstance:
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChooseLevelUp
+      value: ChooseBattleOption
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelUpChoice, Assembly-CSharp
+      value: NextBattleChoice, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -3060,7 +3056,7 @@ PrefabInstance:
     - target: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_Name
-      value: LevelUpOption3
+      value: BattleOption3
       objectReference: {fileID: 0}
     - target: {fileID: 1825295800039805154, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -3095,7 +3091,23 @@ PrefabInstance:
       propertyPath: levelUpPopup
       value: 
       objectReference: {fileID: 7675927588573158443}
+    - target: {fileID: 2459107173602590754, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      propertyPath: nextBattlePopup
+      value: 
+      objectReference: {fileID: 7675927588573158443}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1118359463838434863}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350663644}
   m_SourcePrefab: {fileID: 100100000, guid: 3140e4ddd30ec2248a05ef622cb08dcf, type: 3}
 --- !u!114 &6373520258835592675 stripped
 MonoBehaviour:
@@ -3184,8 +3196,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6373520258835592675}
-        m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: ChooseLevelUp
+        m_TargetAssemblyTypeName: NextBattleChoice, Assembly-CSharp
+        m_MethodName: ChooseBattleOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3200,6 +3212,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7675927588573158447}
     m_Modifications:
     - target: {fileID: 1825295798016068436, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
@@ -3221,12 +3234,12 @@ PrefabInstance:
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChooseLevelUp
+      value: ChooseBattleOption
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068437, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelUpChoice, Assembly-CSharp
+      value: NextBattleChoice, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -3384,7 +3397,7 @@ PrefabInstance:
     - target: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
       propertyPath: m_Name
-      value: LevelUpOption2
+      value: BattleOption2
       objectReference: {fileID: 0}
     - target: {fileID: 1825295800039805154, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
         type: 3}
@@ -3419,7 +3432,23 @@ PrefabInstance:
       propertyPath: levelUpPopup
       value: 
       objectReference: {fileID: 7675927588573158443}
+    - target: {fileID: 2459107173602590754, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      propertyPath: nextBattlePopup
+      value: 
+      objectReference: {fileID: 7675927588573158443}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1825295798016068438, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1394825202335557490}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1825295799994394334, guid: 3140e4ddd30ec2248a05ef622cb08dcf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1014460634}
   m_SourcePrefab: {fileID: 100100000, guid: 3140e4ddd30ec2248a05ef622cb08dcf, type: 3}
 --- !u!114 &6414203359651131269 stripped
 MonoBehaviour:
@@ -3484,8 +3513,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6414203359651131269}
-        m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: ChooseLevelUp
+        m_TargetAssemblyTypeName: NextBattleChoice, Assembly-CSharp
+        m_MethodName: ChooseBattleOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

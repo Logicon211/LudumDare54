@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class LevelUpChoice : MonoBehaviour
+public class NextBattleChoice : MonoBehaviour
 {
 
     public TMP_Text title;
     public TMP_Text content;
 
-    public LevelUpPopup levelUpPopup;
+    public NextBattlePopup nextBattlePopup;
 
     public Image buttonIcon;
 
@@ -18,10 +18,12 @@ public class LevelUpChoice : MonoBehaviour
 
     private Powerup powerup;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -30,17 +32,17 @@ public class LevelUpChoice : MonoBehaviour
         
     }
 
-    public void ChooseLevelUp() {
+    public void ChooseBattleOption() {
         // TODO: Put some logic here on level up selection
         Debug.Log("Chose level up title: " + title.text);
-        if(powerup) {
-            powerup.LevelUp(1);
-            powerup.getGameManager().SetPowerupToActive(powerup);
-        } else {
-            Debug.Log("ERROR: no powerup associated...");
-        }
-        Time.timeScale = 1f;
-        levelUpPopup.ClosePopUp();
+        // if(powerup) {
+        //     powerup.LevelUp(1);
+        //     powerup.getGameManager().SetPowerupToActive(powerup);
+        // } else {
+        //     Debug.Log("ERROR: no powerup associated...");
+        // }
+        // Time.timeScale = 1f;
+        nextBattlePopup.ClosePopUp();
     }
 
     public void setTitle(string text) {

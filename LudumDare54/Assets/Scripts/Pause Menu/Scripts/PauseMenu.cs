@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
             if(isPaused) {
                 Time.timeScale = 0;
             } else {
-                if(!gameManager.isInLevelUpScreen) {
+                if(!gameManager.isInBattleOptionScreen) {
                     Time.timeScale = 1;
                 }
             }

@@ -132,21 +132,21 @@ public class Player : MonoBehaviour
         healthbar.SetHealth(currentPlayerHealth/playerStats.maxPlayerHealth);
     }
 
-    public void GainXP(float xpGained) {
-        currentPlayerXP += xpGained;
-        if(xpSound) {
-            AS.PlayOneShot(xpSound);
-        }
-        if (currentPlayerXP >= xpNeededToLevel) {
-            if(levelUpSound) {
-                AS.PlayOneShot(levelUpSound);
-            }
-            currentPlayerXP = currentPlayerXP - xpNeededToLevel;
-            xpNeededToLevel = xpNeededToLevel * xpNeededRampUp;
-            gameManager.LevelUp();
-        }
-        xpbar.SetXP(currentPlayerXP/xpNeededToLevel);
-    }
+    // public void GainXP(float xpGained) {
+    //     currentPlayerXP += xpGained;
+    //     if(xpSound) {
+    //         AS.PlayOneShot(xpSound);
+    //     }
+    //     if (currentPlayerXP >= xpNeededToLevel) {
+    //         if(levelUpSound) {
+    //             AS.PlayOneShot(levelUpSound);
+    //         }
+    //         currentPlayerXP = currentPlayerXP - xpNeededToLevel;
+    //         xpNeededToLevel = xpNeededToLevel * xpNeededRampUp;
+    //         gameManager.LevelUp();
+    //     }
+    //     xpbar.SetXP(currentPlayerXP/xpNeededToLevel);
+    // }
 
     public float GetHealth() {
         return currentPlayerHealth;

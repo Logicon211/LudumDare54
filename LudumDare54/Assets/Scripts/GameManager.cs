@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 
 	private bool changeToShopMusic;
 
-	public GameObject levelUpMenu;
+	public GameObject battleOptionMenu;
 
 	public GameObject[] powerupObjects;
 
@@ -51,10 +51,10 @@ public class GameManager : MonoBehaviour {
 	private bool awaitingVictoryScreen = false;
 
 	public bool firstLevelUp = true;
-	public bool isInLevelUpScreen = false;
+	public bool isInBattleOptionScreen = false;
 	private void Awake() {
 		// Load powerups
-		LoadPowerups();
+		// LoadPowerups();
 	}
 
 	// Use this for initialization
@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour {
 		player = GameObject.FindWithTag("Player");
 		cameraObject = GameObject.FindWithTag("MainCamera");
 		listener = cameraObject.GetComponent<AudioListener>();
-		playerScript = player.GetComponent<Player>();
+		// playerScript = player.GetComponent<Player>();
 		AS = GetComponent<AudioSource>();
 		lpFilter = GetComponent<AudioLowPassFilter>();
-		enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+		// enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
 
 	}
 	
@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour {
 		// CheckForWaveChange();
 		if (player != null)
 			CheckGameOver();
+
+		if (Input.GetKeyUp(KeyCode.LeftShift)) {
+			NextBattlePopup();
+		}
 	}
 
 
@@ -211,40 +215,39 @@ public class GameManager : MonoBehaviour {
 	public Player GetPlayer() {
 		return playerScript;
 	}
-	public void LevelUp() {
-		if (levelUpMenu) {
+	public void NextBattlePopup() {
+		if (battleOptionMenu) {
 			// Generate 3 level up choices;
-			List<Powerup> powerupList = new List<Powerup>(3);
-			for (int i = 0; i < 3; i++) {
-				bool selectedPowerup = false;
-				while(!selectedPowerup) {
-					int randomSelection = 0;
-					if (firstLevelUp) {
-						randomSelection = Random.Range(0, Mathf.CeilToInt(powerupObjects.Length/2) - 0);
-					} else {
-						randomSelection = Random.Range(0, powerupObjects.Length - 0);
-					}
-					if(!powerupList.Contains(powerupObjects[randomSelection].GetComponent<Powerup>())) {
-						powerupList.Add(powerupObjects[randomSelection].GetComponent<Powerup>());
-						selectedPowerup = true;
-					}
-				}
-			}
+			// List<Powerup> powerupList = new List<Powerup>(3);
+			// for (int i = 0; i < 3; i++) {
+			// 	bool selectedPowerup = false;
+			// 	while(!selectedPowerup) {
+			// 		int randomSelection = 0;
+			// 		if (firstLevelUp) {
+			// 			randomSelection = Random.Range(0, Mathf.CeilToInt(powerupObjects.Length/2) - 0);
+			// 		} else {
+			// 			randomSelection = Random.Range(0, powerupObjects.Length - 0);
+			// 		}
+			// 		if(!powerupList.Contains(powerupObjects[randomSelection].GetComponent<Powerup>())) {
+			// 			powerupList.Add(powerupObjects[randomSelection].GetComponent<Powerup>());
+			// 			selectedPowerup = true;
+			// 		}
+			// 	}
+			// }
 
-			levelUpMenu.SetActive(true);
-			isInLevelUpScreen = true;
-			LevelUpPopup popUp = levelUpMenu.GetComponent<LevelUpPopup>();
+			battleOptionMenu.SetActive(true);
+			isInBattleOptionScreen = true;
+			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();
 			enableLowPassFilter();
-			// Disable constant laser sounds while this pop up is here:
-			GameObject[] laserObjects = GameObject.FindGameObjectsWithTag("Laser");
-			foreach(GameObject laser in laserObjects) {
-				AudioSource audio = laser.GetComponent<AudioSource>();
-				audio.Stop();
-			}
-			popUp.PopUp(powerupList);
+			// popUp.PopUp(powerupList);
+			popUp.PopUp();
 		} else {
-			Debug.Log("No level up menu set in scene, cant open menu...");
+			Debug.Log("No Battle Option menu set in scene, cant open menu...");
 		}
+	}
+
+	public void SetNextBattle(/*battleInfo*/) {
+		Debug.Log("TODO: Setting next battle");
 	}
 
 	// public void DecreaseEnemyCount() {
@@ -301,20 +304,20 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Retrieves game objects and adds them to the inactive pool
-	public void LoadPowerups() {
-		foreach (GameObject g in powerupObjects) {
-			Powerup powerup = g.GetComponent<Powerup>();
-			if (powerup != null) {
-				if (!powerup.active)	inactivePowerups.Add(powerup);
-				else {
-					activePowerups.Add(powerup);
-					if(!powerup.isUtilityPowerup()) {
-						powerupListForUI.Add(powerup);
-					}
-				} 
-			}
-		}
-	}
+	// public void LoadPowerups() {
+	// 	foreach (GameObject g in powerupObjects) {
+	// 		Powerup powerup = g.GetComponent<Powerup>();
+	// 		if (powerup != null) {
+	// 			if (!powerup.active)	inactivePowerups.Add(powerup);
+	// 			else {
+	// 				activePowerups.Add(powerup);
+	// 				if(!powerup.isUtilityPowerup()) {
+	// 					powerupListForUI.Add(powerup);
+	// 				}
+	// 			} 
+	// 		}
+	// 	}
+	// }
 
 	public void SetPowerupToActive(Powerup powerup) {
 		powerup.SetPowerupActive();

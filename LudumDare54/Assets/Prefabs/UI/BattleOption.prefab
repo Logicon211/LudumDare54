@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 1825295799994394332}
   - component: {fileID: 2459107173602590754}
   m_Layer: 5
-  m_Name: LevelUpOption
+  m_Name: BattleOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

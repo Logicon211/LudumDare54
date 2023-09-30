@@ -90,7 +90,7 @@ public class BattleGrid : MonoBehaviour
 
     // Attempt to move an enemy into a tile, returns true if it succeeded?
     private readonly object lock_ = new object();
-    public bool moveEnemyIntoTile(EnemyAi entity, int x, int y){
+    public Tile moveEnemyIntoTile(EnemyAi entity, int x, int y){
             // We could synchronize at a different location if this ends up locking the game up. IE: Create a method on tiles to update the entity on it, and synchronize that.
         lock(lock_){
             Tile potentialTile = grid[x,y];
@@ -108,10 +108,27 @@ public class BattleGrid : MonoBehaviour
                 }
                 // Set up to the new tile.
                 potentialTile.entityOnTile = entity.enemyGameObject;
-                return true;
+                return potentialTile;
             }
             else{
-                return false;
+                return null;
+            }
+        }
+    }
+
+
+    public Tile getEnemySpawnLocation(EnemyAi ai){
+        lock(lock_){
+
+            while(true){
+                var xPos = Random.Range(playerTileLength, gridXLength-1);
+                var yPos = Random.Range(0, 3);
+                Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
+                Tile potentialTile = grid[xPos, yPos];
+                if (potentialTile.entityOnTile == null){
+                    potentialTile.entityOnTile = ai.enemyGameObject;
+                    return potentialTile;
+                }
             }
         }
     }

@@ -13,18 +13,16 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     private int xPosition;
     //1, 2, 3
     private int yPosition;
-    private int health;
+    public int health;
 
     //Player tracker (might not be needed, could just get player position from grid)
     private GameObject player;
-    private BattleGrid battleGrid;
-
-    public GameObject healthPickup;
+    public BattleGrid battleGrid;
     
     //Prevent us from dying twice
     private bool isDead = false;
 
-    private Rigidbody2D enemyBody;
+    //private Rigidbody2D enemyBody;
     public GameObject enemyGameObject;
 
     private float decisionCooldown; // Hand in on initialization
@@ -34,14 +32,20 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
 
     private void Awake() {
-        enemyGameObject = GetComponent<GameObject>();
-        enemyBody = GetComponent<Rigidbody2D>();
+        //TODO play spawn animation to hide jankyness
+
+        //enemyGameObject = GetComponent<GameObject>();
+        //enemyBody = GetComponent<Rigidbody2D>();
         // audio = GetComponent<AudioSource>();
         // spriteRenderer = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        // RB = this.GetComponent<Rigidbody2D>();
-        // //TODO hand in grid correctly
-        battleGrid = this.GetComponent<BattleGrid>();
+        // player = GameObject.FindGameObjectWithTag("Player");
+        // // RB = this.GetComponent<Rigidbody2D>();
+        // // //TODO hand in grid correctly
+        // battleGrid = this.GetComponent<BattleGrid>();
+        // var spawnLocation = battleGrid.getEnemySpawnLocation(this);
+        // xPosition = spawnLocation.gridX;
+        // yPosition = spawnLocation.gridY;
+        // enemyGameObject.transform.position = spawnLocation.transform.position;
     }
     
     private void Start()
@@ -49,6 +53,14 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         // Instantiate(poofEffect, transform.position, Quaternion.identity);
         // currentHealth = health;
         // originalXScale = this.transform.localScale.x;
+                player = GameObject.FindGameObjectWithTag("Player");
+        // RB = this.GetComponent<Rigidbody2D>();
+        // //TODO hand in grid correctly
+        battleGrid = battleGrid.GetComponent<BattleGrid>();
+        var spawnLocation = battleGrid.getEnemySpawnLocation(this);
+        xPosition = spawnLocation.gridX;
+        yPosition = spawnLocation.gridY;
+        enemyGameObject.transform.position = spawnLocation.transform.position;
     }
 
      private void Update () {
@@ -216,12 +228,16 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             
             
             // Take that movement decision
-            if(!battleGrid.moveEnemyIntoTile(this, newXposition, newYposition)){
+            var potentialTile = battleGrid.moveEnemyIntoTile(this, newXposition, newYposition);
+            
+            if(potentialTile == null){
+                
                 Debug.Log("We were unable to move this enemy into a valid tile after having calculated legal tiles because it was occupied. Need to synchronize sooner.");
                 
                 currentDecisionCooldown = decisionCooldown / 2;
             }
             else{
+                enemyGameObject.transform.position = potentialTile.transform.position;
                 currentDecisionCooldown = decisionCooldown;
             }
         }

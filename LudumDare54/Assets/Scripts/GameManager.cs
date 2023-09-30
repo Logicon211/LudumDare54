@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	private GameObject player;
-	private Player playerScript;
+	private PlayerCharacter playerScript;
 	public static GameManager instance = null;
 
 	private GameObject cameraObject;
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
 		player = GameObject.FindWithTag("Player");
 		cameraObject = GameObject.FindWithTag("MainCamera");
 		listener = cameraObject.GetComponent<AudioListener>();
-		// playerScript = player.GetComponent<Player>();
+		playerScript = player.GetComponent<PlayerCharacter>();
 		AS = GetComponent<AudioSource>();
 		lpFilter = GetComponent<AudioLowPassFilter>();
 		// enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour {
 		lpFilter.enabled = false;
 	}
 
-	public Player GetPlayer() {
+	public PlayerCharacter GetPlayer() {
 		return playerScript;
 	}
 	public void NextBattlePopup() {

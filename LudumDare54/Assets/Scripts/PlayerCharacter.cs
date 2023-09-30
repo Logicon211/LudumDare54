@@ -24,8 +24,9 @@ public class PlayerCharacter : MonoBehaviour
     void Start()
     {
         GameObject g = GameObject.FindGameObjectWithTag("Grid");
-        GameObject m = GameObject.FindGameObjectWithTag("GameManager");
+        GameObject m = GameObject.FindGameObjectWithTag("GameController");
         if (g != null) {
+            Debug.Log("grid not found");
             grid = g.GetComponent<BattleGrid>();
         }
         position.Set(1, 1);
@@ -166,5 +167,10 @@ public class PlayerCharacter : MonoBehaviour
     public int GetHealth() 
     {
         return health;
+    }
+
+    public void DisableOnDeath()
+    {
+        //does something
     }
 }

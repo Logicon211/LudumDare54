@@ -19,12 +19,16 @@ public class PlayerCharacter : MonoBehaviour
     // temp until we get something better
     private bool isDead = false;
     private Tile currentTile;
+    public SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         GameObject g = GameObject.FindGameObjectWithTag("Grid");
         GameObject m = GameObject.FindGameObjectWithTag("GameController");
+
+        playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+
         if (g != null) {
             Debug.Log("grid not found");
             grid = g.GetComponent<BattleGrid>();
@@ -33,6 +37,7 @@ public class PlayerCharacter : MonoBehaviour
         position.Set(1, 1);
         currentTile = grid.GetTile(1, 1);
         MovePlayerObject();
+        playerSprite.enabled = true;
     }
 
     // Update is called once per frame

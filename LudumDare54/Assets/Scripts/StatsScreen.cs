@@ -11,6 +11,19 @@ public class StatsScreen : MonoBehaviour
     public GameObject[] iconAndContainers = new GameObject[5];
     public TMP_Text[] iconTexts = new TMP_Text[5];
 
+    public struct MutationTuple
+    {
+        public Mutation mutation;
+        public int count;
+
+        // Constructor to initialize the tuple
+        public MutationTuple(Mutation obj, int value)
+        {
+            mutation = obj;
+            count = value;
+        }
+    }
+
 
 	void Start() {
 		gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -39,6 +52,46 @@ public class StatsScreen : MonoBehaviour
         //     iconAndContainers[i].SetActive(true);
         // }
 
+        // HashSet<Mutation, int> totalCount = new HashSet<Mutation, int>();
+        UpdateStatScreen();
+
         stats += "TODO ADD STUFF:";
+    }
+
+    void UpdateStatScreen() {
+        Dictionary<string, MutationTuple> totalCount = new Dictionary<string, MutationTuple>();
+
+
+        for(int i = 0; i < gameManager.mutationDeck.Count; i++) {
+            Mutation mutation = gameManager.mutationDeck[i].GetComponent<Mutation>();
+            string mutationName = mutation.mutationName;
+            Debug.Log(mutationName);
+            if (!totalCount.ContainsKey(mutationName)) {
+                totalCount.TryAdd(mutationName, new MutationTuple(mutation, 1));
+            } else {
+                 totalCount[mutationName] = new MutationTuple(mutation, totalCount[mutationName].count + 1);
+            }
+        }
+
+        int currentColumn = 0;
+        foreach (var item in totalCount)
+        {
+            string name = item.Key;
+            MutationTuple value = item.Value;
+
+            iconAndContainers[currentColumn].GetComponent<Image>().sprite = value.mutation.icon;
+            iconTexts[currentColumn].GetComponent<TMP_Text>().text = value.mutation.description;
+
+            iconAndContainers[currentColumn].SetActive(true);
+
+            currentColumn++;
+        }
+
+        // Create a GameObjectTuple
+        // MutationTuple tuple = new MutationTuple(someGameObject, someInteger);
+
+        // // Access the GameObject and integer values
+        // GameObject obj = tuple.gameObject;
+        // int value = tuple.integerValue;
     }
 }

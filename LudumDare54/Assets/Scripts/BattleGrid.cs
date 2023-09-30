@@ -37,8 +37,8 @@ public class BattleGrid : MonoBehaviour
             }
         }
         // Calculate player and enemy grid boundaries.
-        playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1));
-        enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1));
+        playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
+        enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
     }
 
     // Update is called once per frame
@@ -63,13 +63,13 @@ public class BattleGrid : MonoBehaviour
         // Player limits
         // X -> length of player area
         // Y -> length Y of grid.
-        playerGridBoundaries = new Vector2Int(playerTileLength-1, gridYLength-1);
+        playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
 
         // Enemy limits
         // They need to look at playerTileLength to determine their left limit. 
         // X -> length of player area
         // Y -> length Y of grid.
-        enemyGridBoundaries = new Vector2Int(gridXLength-1, gridYLength-1);
+        enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
 
     }
 

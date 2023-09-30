@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
 	private GameObject cameraObject;
 	private AudioListener listener;
 
+	public float maxAbilityRefreshTime = 15f;
+	public bool abilityRefreshAvailable = false;
+
 	private bool paused = false;
 	private bool inCutScene = false;
 	private bool victory = false;
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour {
 
 	public bool firstLevelUp = true;
 	public bool isInBattleOptionScreen = false;
+
 	private void Awake() {
 		// Load powerups
 		// LoadPowerups();

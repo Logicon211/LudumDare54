@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     // private Transform transform;
     public HealthBar healthbar;
-    public XPBar xpbar;
+    public AbilityRefreshBar abilityRefreshBar;
     
     // private float maxPlayerHealth = 100f;
     private float currentPlayerHealth;
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         renderer = this.GetComponent<SpriteRenderer>();
         AS = this.GetComponent<AudioSource>();
 
-        xpbar.SetXP(currentPlayerXP/xpNeededToLevel);
+        // abilityRefreshBar.SetXP(currentPlayerXP/xpNeededToLevel);
     }
 
     // Update is called once per frame

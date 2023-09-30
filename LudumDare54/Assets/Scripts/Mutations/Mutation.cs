@@ -7,7 +7,7 @@ public abstract class Mutation : MonoBehaviour
 {
 
     [SerializeField] public Sprite icon;
-    [SerializeField] protected string description;
+    [SerializeField] public string description;
 
 
     public abstract void useAbility();

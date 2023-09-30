@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MutationButton : MonoBehaviour
+public class MutationButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool isInQueue = false;
     private AbilityQueueMenu abilityQueueMenu;
@@ -42,5 +43,23 @@ public class MutationButton : MonoBehaviour
 
     public Mutation GetMutation() {
         return mutation;
+    }
+
+    private void OnMouseOver() {
+        Tooltip.ShowTooltipStatic(mutation.description);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        Tooltip.ShowTooltipStatic(mutation.description);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        Tooltip.HideTooltipStatic();
+    }
+
+
+
+    private void OnMouseExit() { 
+        Tooltip.HideTooltipStatic();
     }
 }

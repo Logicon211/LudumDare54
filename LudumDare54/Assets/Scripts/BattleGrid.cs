@@ -45,7 +45,7 @@ public class BattleGrid : MonoBehaviour
         }
         // Calculate player and enemy grid boundaries.
         playerGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
-        enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
+        enemyGridBoundaries = new Vector2Int(gridXLength-1, this.grid.GetLength(1) - 1);
         isInitialized = true;
     }
 
@@ -77,7 +77,7 @@ public class BattleGrid : MonoBehaviour
         // They need to look at playerTileLength to determine their left limit. 
         // X -> length of player area
         // Y -> length Y of grid.
-        enemyGridBoundaries = new Vector2Int(playerTileLength, this.grid.GetLength(1) - 1);
+        enemyGridBoundaries = new Vector2Int(gridXLength-1, this.grid.GetLength(1) - 1);
 
     }
 
@@ -91,28 +91,49 @@ public class BattleGrid : MonoBehaviour
 
     // Attempt to move an enemy into a tile, returns true if it succeeded?
     private readonly object lock_ = new object();
-    public bool moveEnemyIntoTile(EnemyAi entity, int x, int y){
+    public Tile moveEnemyIntoTile(EnemyAi entity, int x, int y){
             // We could synchronize at a different location if this ends up locking the game up. IE: Create a method on tiles to update the entity on it, and synchronize that.
         lock(lock_){
+            Debug.Log("Attempting to move enemy to: x: " + x + ".   y: " + y);
             Tile potentialTile = grid[x,y];
             // If the tile is empty
             if(potentialTile.entityOnTile == null){
                 // Remove the entity from it's old tile, add it to it's new tile.
+                Debug.Log("Moving this entity onto a null tile.");
 
+                // We need to null out the previous tile we were on.
                 // Not sure if this if check is necessary, scared about the possibility.
                 // If the entity on the previousTile was us, then null it out.
                 if(grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile == entity.enemyGameObject){
-                    potentialTile.entityOnTile = null;
+                    Debug.Log("Freeing up old tile.");
+                    grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile = null;
                 }
                 else{
                     Debug.Log("We tried to null out an entity on a tile that was not this entity.");
                 }
                 // Set up to the new tile.
                 potentialTile.entityOnTile = entity.enemyGameObject;
-                return true;
+                return potentialTile;
             }
             else{
-                return false;
+                return null;
+            }
+        }
+    }
+
+
+    public Tile getEnemySpawnLocation(EnemyAi ai){
+        lock(lock_){
+
+            while(true){
+                var xPos = Random.Range(playerTileLength+1, gridXLength-1);
+                var yPos = Random.Range(0, 3);
+                Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
+                Tile potentialTile = grid[xPos, yPos];
+                if (potentialTile.entityOnTile == null){
+                    potentialTile.entityOnTile = ai.enemyGameObject;
+                    return potentialTile;
+                }
             }
         }
     }

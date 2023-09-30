@@ -56,10 +56,16 @@ public class AbilityQueueMenu : MonoBehaviour
         }
     }
 
+    // Confirm Ability Selection 
     public void CloseAbilityMenu() {
         gameManager.ResetAbilityCountdown();
-        gameManager.DisableAbilityQueueMenu();
+        List<Mutation> queuedList = new List<Mutation>();
+        foreach (GameObject item in selectedAbilities)
+        {
+            queuedList.Add(item.GetComponent<MutationButton>().GetMutation());
+        }
 
+        gameManager.mutationQueue = queuedList;
         foreach (GameObject item in destroyWhenClosed)
         {
             Destroy(item);
@@ -68,6 +74,7 @@ public class AbilityQueueMenu : MonoBehaviour
         // Clear out lists
         drawnAbilities = new GameObject[5];
         selectedAbilities = new GameObject[3];
+        gameManager.DisableAbilityQueueMenu();
     }
 
     public void SetAbilityAsQueued(GameObject button) {

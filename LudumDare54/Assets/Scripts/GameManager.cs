@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour {
 
 	public List<GameObject> mutationDeck;
 
+	public List<Mutation> mutationQueue;
+
 	private void Awake() {
 		// Load powerups
 		// LoadPowerups();

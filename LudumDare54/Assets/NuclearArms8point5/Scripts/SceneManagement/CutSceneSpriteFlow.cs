@@ -6,6 +6,7 @@ public class CutSceneSpriteFlow : MonoBehaviour
 {
 	public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
 	public Sprite[] sprite;
+	public AudioClip[] voiceLines;
 
 	public float disableInputForSeconds = 1f;
 	
@@ -22,12 +23,17 @@ public class CutSceneSpriteFlow : MonoBehaviour
 
 	private GameManager gameManager;
 
+	public AudioSource voiceAudioSource;
+
 	void Start ()
 	{
 		//Screen.SetResolution (1400, 900, true);
 
 		spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
 		gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+		if(voiceLines.Length > 0 && voiceLines[0] != null) {
+			voiceAudioSource.PlayOneShot(voiceLines[0]);
+		}
 	}
 
 	void Awake ()
@@ -45,6 +51,7 @@ public class CutSceneSpriteFlow : MonoBehaviour
 		}
 
 		if (Input.anyKeyDown && disableInputForSeconds <= 0f) {//.GetKeyDown(KeyCode.RightArrow)) {
+			voiceAudioSource.Stop();
 			if(sceneEnding < sprite.Length){
 				sceneEnding++;
 				//Stop music and play jingle;
@@ -52,6 +59,9 @@ public class CutSceneSpriteFlow : MonoBehaviour
 					Debug.Log ("JINGLE");
 					audioSource.Stop();
 					audioSource.PlayOneShot (jingle);
+				}
+				if(voiceLines.Length > sceneEnding && voiceLines[sceneEnding] != null) {
+					voiceAudioSource.PlayOneShot(voiceLines[sceneEnding]);
 				}
 			}
 			//Application.LoadLevel();

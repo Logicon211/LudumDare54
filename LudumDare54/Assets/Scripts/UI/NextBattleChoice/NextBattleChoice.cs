@@ -45,8 +45,12 @@ public class NextBattleChoice : MonoBehaviour
         //     Debug.Log("ERROR: no powerup associated...");
         // }
         // Time.timeScale = 1f;
-        gameManager.SetNextBattle(battleObject);
-        nextBattlePopup.ClosePopUp();
+        if(gameManager.isInCutScene) {
+			Debug.Log("Don't do anything, in a cutscene right now");
+		} else {
+            gameManager.SetNextBattle(battleObject);
+            nextBattlePopup.ClosePopUp();
+        }
     }
 
     public void setTitle(string text) {

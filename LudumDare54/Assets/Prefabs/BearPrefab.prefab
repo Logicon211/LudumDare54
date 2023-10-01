@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.9, y: 0.44}
+  m_AnchoredPosition: {x: 9.71, y: -0.23}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &9196774509411489120
@@ -182,8 +182,9 @@ GameObject:
   m_Component:
   - component: {fileID: 268528639162074867}
   - component: {fileID: 423491299277207749}
-  - component: {fileID: 1801906315780887602}
   - component: {fileID: 5701159940730088244}
+  - component: {fileID: 4697540749101607812}
+  - component: {fileID: 7369499307869332885}
   m_Layer: 0
   m_Name: BearPrefab
   m_TagString: Untagged
@@ -201,7 +202,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.04, y: -2.42, z: 0}
-  m_LocalScale: {x: 0.65470636, y: 0.65470636, z: 1.8705895}
+  m_LocalScale: {x: 1.0484068, y: 1.0484068, z: 2.9954476}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5427061006893819822}
@@ -249,7 +250,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -75302323, guid: 3f731b030b6afd94e86adce7892f9173, type: 3}
+  m_Sprite: {fileID: -1727390499, guid: 560c194840c1b3245b7c226de5b2e13d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -260,31 +261,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1801906315780887602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2465808598374760144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a955e39a4a1579419bb7e74ad3d9402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridPosition: {x: 0, y: 0}
-  health: 20
-  enemyGameObject: {fileID: 2465808598374760144}
-  decisionCooldown: 3
-  currentDecisionCooldown: 2.5
-  attackCooldown: 3.2
-  currentAttackCooldown: 2
-  enemyName: Bear
-  attacks:
-  - {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5, type: 3}
-  healthText: {fileID: 6742694938577169305}
-  tileHeightOffset: 1
-  attackLocation: {fileID: 2053728425269658805}
 --- !u!61 &5701159940730088244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -317,19 +293,64 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0074985027, y: -1.3073132}
+  m_Offset: {x: 0.16102722, y: -0.6612992}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.55, y: 0.44}
-    oldSize: {x: 7, y: 7}
+    pivot: {x: 0.4, y: 0.42}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 7, y: 7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1507068, y: 1.3472676}
+  m_Size: {x: 2.12262, y: 1.3472683}
   m_EdgeRadius: 0
+--- !u!114 &4697540749101607812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465808598374760144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fb58b4bcbb0384c9b8fd9cc51e9282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0}
+  health: 40
+  decisionCooldown: 3
+  currentDecisionCooldown: 2.5
+  attackCooldown: 3.2
+  currentAttackCooldown: 2
+  enemyName: Bear
+  attacks:
+  - {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5, type: 3}
+  healthText: {fileID: 6742694938577169305}
+  tileHeightOffset: 1
+  attackLocation: {fileID: 2053728425269658805}
+--- !u!95 &7369499307869332885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465808598374760144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b981a09fa600bb4786599a872c40194, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8208046159008329974
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 8208046159008329974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

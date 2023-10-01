@@ -23,7 +23,7 @@ public class BarrelMutation : Mutation
         
     }
 
-    public override void useAbility() {
+    public override void useAbility(GameObject player) {
         // get target tile
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
         Debug.Log("chad test grid: " + grid);

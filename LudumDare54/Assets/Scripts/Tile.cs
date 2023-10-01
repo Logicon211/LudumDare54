@@ -20,6 +20,8 @@ public class Tile : MonoBehaviour
     public bool isPlayerTile = true;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
+    public SpriteRenderer shadowRenderer;
+    
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -32,6 +34,11 @@ public class Tile : MonoBehaviour
             spriteRenderer.sprite = playerTile;
         } else {
             spriteRenderer.sprite = enemyTile;
+        }
+        if (entityOnTile || bombOnTile) {
+            shadowRenderer.enabled = true;
+        } else {
+            shadowRenderer.enabled = false;
         }
     }
 

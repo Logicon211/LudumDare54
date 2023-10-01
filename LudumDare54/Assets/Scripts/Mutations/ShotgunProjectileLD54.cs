@@ -34,7 +34,11 @@ public class ShotgunProjectileLD54 : MonoBehaviour
         if (other.gameObject.tag == "Enemy") {
             if(!enemiesHit.Contains(other.gameObject)) {
                 EnemyAi enemy = other.gameObject.GetComponent<EnemyAi>();
-                enemy.Damage(damage);
+                
+                // Can die before?
+                if(enemy != null){
+                    enemy.Damage(damage);
+                }
                 Debug.Log("Shotgun Projectile hit enemy");
                 Instantiate(hitEffect, gameObject.transform.position, Quaternion.identity);
                 if(numPenetrations <= 0) {

@@ -28,10 +28,18 @@ public class BarrelMutation : Mutation
         Tile targetTile = grid.GetTile(originTile.gridX + range, originTile.gridY);
         if (targetTile.bombOnTile == null)
         {
-            BarrelProjectile bpObject = Instantiate(projectile, targetTile.GetTransform(), Quaternion.identity).GetComponent<BarrelProjectile>();
+
+            BarrelProjectileLD54 bpObject = Instantiate(projectile, new Vector3(targetTile.GetTransform().x, targetTile.GetTransform().y + 0.25f, targetTile.GetTransform().z), Quaternion.identity).GetComponent<BarrelProjectileLD54>();
             bpObject.InitializeBarrel(targetTile, grid);
+
+            bpObject.GetComponent<SpriteRenderer>().sortingOrder = 4 + (targetTile.gridY * 3);
             // targetTile.entityOnTile = gameObject;
             // targetTile.bombOnTile = gameObject;
         }
     }
+
+    public void spawnBarrel(GameObject player){
+
+    }
+
 }

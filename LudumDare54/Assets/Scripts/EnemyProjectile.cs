@@ -22,15 +22,6 @@ public class EnemyProjectile : MonoBehaviour
         rigidbody.velocity = -transform.right * startingSpeed;
     }
 
-    public void UpdateSortingOrder(int sortingOrder){
-        Debug.Log("UpdateSortingOrder: " + sortingOrder);
-        if(spriteRenderer == null){
-            spriteRenderer.sortingOrder = sortingOrder;
-            Debug.Log("sorting order updated.");
-        }
-        Debug.Log("spriteRenderer was null when we wanted to update the sorting order.");
-    }
-
     // Update is called once per frame
     void Update()
     {

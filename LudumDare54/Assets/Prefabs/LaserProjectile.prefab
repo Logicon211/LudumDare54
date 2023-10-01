@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1076169643464021782}
   - component: {fileID: 1076169643464021781}
   - component: {fileID: 1076169643464021783}
-  - component: {fileID: 1076169643464021784}
   - component: {fileID: 145200670544130602}
+  - component: {fileID: 3020820320640011919}
   m_Layer: 0
   m_Name: LaserProjectile
   m_TagString: Laser
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076169643464021779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.598721, y: -0.042164482, z: 0}
-  m_LocalScale: {x: 5.6161904, y: 4.4432883, z: 4.4432883}
+  m_LocalScale: {x: 5, y: 4.4432883, z: 4.4432883}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,19 +154,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9801056, y: 0.15570259}
   m_EdgeRadius: 0
---- !u!114 &1076169643464021784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076169643464021779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4205918dfe6d8964bb17ce148b67b3d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAttackCooldown: 0
 --- !u!82 &145200670544130602
 AudioSource:
   m_ObjectHideFlags: 0
@@ -263,3 +250,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3020820320640011919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076169643464021779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c75ac26898341548af44f9da0bc1102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

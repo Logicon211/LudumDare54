@@ -20,7 +20,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     private bool isDead = false;
 
     //private Rigidbody2D enemyBody;
-    public GameObject enemyGameObject;
+    // public GameObject enemyGameObject;
 
     public float decisionCooldown; // Hand in on initialization
     public float currentDecisionCooldown = 2.5f; // May need to be tweaked.
@@ -53,10 +53,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);
         gridPosition.x = spawnLocation.gridX;
         gridPosition.y = spawnLocation.gridY;
-        enemyGameObject.transform.position = spawnLocation.transform.position;
-        enemyGameObject.transform.position = new Vector3(enemyGameObject.transform.position.x, enemyGameObject.transform.position.y + tileHeightOffset, enemyGameObject.transform.position.z);
+        gameObject.transform.position = spawnLocation.transform.position;
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + tileHeightOffset, gameObject.transform.position.z);
         // TODO: Create teleport effect on spawn
-        animator = enemyGameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
 
     }
 
@@ -258,8 +258,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             else{
                 gridPosition.x = potentialTile.gridX;
                 gridPosition.y = potentialTile.gridY;
-                enemyGameObject.transform.position = potentialTile.transform.position;
-                enemyGameObject.transform.position = new Vector3(enemyGameObject.transform.position.x, enemyGameObject.transform.position.y + tileHeightOffset, enemyGameObject.transform.position.z);
+
+                var potentialTilePosition = potentialTile.transform.position;
+                gameObject.transform.position = new Vector3(potentialTilePosition.x, potentialTilePosition.y + tileHeightOffset, potentialTilePosition.z);
+
                 currentDecisionCooldown = decisionCooldown;
             }
         }
@@ -276,7 +278,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public void SpawnAttack(){
 
-        Debug.Log("Skeleton attak spawned.");
+        Debug.Log("attak spawned.");
 
         Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
 

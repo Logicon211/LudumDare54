@@ -111,7 +111,7 @@ public class BattleGrid : MonoBehaviour
                 // We need to null out the previous tile we were on.
                 // Not sure if this if check is necessary, scared about the possibility.
                 // If the entity on the previousTile was us, then null it out.
-                if(grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile == entity.enemyGameObject){
+                if(grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile == entity.gameObject){
                     Debug.Log("Freeing up old tile.");
                     grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile = null;
                 }
@@ -119,7 +119,7 @@ public class BattleGrid : MonoBehaviour
                     Debug.Log("We tried to null out an entity on a tile that was not this entity.");
                 }
                 // Set up to the new tile.
-                potentialTile.entityOnTile = entity.enemyGameObject;
+                potentialTile.entityOnTile = entity.gameObject;
                 return potentialTile;
             }
             else{
@@ -138,7 +138,7 @@ public class BattleGrid : MonoBehaviour
                 Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
                 Tile potentialTile = grid[xPos, yPos];
                 if (potentialTile.entityOnTile == null){
-                    potentialTile.entityOnTile = ai.enemyGameObject;
+                    potentialTile.entityOnTile = ai.gameObject;
                     return potentialTile;
                 }
             }

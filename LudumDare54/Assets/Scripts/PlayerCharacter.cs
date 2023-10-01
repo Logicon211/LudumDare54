@@ -29,6 +29,10 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject nextMutationQueuedIcon;
     private SpriteRenderer nextMutationQueuedSprite;
 
+    private AudioSource AS;
+    public AudioClip laserNoise;
+    public AudioClip hurtNoise;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -52,6 +56,7 @@ public class PlayerCharacter : MonoBehaviour
         grid.SetPlayer(gameObject.GetComponent<PlayerCharacter>());
         playerSprite.enabled = true;
         nextMutationQueuedSprite = nextMutationQueuedIcon.GetComponent<SpriteRenderer>();
+        AS = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -95,6 +100,7 @@ public class PlayerCharacter : MonoBehaviour
             {
                 Debug.Log("Enemy hit");
                 attackTile.entityOnTile.GetComponent<EnemyAi>().Damage(1);
+                AS.PlayOneShot(laserNoise);
 
                 Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(-0.5f, 0.4f)+attackTile.GetTransform().y, 0), Quaternion.identity);
                 break;
@@ -107,7 +113,7 @@ public class PlayerCharacter : MonoBehaviour
         if (manager.mutationQueue.Count > 0)
         {
             Debug.Log("Using " + manager.mutationQueue[0].GetName());
-            manager.mutationQueue[0].useAbility();
+            manager.mutationQueue[0].useAbility(gameObject);
             manager.mutationQueue.RemoveAt(0);
             Debug.Log("Mutations left: " + manager.mutationQueue.Count);
         }
@@ -197,6 +203,7 @@ public class PlayerCharacter : MonoBehaviour
         }
         else{
             // hit animation or something
+            manager.PlayClip(hurtNoise);
         }   
     }
 

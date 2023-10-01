@@ -75,7 +75,8 @@ public class PlayerCharacter : MonoBehaviour
             {
                 Debug.Log("Enemy hit");
                 attackTile.entityOnTile.GetComponent<EnemyAi>().Damage(1);
-                Instantiate(hitEffect, attackTile.GetTransform(), Quaternion.identity);
+
+                Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(-0.5f, 0.4f)+attackTile.GetTransform().y, 0), Quaternion.identity);
                 break;
             }
         }

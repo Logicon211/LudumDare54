@@ -309,7 +309,7 @@ MonoBehaviour:
   abilityQueueMenuObject: {fileID: 0}
   abilityRefreshBar: {fileID: 0}
   isInBattleOptionScreen: 0
-  isInAbilityQueueScreen: 1
+  isInAbilityQueueScreen: 0
   mutationDeck:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}

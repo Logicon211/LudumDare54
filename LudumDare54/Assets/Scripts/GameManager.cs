@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour {
 			CheckGameOver();
 
 		if (Input.GetKeyUp(KeyCode.E) && !isInAbilityQueueScreen) {
+			Debug.Log("HITTING E");
 			EnableAbilityQueueMenu();
 		}
 

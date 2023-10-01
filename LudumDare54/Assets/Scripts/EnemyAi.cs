@@ -37,6 +37,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public float tileHeightOffset = 0f;
     public Transform attackLocation;
+
+    protected AudioSource AS;
+    public AudioClip attackSound;
     
 
 
@@ -57,6 +60,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + tileHeightOffset, gameObject.transform.position.z);
         // TODO: Create teleport effect on spawn
         animator = gameObject.GetComponent<Animator>();
+        AS = gameObject.GetComponent<AudioSource>();
 
     }
 
@@ -276,10 +280,11 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         currentAttackCooldown = attackCooldown;
     }
 
-    public void SpawnAttack(){
+    public virtual void SpawnAttack(){
 
         Debug.Log("attak spawned.");
 
+        AS.PlayOneShot(attackSound);
         Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
 
     }

@@ -185,6 +185,7 @@ public class PlayerCharacter : MonoBehaviour
             Debug.Log("dead lol");
             
         }
+        gameObject.SetActive(false);
     }
 
     public int GetHealth() 

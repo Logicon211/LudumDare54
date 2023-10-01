@@ -22,27 +22,77 @@ public class NextBattlePopup : MonoBehaviour
 			choice1.setMutation(battleObjectList[0].mutation);
 			choice1.setTitle("Health gained: " + battleObjectList[0].amountOfHealthRegained);
 			// TODO: loop over enemy list and put it in the choice selection
-			choice1.setContent("battleObjectList[0].enemies[0].name or whatever");
-			// choice1.setContent(battleObjectList[0].GetPowerupLevelDescription(battleObjectList[0].GetLevel()+1));
-			// choice1.setIcon(battleObjectList[0].getPowerupIcon());
+			
+			string text = "";
+			Dictionary<string, int> totalCount = new Dictionary<string, int>();
+
+			foreach (GameObject enemy in battleObjectList[0].enemies) {
+				string enemyName = enemy.GetComponent<EnemyAi>().enemyName;
+				if (!totalCount.ContainsKey(enemyName)) {
+					totalCount.TryAdd(enemyName, 1);
+				} else {
+					totalCount[enemyName] = totalCount[enemyName] + 1;
+				}
+			}
+
+			foreach (var item in totalCount)
+			{
+				string name = item.Key;
+				int count = item.Value;
+				text += "x" + count + " " + name + "\n";
+			}
+
+			choice1.setContent(text);
 		}
 
 		if (battleObjectList[1] != null) {
 			choice2.SetBattleObject(battleObjectList[1]);
 			choice2.setMutation(battleObjectList[1].mutation);
 			choice2.setTitle("Health gained: " + battleObjectList[1].amountOfHealthRegained);
-			choice1.setContent("battleObjectList[1].enemies[0].name or whatever");
-			// choice2.setContent(battleObjectList[1].GetPowerupLevelDescription(battleObjectList[1].GetLevel()+1));
-			// choice2.setIcon(battleObjectList[1].getPowerupIcon());
+			string text = "";
+			Dictionary<string, int> totalCount = new Dictionary<string, int>();
+
+			foreach (GameObject enemy in battleObjectList[1].enemies) {
+				string enemyName = enemy.GetComponent<EnemyAi>().enemyName;
+				if (!totalCount.ContainsKey(enemyName)) {
+					totalCount.TryAdd(enemyName, 1);
+				} else {
+					totalCount[enemyName] = totalCount[enemyName] + 1;
+				}
+			}
+
+			foreach (var item in totalCount)
+			{
+				string name = item.Key;
+				int count = item.Value;
+				text += "x" + count + " " + name + "\n";
+			}
+			choice2.setContent(text);
 		}
 
 		if (battleObjectList[2] != null) {
 			choice3.SetBattleObject(battleObjectList[2]);
 			choice3.setMutation(battleObjectList[2].mutation);
 			choice3.setTitle("Health gained: " + battleObjectList[2].amountOfHealthRegained);
-			choice1.setContent("battleObjectList[2].enemies[0].name or whatever");
-			// choice3.setContent(battleObjectList[2].GetPowerupLevelDescription(battleObjectList[2].GetLevel()+1));
-			// choice3.setIcon(battleObjectList[2].getPowerupIcon());
+			string text = "";
+			Dictionary<string, int> totalCount = new Dictionary<string, int>();
+
+			foreach (GameObject enemy in battleObjectList[2].enemies) {
+				string enemyName = enemy.GetComponent<EnemyAi>().enemyName;
+				if (!totalCount.ContainsKey(enemyName)) {
+					totalCount.TryAdd(enemyName, 1);
+				} else {
+					totalCount[enemyName] = totalCount[enemyName] + 1;
+				}
+			}
+
+			foreach (var item in totalCount)
+			{
+				string name = item.Key;
+				int count = item.Value;
+				text += "x" + count + " " + name + "\n";
+			}
+			choice3.setContent(text);
 		}
 
 		// Time.timeScale = 0f;

@@ -50,7 +50,7 @@ public class AbilityQueueMenu : MonoBehaviour
             drawnAbilities[FindNextEmptyIndex(drawnAbilities)] = mutationButtonObject; //Add(mutationButtonObject);
             MutationButton mutationButtonCreated = mutationButtonObject.GetComponent<MutationButton>();
             mutationButtonCreated.SetAbilityQueueMenu(this);
-            mutationButtonCreated.SetMutation(gameManager.mutationDeck[randomIndex].GetComponent<Mutation>());
+            mutationButtonCreated.SetMutation(gameManager.mutationDeck[randomIndex]);
             // mutationButtonCreated.buttonIndex = i;
             destroyWhenClosed.Add(mutationButtonObject);
         }
@@ -62,7 +62,7 @@ public class AbilityQueueMenu : MonoBehaviour
         List<Mutation> queuedList = new List<Mutation>();
         foreach (GameObject item in selectedAbilities)
         {
-            queuedList.Add(item.GetComponent<MutationButton>().GetMutation());
+            queuedList.Add(item.GetComponent<MutationButton>().GetMutation().GetComponent<Mutation>());
         }
 
         gameManager.mutationQueue = queuedList;

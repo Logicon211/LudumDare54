@@ -17,12 +17,17 @@ public class PlayerCharacter : MonoBehaviour
     public float MovementCooldown = .05f;
     public float CurrentMovementCooldown = 0f;
 
+    public TMPro.TMP_Text healthText;
+
     // temp until we get something better
     private bool isDead = false;
     private Tile currentTile;
     public SpriteRenderer playerSprite;
     
     private Animator animator;
+
+    public GameObject nextMutationQueuedIcon;
+    private SpriteRenderer nextMutationQueuedSprite;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -46,6 +51,7 @@ public class PlayerCharacter : MonoBehaviour
         MovePlayerObject();
         grid.SetPlayer(gameObject.GetComponent<PlayerCharacter>());
         playerSprite.enabled = true;
+        nextMutationQueuedSprite = nextMutationQueuedIcon.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,6 +60,16 @@ public class PlayerCharacter : MonoBehaviour
         if(!manager.IsPaused()) {
             Move();
             Attack();
+        }
+        if(healthText) {
+            healthText.text = "HP: " + health.ToString();
+        }
+        if(nextMutationQueuedSprite) {
+            if (manager.mutationQueue.Count > 0) {
+                nextMutationQueuedSprite.sprite = manager.mutationQueue[0].icon;
+            } else {
+                nextMutationQueuedSprite.sprite = null;
+            }
         }
     }
 
@@ -189,6 +205,10 @@ public class PlayerCharacter : MonoBehaviour
         if(!isDead) {
             isDead = true;
             Debug.Log("dead lol");
+
+            if(healthText) {
+                healthText.text = "DEAD";
+            }
             
         }
         gameObject.SetActive(false);

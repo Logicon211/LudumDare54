@@ -8,7 +8,7 @@ public class LaserProjectile : MonoBehaviour
     // Start is called before the first frame update
 
     // Should be set when it first instantiates
-    private float attackDamage = 1f;
+    private float attackDamage = 10f;
     private float attackCooldown = 0.5f;
 
     private BoxCollider2D boxCollider;

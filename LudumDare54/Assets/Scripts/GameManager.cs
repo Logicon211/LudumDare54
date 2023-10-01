@@ -65,7 +65,13 @@ public class GameManager : MonoBehaviour {
 
 	public List<Mutation> mutationQueue;
 
-	public List<Mutation> allPossibleMutations;
+	public List<GameObject> allPossibleMutations;
+	public List<GameObject> allPossibleEnemies;
+
+	public List<GameObject> initialEnemySpawnList;
+
+	private List<GameObject> currentEnemyList;
+	private bool waitingForNextRound = false;
 
 	private void Awake() {
 		// Load powerups
@@ -82,6 +88,11 @@ public class GameManager : MonoBehaviour {
 		lpFilter = GetComponent<AudioLowPassFilter>();
 		// enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
 		abilityQueueMenu = abilityQueueMenuObject.GetComponent<AbilityQueueMenu>();
+		currentEnemyList = new List<GameObject>();
+
+		PlayMainMusic();
+
+		SpawnEnemies(initialEnemySpawnList);
 
 	}
 	
@@ -91,23 +102,26 @@ public class GameManager : MonoBehaviour {
 		if (playerScript != null)
 			CheckGameOver();
 
-		if (Input.GetKeyUp(KeyCode.LeftShift)) {
-			NextBattlePopup();
-		}
-
 		if (Input.GetKeyUp(KeyCode.E)) {
 			EnableAbilityQueueMenu();
 		}
+
+		// Debug.Log("CURRENT ENEMY LIST LENGTH: " + currentEnemyList.Count);
+		if (currentEnemyList.Count <= 0 && !waitingForNextRound) {
+			waitingForNextRound = true;
+			IEnumerator coroutine = StartNextBattleRound(2f);
+			StartCoroutine(coroutine);
+		}
 	}
 
 
-	private void SpawnWave(int currentLevel) {
-		// spawnManager.SpawnWave(currentLevel);
-	}
+	// private void SpawnWave(int currentLevel) {
+	// 	// spawnManager.SpawnWave(currentLevel);
+	// }
 
 	public void StartCutScene(int cutSceneIndex) {
 		AS.volume = volumeMax;
-		ResumeMainMusic();
+		// ResumeMainMusic();
 
 		Debug.Log("START SCENE INDEX: " + cutSceneIndex);
 		currentCutSceneIndex = cutSceneIndex;
@@ -159,6 +173,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	private IEnumerator StartNextBattleRound(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+			Debug.Log("ABOUT TO BRING UP POPUP");
+			NextBattlePopup();
+			yield break;
+        }
+    }
+
 	private IEnumerator VictoryCoRoutine(float waitTime)
     {
         while (true)
@@ -194,14 +219,6 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1;
 	}
 
-	public void PlayShopMusic() {
-		changeToShopMusic = true;
-	}
-
-	public void ResumeMainMusic() {
-		changeToShopMusic = false;
-	}
-
 	public void PlayMainMusic() {
 		AS.clip = mainTheme;
 		AS.Play();
@@ -216,14 +233,6 @@ public class GameManager : MonoBehaviour {
 		AS.clip = finalBossTheme;
 		AS.Play();
 	}
-
-	// public void PlayErrorNoise() {
-	// 	if(changeToShopMusic) {
-	// 		shopTheme.PlayOneShot(errorPurchaseNoise);
-	// 	} else {
-	// 		AS.PlayOneShot(errorPurchaseNoise);
-	// 	}
-	// }
 
 	public void enableLowPassFilter() {
 		lpFilter.enabled = true;
@@ -265,23 +274,57 @@ public class GameManager : MonoBehaviour {
 			// TODO: Generate next battle options
 			NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
 			generatedBattleOptions[0] = new NextBattleObject();
-			generatedBattleOptions[0].SetValues(10f, new List<GameObject>(), allPossibleMutations[0]);
+			generatedBattleOptions[0].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
 			generatedBattleOptions[1] = new NextBattleObject();
-			generatedBattleOptions[1].SetValues(0f, new List<GameObject>(), allPossibleMutations[0]);
+			generatedBattleOptions[1].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
 			generatedBattleOptions[2] = new NextBattleObject();
-			generatedBattleOptions[2].SetValues(5f, new List<GameObject>(), allPossibleMutations[0]);
+			generatedBattleOptions[2].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
 			popUp.PopUp(generatedBattleOptions);
 		} else {
 			Debug.Log("No Battle Option menu set in scene, cant open menu...");
 		}
 	}
 
+	private int GenerateHealthOptions() {
+		return (int)Random.Range(0, 10);
+	}
+
+	private List<GameObject> GenerateEnemyOptions() {
+		int maxNumberOfEnemies = (int)Random.Range(3, 8);
+		List<GameObject> enemyList = new List<GameObject>();
+		for(int i = 0; i < maxNumberOfEnemies; i++) {
+			enemyList.Add(allPossibleEnemies[(int)Random.Range(0, allPossibleEnemies.Count)]);
+		}
+		return enemyList;
+	}
+
+	private GameObject GenerateMutationOptions() {
+		return allPossibleMutations[(int)Random.Range(0, allPossibleMutations.Count)];
+	}
+
 	public void SetNextBattle(NextBattleObject battleObject) {
 		Debug.Log("TODO: Setting next battle: " + battleObject.amountOfHealthRegained);
+		playerScript.health += (int)battleObject.amountOfHealthRegained;
+
+		mutationDeck.Add(battleObject.mutation);
+
+		SpawnEnemies(battleObject.enemies);
 
 		UnPauseGame();
 		// TODO: Add the mutation selection to current deck;
 		// TODO: use select battle object to do something
+	}
+
+	public void SpawnEnemies(List<GameObject> enemyList) {
+		foreach (GameObject item in enemyList)
+		{
+			currentEnemyList.Add(Instantiate(item, this.transform));
+		}
+		waitingForNextRound = false;
+	}
+
+	public void RemoveEnemyFromList(GameObject enemy){
+		currentEnemyList.Remove(enemy);
 	}
 
 	public void EnableAbilityQueueMenu() {

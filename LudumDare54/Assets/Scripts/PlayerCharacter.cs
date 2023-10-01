@@ -36,6 +36,7 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject shield;
     public TMPro.TMP_Text shieldHPText;
     private float shieldHP = 0;
+    public AudioClip shieldDeflect;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -219,7 +220,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         if(shieldHP > 0) {
             shieldHP -= damageTaken;
-            // TODO: PLAY shield hit noise
+            manager.PlayClip(shieldDeflect);
         } else {
             health -= damageTaken;
 

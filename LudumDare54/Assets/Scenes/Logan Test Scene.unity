@@ -129,78 +129,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1671623110}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &123231014
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.525156
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1518874
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268528639162074867, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      propertyPath: m_Name
-      value: BearPrefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 446816268708998007, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-  m_SourcePrefab: {fileID: 100100000, guid: 44cb0d8182f18034d9b1bb6695b0a2b4, type: 3}
 --- !u!1 &224368774
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,29 +904,6 @@ PrefabInstance:
       propertyPath: abilityQueueMenuObject
       value: 
       objectReference: {fileID: 2088237822}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: mutationDeck.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: mutationDeck.Array.data[11]
-      value: 
-      objectReference: {fileID: 6410466602431061584, guid: d244834b624a6b24498dab7fcf713313,
-        type: 3}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: mutationDeck.Array.data[12]
-      value: 
-      objectReference: {fileID: 6410466602431061584, guid: d244834b624a6b24498dab7fcf713313,
-        type: 3}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: mutationQueue.Array.data[0]
-      value: 
-      objectReference: {fileID: 4927706837300946816, guid: d244834b624a6b24498dab7fcf713313,
-        type: 3}
     - target: {fileID: 1688189896142580202, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_Name
@@ -2179,4 +2084,3 @@ SceneRoots:
   - {fileID: 1401587651}
   - {fileID: 2096226464}
   - {fileID: 6915955322079295635}
-  - {fileID: 123231014}

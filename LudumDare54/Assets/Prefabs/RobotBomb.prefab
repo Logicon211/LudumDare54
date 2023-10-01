@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.05, y: -4.03}
+  m_AnchoredPosition: {x: 8.13, y: -2.5}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &865392771834013827
@@ -77,7 +77,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7019943449659749147
 MonoBehaviour:
@@ -490,12 +490,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5583cb25782ee7245aff3ccce8d43ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 3
+  timer: 5
   damage: 5
   health: 10
   HPText: {fileID: 8459351545797680097}
   timertext: {fileID: 7019943449659749147}
-  explosion: {fileID: 0}
+  explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
 --- !u!1001 &8729611789587574086
 PrefabInstance:
   m_ObjectHideFlags: 0

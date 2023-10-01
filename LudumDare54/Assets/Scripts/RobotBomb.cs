@@ -28,6 +28,8 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
+        
         if(HPText) {
             HPText.text = health.ToString();
         }
@@ -37,7 +39,7 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
 
         if(timer <= 0f) {
             // TODO: write explode code
-            Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            // Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 
             BattleGrid grid = onTile.GetGrid();
             // Check adjacent tiles to explode and damage:
@@ -48,25 +50,25 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
             if(x - 1 >=0) {
                 Explode(x-1, y, grid);
             }
-            if(x + 1<= 6) {
+            if(x + 1 < 6) {
                 Explode(x+1, y, grid);
             }
             if(y - 1 >= 0) {
                 Explode(x, y-1, grid);
             }
-            if(y + 1 <= 3) {
+            if(y + 1 < 3) {
                 Explode(x, y+1, grid);
             }
             if(x - 1 >=0 && y-1 >=0) {
                 Explode(x-1, y-1, grid);
             }
-            if(x - 1 >=0 && y+1 >=3) {
+            if(x - 1 >=0 && y+1 <3) {
                 Explode(x-1, y+1, grid);
             }
-            if(x + 1 >=6 && y+1 >=3) {
+            if(x + 1 <6 && y+1 <3) {
                 Explode(x+1, y+1, grid);
             }
-            if(x + 1 >=6 && y-1 >=0) {
+            if(x + 1 <6 && y-1 >=0) {
                 Explode(x+1, y-1, grid);
             }
             Destroy(gameObject);

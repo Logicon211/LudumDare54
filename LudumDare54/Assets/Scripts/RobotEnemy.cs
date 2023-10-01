@@ -13,6 +13,6 @@ public class RobotEnemy : EnemyAi
         // TELEPORT SOME BOMBS
         Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
         GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
-        bombSpawnTile.entityOnTile = bomb;
+        bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
     }
 }

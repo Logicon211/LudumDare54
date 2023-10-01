@@ -456,7 +456,7 @@ MonoBehaviour:
   attacks:
   - {fileID: 4598850337159330720, guid: 014bc82abcefe8d43886e4d52933070a, type: 3}
   healthText: {fileID: 4678655458022733986}
-  tileHeightOffset: 0.2
+  tileHeightOffset: 0.3
   attackLocation: {fileID: 4400146860129812329}
   attackSound: {fileID: 8300000, guid: 9bf3c28f85bcf5a45800d3c9902370dd, type: 3}
 --- !u!95 &8312444005128351811

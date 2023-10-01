@@ -73,8 +73,13 @@ public class GameManager : MonoBehaviour {
 	private bool waitingForNextRound = false;
 
 	public int numberOfRoundsUntillBoss = 1;
+	private bool onLastBattle = false;
 	private int currentRoundNumber = 0;
 	public bool isInCutScene = false;
+
+	public AudioClip errorSound;
+
+	public GameObject bossEnemy;
 
 
 	private void Awake() {
@@ -200,7 +205,13 @@ public class GameManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(waitTime);
 			Debug.Log("ABOUT TO BRING UP POPUP");
-			NextBattlePopup();
+			if(onLastBattle) {
+				if (SceneManager.GetActiveScene().name != "VictoryScene") {
+					SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
+				}
+			} else {
+				NextBattlePopup();
+			}
 			yield break;
         }
     }
@@ -295,22 +306,24 @@ public class GameManager : MonoBehaviour {
 			isInBattleOptionScreen = true;
 			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();
 			enableLowPassFilter();
-			// popUp.PopUp(powerupList);
-			// TODO: Generate next battle options
 
 			currentRoundNumber++;
 			if(currentRoundNumber >= numberOfRoundsUntillBoss) {
 				// Do boss battle
 				StartCutScene();
 
+				List<GameObject> bossList = new List<GameObject>();
+				bossList.Add(bossEnemy);
 				NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
 				generatedBattleOptions[0] = new NextBattleObject();
-				generatedBattleOptions[0].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				generatedBattleOptions[0].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
 				generatedBattleOptions[1] = new NextBattleObject();
-				generatedBattleOptions[1].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				generatedBattleOptions[1].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
 				generatedBattleOptions[2] = new NextBattleObject();
-				generatedBattleOptions[2].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				generatedBattleOptions[2].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
 				popUp.PopUp(generatedBattleOptions);
+
+				onLastBattle = true;
 			} else {
 				NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
 				generatedBattleOptions[0] = new NextBattleObject();
@@ -378,7 +391,7 @@ public class GameManager : MonoBehaviour {
 			enableLowPassFilter();
 			PauseGame();
 		} else {
-			// TODO: Add error sound or something
+			AS.PlayOneShot(errorSound);
 		}
 	}
 

@@ -74,6 +74,7 @@ public class PlayerCharacter : MonoBehaviour
             if (attackTile.entityOnTile != null )
             {
                 Debug.Log("Enemy hit");
+                attackTile.entityOnTile.GetComponent<EnemyAi>().Damage(1);
                 Instantiate(hitEffect, attackTile.GetTransform(), Quaternion.identity);
                 break;
             }

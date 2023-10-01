@@ -28,7 +28,6 @@ public class BarrelMutation : Mutation
         Tile targetTile = grid.GetTile(originTile.gridX + range, originTile.gridY);
         if (targetTile.bombOnTile == null)
         {
-            Debug.Log("Chad: Placing barrel kill me");
             BarrelProjectile bpObject = Instantiate(projectile, targetTile.GetTransform(), Quaternion.identity).GetComponent<BarrelProjectile>();
             bpObject.InitializeBarrel(targetTile, grid);
             // targetTile.entityOnTile = gameObject;

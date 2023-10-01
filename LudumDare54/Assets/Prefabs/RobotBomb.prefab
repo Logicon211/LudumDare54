@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.13, y: -2.5}
+  m_AnchoredPosition: {x: 8.13, y: -1.15}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &865392771834013827
@@ -198,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 1140393466431714494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.68, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 25ee23abdb349c448933809c66b74145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -290,7 +290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.33, y: 0.38}
+  m_AnchoredPosition: {x: 9.33, y: 1.07}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4507544977691065819
@@ -333,7 +333,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8459351545797680097
 MonoBehaviour:
@@ -506,7 +506,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 25ee23abdb349c448933809c66b74145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -651,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21231786, guid: 55d9dca6fda674649b3dc9a1089b5ebc, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

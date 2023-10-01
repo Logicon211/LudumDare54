@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class BarrelProjectileOLD : MonoBehaviour {
+public class BarrelProjectile : MonoBehaviour {
 
     public GameObject explosion;
     public GameObject teleport;
-    public GameObject circle;
     public float timeToLive;
     public float timeTillExplosion;
     public float markerTimer;
@@ -15,15 +14,20 @@ public class BarrelProjectileOLD : MonoBehaviour {
     bool hasAppeared;
     SpriteRenderer sprite;
 
-  void Start() {
-    player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    private Tile currentTile;
+    private BattleGrid grid;
+
+  void StartBarrel() {
     barrel = GameObject.FindObjectOfType<Barrel>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     animator = gameObject.GetComponentInChildren<Animator>();
     timeTillExplosion = timeToLive + markerTimer;
-    if (barrel.GetLevel() > 2) {
-        sprite.gameObject.transform.localScale *= 1.7f; 
-    }
+  }
+
+  public void InitializeBarrel(Tile tile, BattleGrid grid)
+  {
+    currentTile = tile;
+    this.grid = grid;
   }
 
   void FixedUpdate() {
@@ -44,20 +48,7 @@ public class BarrelProjectileOLD : MonoBehaviour {
   }
 
   void CheckForHit() {
-      List<Collider2D> results = new List<Collider2D>();
-      Physics2D.OverlapCircle(
-          new Vector2(this.transform.position.x, this.transform.position.y),
-          barrel.actualExplosionRadius * 1.58f,
-          new ContactFilter2D(),
-          results
-      );
-      if (results.Count > 0) {
-          Debug.Log(results.Count);
-          float finalDamage = barrel.currentStats.damage + (12 * barrel.Level) * ( 1 + player.playerStats.damagePercentBonus);
-          foreach(Collider2D enemy in results) {
-              barrel.DoDamage(enemy.gameObject, finalDamage);
-          }
-      }
+
   }
 
 }

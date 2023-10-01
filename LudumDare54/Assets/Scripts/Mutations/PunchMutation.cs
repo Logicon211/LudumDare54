@@ -18,6 +18,9 @@ public class PunchMutation : Mutation
     }
 
     public override void useAbility(GameObject playerRef) {
+       // BattleGrid grid = playerRef.GetGrid();
+       // Tile currentTile = playerRef.GetCurrentTile();
+
         Debug.Log("TODO: setup punch ability");
     }
 }

@@ -26,11 +26,14 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public float currentDecisionCooldown = 2.5f; // May need to be tweaked.
     public float attackCooldown; // Hand in on initialization
     public float currentAttackCooldown = 2f; // May need to be tweaked.
+    public string enemyName;
 
     private Animator animator;
     public List<GameObject> attacks;
 
     public TMPro.TMP_Text healthText;
+
+    private GameManager gameManager;
     
 
 
@@ -42,11 +45,13 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     {
         player = GameObject.FindGameObjectWithTag("Player");
         battleGrid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         yield return new WaitUntil(() => battleGrid.isInitialized);
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);
         gridPosition.x = spawnLocation.gridX;
         gridPosition.y = spawnLocation.gridY;
         enemyGameObject.transform.position = spawnLocation.transform.position;
+        // TODO: Create teleport effect on spawn
         animator = enemyGameObject.GetComponent<Animator>();
 
     }
@@ -121,9 +126,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public void Kill()
     {
         if(!isDead) {
+            gameManager.RemoveEnemyFromList(this.gameObject);
             isDead = true;
             Destroy(gameObject);
-            
         }
     }
 

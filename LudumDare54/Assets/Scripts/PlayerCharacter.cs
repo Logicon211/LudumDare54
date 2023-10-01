@@ -17,6 +17,8 @@ public class PlayerCharacter : MonoBehaviour
     public float MovementCooldown = .05f;
     public float CurrentMovementCooldown = 0f;
 
+    public TMPro.TMP_Text healthText;
+
     // temp until we get something better
     private bool isDead = false;
     private Tile currentTile;
@@ -55,6 +57,7 @@ public class PlayerCharacter : MonoBehaviour
             Move();
             Attack();
         }
+        healthText.text = health.ToString();
     }
 
     void Attack()

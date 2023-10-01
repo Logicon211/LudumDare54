@@ -8,7 +8,8 @@ public class MutationButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     public bool isInQueue = false;
     private AbilityQueueMenu abilityQueueMenu;
-    private Mutation mutation;
+    private GameObject mutation;
+    private Mutation mutationScript;
     public Image buttonIcon;
 
     public bool nonInteractable = false;
@@ -42,21 +43,22 @@ public class MutationButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         abilityQueueMenu = aqm;
     }
 
-    public void SetMutation(Mutation mut) {
+    public void SetMutation(GameObject mut) {
         mutation = mut;
-        buttonIcon.sprite = mutation.icon;
+        mutationScript = mutation.GetComponent<Mutation>();
+        buttonIcon.sprite = mutationScript.icon;
     }
 
-    public Mutation GetMutation() {
+    public GameObject GetMutation() {
         return mutation;
     }
 
     private void OnMouseOver() {
-        Tooltip.ShowTooltipStatic(mutation.description);
+        Tooltip.ShowTooltipStatic(mutationScript.description);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Tooltip.ShowTooltipStatic(mutation.description);
+        Tooltip.ShowTooltipStatic(mutationScript.description);
     }
 
     public void OnPointerExit(PointerEventData eventData) {

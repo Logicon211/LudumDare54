@@ -318,4 +318,10 @@ MonoBehaviour:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
   mutationQueue: []
   allPossibleMutations:
-  - {fileID: 7124965926367856341, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  allPossibleEnemies:
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
+  initialEnemySpawnList:
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}

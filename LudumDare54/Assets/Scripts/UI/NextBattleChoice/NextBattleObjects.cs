@@ -15,9 +15,9 @@ public class NextBattleObject
     // TODO: update to whatever enemy base class is
     public List<GameObject> enemies = new List<GameObject>();
 
-    public Mutation mutation = null;
+    public GameObject mutation = null;
 
-    public void SetValues(float healthRegained, List<GameObject> enemiesList, Mutation mutationIn) {
+    public void SetValues(float healthRegained, List<GameObject> enemiesList, GameObject mutationIn) {
         amountOfHealthRegained = healthRegained;
         enemies = enemiesList;
         mutation = mutationIn;

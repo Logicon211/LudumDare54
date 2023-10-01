@@ -16,7 +16,7 @@ public class NextBattleChoice : MonoBehaviour
     public Transform mutationButtonPosition;
     public GameObject mutationButton;
 
-    private Mutation mutation;
+    private GameObject mutation;
 
     private GameManager gameManager;
 
@@ -62,7 +62,7 @@ public class NextBattleChoice : MonoBehaviour
         buttonIcon.sprite = spriteIcon;
     }
 
-    public void setMutation(Mutation mutationIn) {
+    public void setMutation(GameObject mutationIn) {
         mutation = mutationIn;
         mutationButtonObject = Instantiate(mutationButton, mutationButtonPosition);
         mutationButtonObject.transform.localScale = new Vector3(mutationButtonObject.transform.localScale.x/2, mutationButtonObject.transform.localScale.y/2, mutationButtonObject.transform.localScale.z/2);

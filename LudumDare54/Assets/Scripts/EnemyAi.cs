@@ -29,6 +29,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     private Animator animator;
     public List<GameObject> attacks;
+
+    public TMPro.TMP_Text healthText;
     
 
 
@@ -50,7 +52,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     }
 
      private void Update () {
-
+         healthText.text = health.ToString();
     }
 
     private void FixedUpdate() {

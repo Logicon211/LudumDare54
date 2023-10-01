@@ -77,14 +77,18 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 Debug.Log("Aligned with player");
                 if( currentAttackCooldown <= 0){
                     // If sight is clear
-                    if(ClearLineToPlayer(playerTile)){
+
                         Debug.Log("Attack time");
                         Attack();
-                    }
-                    else{
-                        Debug.Log("Aligned, off cooldown, no line of sight, move time");
-                        Move(playerTile, alignment);
-                    }
+
+                    // if(ClearLineToPlayer(playerTile)){
+                    //     Debug.Log("Attack time");
+                    //     Attack();
+                    // }
+                    // else{
+                    //     Debug.Log("Aligned, off cooldown, no line of sight, move time");
+                    //     Move(playerTile, alignment);
+                    // }
                 }
                 // else move
                 else{

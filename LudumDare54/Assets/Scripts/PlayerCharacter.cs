@@ -102,7 +102,8 @@ public class PlayerCharacter : MonoBehaviour
                 attackTile.entityOnTile.GetComponent<EnemyAi>().Damage(1);
                 AS.PlayOneShot(laserNoise);
 
-                Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(-0.5f, 0.4f)+attackTile.GetTransform().y, 0), Quaternion.identity);
+                Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);
+                //Random.Range(-0.5f, 0.4f)
                 break;
             }
         }

@@ -21,6 +21,8 @@ public class PlayerCharacter : MonoBehaviour
     private bool isDead = false;
     private Tile currentTile;
     public SpriteRenderer playerSprite;
+    
+    private Animator animator;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -28,6 +30,7 @@ public class PlayerCharacter : MonoBehaviour
         GameObject g = GameObject.FindGameObjectWithTag("Grid");
         GameObject m = GameObject.FindGameObjectWithTag("GameController");
 
+        animator = gameObject.GetComponentInChildren<Animator>();
         playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
 
         if (g != null) {
@@ -69,6 +72,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void RegularAttack()
     {
+        animator.SetTrigger("BasicAttack");
         for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
             Tile attackTile = grid.GetTile(x, position.y);
             if (attackTile.entityOnTile != null )

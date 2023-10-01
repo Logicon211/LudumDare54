@@ -136,6 +136,7 @@ MonoBehaviour:
   tileHeightOffset: 1
   attackLocation: {fileID: 6211957723308677279}
   attackSound: {fileID: 8300000, guid: 7dc6ae0f9bc1262449a0c371450ebd8c, type: 3}
+  deathExplosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
 --- !u!61 &8473140654478024816
 BoxCollider2D:
   m_ObjectHideFlags: 0

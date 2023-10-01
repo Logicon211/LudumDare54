@@ -45,6 +45,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     
     private bool debugLogging = false;
 
+    private float killTimer = 1f;
+    private float currentKillTimer = 1f;
+    public GameObject deathExplosion;
 
     private void Awake() {
 
@@ -68,10 +71,20 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     }
 
      private void Update () {
+        if (isDead) {
+            currentKillTimer -= Time.deltaTime;
+            if(currentKillTimer <= 0f) {
+                Destroy(gameObject);
+            }
+            return;
+        }
          healthText.text = health.ToString();
     }
 
     private void FixedUpdate() {
+        if (isDead) {
+            return;
+        }
         //Countdown decision cooldown
         if (currentDecisionCooldown > 0f) {
             currentDecisionCooldown -= Time.deltaTime;
@@ -148,7 +161,11 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         if(!isDead) {
             gameManager.RemoveEnemyFromList(this.gameObject);
             isDead = true;
-            Destroy(gameObject);
+            battleGrid.GetTile(gridPosition).entityOnTile = null;
+            if (deathExplosion != null) {
+                Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity);
+            }
+            AddPhysics();
         }
     }
 
@@ -394,6 +411,18 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         Down,
         Left,
         NoLegalMove
+    }
+
+    private void AddPhysics() {
+        Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
+
+        Vector2 vec = new Vector2(75.0f, Random.Range(-50f, 50f));
+
+        // rb.SetRotation(90f);
+        // rb.AddForce(transform.right * 2000f);
+        rb.isKinematic = true;
+        rb.velocity = vec;
+        rb.AddTorque(100f);
     }
 
 }

@@ -99,9 +99,6 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Mouse1)) {
             SpecialAttack();
         }
-        if (Input.GetKeyDown(KeyCode.P)) {
-            Damage(10);
-        }
     }
 
     void RegularAttack()

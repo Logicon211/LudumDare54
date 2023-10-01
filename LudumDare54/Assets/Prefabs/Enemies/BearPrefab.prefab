@@ -332,6 +332,7 @@ MonoBehaviour:
   tileHeightOffset: 1
   attackLocation: {fileID: 2053728425269658805}
   attackSound: {fileID: 0}
+  deathExplosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
 --- !u!95 &7369499307869332885
 Animator:
   serializedVersion: 5

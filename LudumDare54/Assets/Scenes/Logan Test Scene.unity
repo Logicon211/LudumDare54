@@ -545,12 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcde3c6d3973674382214306e541a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &669632691 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1688189897099913927, guid: efe30090d881811478a8e571525223f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1089573520}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &715302932
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,21 +889,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 974074681849987874, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: m_Name
-      value: OneShotAudioController
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: mainTheme
-      value: 
-      objectReference: {fileID: 8300000, guid: 3a56b0810c248dd49b5a53b78ff054b7, type: 3}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8300000, guid: d5715fe2e8f5dc0429cb082eaacdf195, type: 3}
     - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: battleOptionMenu
@@ -922,31 +901,9 @@ PrefabInstance:
       objectReference: {fileID: 614817128}
     - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
         type: 3}
-      propertyPath: oneShotAudioSource
-      value: 
-      objectReference: {fileID: 669632691}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
       propertyPath: abilityQueueMenuObject
       value: 
       objectReference: {fileID: 2088237822}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: allPossibleEnemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: allPossibleEnemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1,
-        type: 3}
-    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: allPossibleMutations.Array.data[0]
-      value: 
-      objectReference: {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0,
-        type: 3}
     - target: {fileID: 1688189896142580202, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_Name
@@ -1601,6 +1558,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1617323863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.5128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9532
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142050135327300700, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      propertyPath: m_Name
+      value: SkeletonPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7998053704028145165, guid: e5c9486eb75a44e47801778b63b4a3e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
 --- !u!1001 &1671623110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2054,3 +2083,4 @@ SceneRoots:
   - {fileID: 367686268}
   - {fileID: 1401587651}
   - {fileID: 2096226464}
+  - {fileID: 1617323863}

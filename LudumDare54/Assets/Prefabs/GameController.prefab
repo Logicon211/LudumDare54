@@ -323,4 +323,4 @@ MonoBehaviour:
   - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
   - {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4, type: 3}
   initialEnemySpawnList:
-  - {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4, type: 3}
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}

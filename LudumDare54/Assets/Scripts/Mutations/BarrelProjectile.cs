@@ -29,17 +29,19 @@ public class BarrelProjectile : MonoBehaviour {
     this.grid = grid;
   }
 
+  public void SetShadow() {
+    currentTile.bombOnTile = gameObject;
+  }
+
   void FixedUpdate() {
     timeTillExplosion -= Time.deltaTime;
-    if (currentTile.entityOnTile) {
-
-    }
     if (!hasAppeared && timeTillExplosion <= timeToLive - markerTimer) {
         animator.SetBool("ShowBarrel", true);
         hasAppeared = true;
         Instantiate(teleport, transform.position, new Quaternion());
+        // currentTile.bombOnTile = gameObject;
     }
-    if (( timedExplosion && timeTillExplosion <= 0f) || currentTile.entityOnTile) {
+    if (( timedExplosion && timeTillExplosion <= 0f) || (hasAppeared && currentTile.entityOnTile)) {
         CheckForHit();
         GameObject barrelExplosion = Instantiate(explosion, transform.position, new Quaternion());
         currentTile.bombOnTile = null;

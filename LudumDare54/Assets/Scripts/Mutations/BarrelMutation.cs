@@ -32,7 +32,7 @@ public class BarrelMutation : Mutation
             BarrelProjectile bpObject = Instantiate(projectile, targetTile.GetTransform(), Quaternion.identity).GetComponent<BarrelProjectile>();
             bpObject.InitializeBarrel(targetTile, grid);
             // targetTile.entityOnTile = gameObject;
-            targetTile.bombOnTile = gameObject;
+            // targetTile.bombOnTile = gameObject;
         }
     }
 }

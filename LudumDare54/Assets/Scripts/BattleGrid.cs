@@ -133,7 +133,7 @@ public class BattleGrid : MonoBehaviour
         lock(lock_){
 
             while(true){
-                var xPos = Random.Range(playerTileLength+1, gridXLength-1);
+                var xPos = Random.Range(playerTileLength+1, gridXLength);
                 var yPos = Random.Range(0, 3);
                 Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
                 Tile potentialTile = grid[xPos, yPos];

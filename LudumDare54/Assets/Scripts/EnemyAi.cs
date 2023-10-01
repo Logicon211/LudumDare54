@@ -29,33 +29,16 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     private Animator animator;
     public List<GameObject> attacks;
+    
 
 
     private void Awake() {
-        //TODO play spawn animation to hide jankyness
 
-        //enemyGameObject = GetComponent<GameObject>();
-        //enemyBody = GetComponent<Rigidbody2D>();
-        // audio = GetComponent<AudioSource>();
-        // spriteRenderer = GetComponent<SpriteRenderer>();
-        // player = GameObject.FindGameObjectWithTag("Player");
-        // // RB = this.GetComponent<Rigidbody2D>();
-        // // //TODO hand in grid correctly
-        // battleGrid = this.GetComponent<BattleGrid>();
-        // var spawnLocation = battleGrid.getEnemySpawnLocation(this);
-        // xPosition = spawnLocation.gridX;
-        // yPosition = spawnLocation.gridY;
-        // enemyGameObject.transform.position = spawnLocation.transform.position;
     }
     
     IEnumerator Start()
     {
-        // Instantiate(poofEffect, transform.position, Quaternion.identity);
-        // currentHealth = health;
-        // originalXScale = this.transform.localScale.x;
-                player = GameObject.FindGameObjectWithTag("Player");
-        // RB = this.GetComponent<Rigidbody2D>();
-        // //TODO hand in grid correctly
+        player = GameObject.FindGameObjectWithTag("Player");
         battleGrid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
         yield return new WaitUntil(() => battleGrid.isInitialized);
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);

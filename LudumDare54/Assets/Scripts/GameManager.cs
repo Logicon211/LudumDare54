@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour {
 	public void CheckGameOver() {
 		if (SceneManager.GetActiveScene().name != "GameOverScreen" && !victory){
 			if (playerScript.GetHealth() <= 0f && !loss){
-				// Debug.Log("PLAY GAMEOVER");
+				Debug.Log("PLAY GAMEOVER");
 				loss = true;
 				oneShotAudioSource.PlayOneShot(deathSound);
 				playerScript.DisableOnDeath();

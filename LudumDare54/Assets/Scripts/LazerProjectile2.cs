@@ -7,7 +7,7 @@ public class LaserProjectile2 : MonoBehaviour
     // Start is called before the first frame update
 
     // Should be set when it first instantiates
-    private int attackDamage = 3;
+    private int attackDamage = 4;
 
     private BoxCollider2D boxCollider;
 

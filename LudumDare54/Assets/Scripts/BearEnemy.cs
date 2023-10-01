@@ -25,7 +25,9 @@ public class BearEnemy : EnemyAi
     }
 
     public void StartAttackSound() {
-        AS.Play();
+        if(!AS.isPlaying) {
+            AS.Play();
+        }
     }
 
     public void StopAttackSound() {

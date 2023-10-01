@@ -41,6 +41,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     protected AudioSource AS;
     public AudioClip attackSound;
     
+    private SpriteRenderer sprite;
+    
+    
 
 
     private void Awake() {
@@ -52,16 +55,17 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         player = GameObject.FindGameObjectWithTag("Player");
         battleGrid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         yield return new WaitUntil(() => battleGrid.isInitialized);
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);
         gridPosition.x = spawnLocation.gridX;
         gridPosition.y = spawnLocation.gridY;
+        sprite.sortingOrder = 2 + gridPosition.y;
         gameObject.transform.position = spawnLocation.transform.position;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + tileHeightOffset, gameObject.transform.position.z);
         // TODO: Create teleport effect on spawn
         animator = gameObject.GetComponent<Animator>();
         AS = gameObject.GetComponent<AudioSource>();
-
     }
 
      private void Update () {
@@ -267,6 +271,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 gameObject.transform.position = new Vector3(potentialTilePosition.x, potentialTilePosition.y + tileHeightOffset, potentialTilePosition.z);
 
                 currentDecisionCooldown = decisionCooldown;
+
+                sprite.sortingOrder = 2 + gridPosition.y;
+
             }
         }
     }

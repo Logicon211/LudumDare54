@@ -12,7 +12,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private Rigidbody2D rigidbody;
 
-    public float timeToLive = 5f;
+    public float timeToLive = 4f;
 
     // Start is called before the first frame update
     void Start()

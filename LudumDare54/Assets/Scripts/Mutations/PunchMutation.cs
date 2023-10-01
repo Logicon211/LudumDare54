@@ -17,7 +17,7 @@ public class PunchMutation : Mutation
         
     }
 
-    public override void useAbility() {
+    public override void useAbility(GameObject playerRef) {
         Debug.Log("TODO: setup punch ability");
     }
 }

@@ -11,7 +11,7 @@ public abstract class Mutation : MonoBehaviour
     [SerializeField] public string mutationName;
 
 
-    public abstract void useAbility();
+    public abstract void useAbility(GameObject playerRef);
 
     // Start is called before the first frame update
     void Start()

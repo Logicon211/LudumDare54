@@ -258,8 +258,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             else{
                 gridPosition.x = potentialTile.gridX;
                 gridPosition.y = potentialTile.gridY;
-                enemyGameObject.transform.position = potentialTile.transform.position;
-                enemyGameObject.transform.position = new Vector3(enemyGameObject.transform.position.x, enemyGameObject.transform.position.y + tileHeightOffset, enemyGameObject.transform.position.z);
+                var potentialTilePosition = potentialTile.transform.position;
+                enemyGameObject.transform.position = new Vector3(potentialTilePosition.x, potentialTilePosition.y + tileHeightOffset, potentialTilePosition.z);
                 currentDecisionCooldown = decisionCooldown;
             }
         }

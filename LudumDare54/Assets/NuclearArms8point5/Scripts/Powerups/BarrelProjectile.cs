@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class BarrelProjectile : MonoBehaviour {
+public class BarrelProjectileOLD : MonoBehaviour {
 
     public GameObject explosion;
     public GameObject teleport;

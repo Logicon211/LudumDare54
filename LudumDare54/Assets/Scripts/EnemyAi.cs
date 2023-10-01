@@ -41,9 +41,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     protected AudioSource AS;
     public AudioClip attackSound;
     
-    private SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
     
-    
+    private bool debugLogging = false;
 
 
     private void Awake() {
@@ -60,9 +60,8 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         var spawnLocation = battleGrid.getEnemySpawnLocation(this);
         gridPosition.x = spawnLocation.gridX;
         gridPosition.y = spawnLocation.gridY;
-        sprite.sortingOrder = 2 + gridPosition.y;
-        gameObject.transform.position = spawnLocation.transform.position;
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + tileHeightOffset, gameObject.transform.position.z);
+        sprite.sortingOrder = 2 + (gridPosition.y * 3);
+        gameObject.transform.position = new Vector3(spawnLocation.transform.position.x, spawnLocation.transform.position.y + tileHeightOffset, spawnLocation.transform.position.z);
         // TODO: Create teleport effect on spawn
         animator = gameObject.GetComponent<Animator>();
         AS = gameObject.GetComponent<AudioSource>();
@@ -85,17 +84,22 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
 
         if( currentDecisionCooldown <= 0){
-            Debug.Log("Decision time");
+            if(debugLogging){
+                Debug.Log("Decision time");
+            }
             // If both cooldowns, check player position
             var playerTile = battleGrid.getPlayerTile();
             // If player position lined up
             var alignment = AlignedWithPlayer(playerTile);
             if(alignment == 0){
-                Debug.Log("Aligned with player");
+                if(debugLogging){
+                    Debug.Log("Aligned with player");
+                }
                 if( currentAttackCooldown <= 0){
                     // If sight is clear
-
+                    if(debugLogging){
                         Debug.Log("Attack time");
+                    }
                         Attack();
 
                     // if(ClearLineToPlayer(playerTile)){
@@ -109,13 +113,17 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 }
                 // else move
                 else{
-                    Debug.Log("Attack on cooldown, move time");
+                    if(debugLogging){
+                        Debug.Log("Attack on cooldown, move time");
+                    }
                     Move(playerTile, alignment);
                 }
             // else player position not lined up
             }
             else{
-                Debug.Log("Not lined up, move time");
+                if(debugLogging){
+                    Debug.Log("Not lined up, move time");
+                }
                 Move(playerTile, alignment);
             }
         }
@@ -149,7 +157,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     // Positive means the player is higher
     private int AlignedWithPlayer(Tile playerTile){
         var combined = gridPosition.y - playerTile.gridY;
-        Debug.Log("Player Y: " + playerTile.gridY + "     Enemy Y: " + gridPosition.y + ". Outcome: " + combined);
+        if(debugLogging){
+            Debug.Log("Player Y: " + playerTile.gridY + "     Enemy Y: " + gridPosition.y + ". Outcome: " + combined);
+        }
         return playerTile.gridY - gridPosition.y;
     }
 
@@ -175,14 +185,18 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public void Move(Tile playerTile, int alignment)
     {
-        Debug.Log("Move Method reached");
+        if(debugLogging){
+            Debug.Log("Move Method reached");
+        }
         legalMoves chosenMovement = legalMoves.NoLegalMove;
 
         // Build the list of legalMovement options. Pray we never conflict with another enemy.
         List<legalMoves> legalMoveList = determineLegalMoves();
         
 
-        Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
+        if(debugLogging){
+            Debug.Log("We have: " + legalMoveList.Count + " Legal Moves.");
+        }
 
         // We could end up in a corner with no legal moves.
         if(legalMoveList.Count == 0){
@@ -190,14 +204,18 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         }
         // If player is aligned, then vision was unclear.
         else if(alignment == 0){
-            Debug.Log("Aligned with player");
+            if(debugLogging){
+                Debug.Log("Aligned with player");
+            }
             //Choose a random legal option.
             chosenMovement = legalMoveList[Random.Range(0, legalMoveList.Count)];
         }
 
         // Negative alignment -> player is lower
         else if(alignment < 0){
-            Debug.Log("Lower than player");
+            if(debugLogging){
+                Debug.Log("Lower than player");
+            }
             // Move down if that is a legal move.
             if(legalMoveList.Contains(legalMoves.Up)){
                 chosenMovement = legalMoves.Up;
@@ -209,7 +227,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         }
         // Positive alignment -> player is higher
         else if(alignment > 0){
-            Debug.Log("Higher than player");
+            if(debugLogging){
+                Debug.Log("Higher than player");
+            }
+
             // Move Up if that is a legal move.
             if(legalMoveList.Contains(legalMoves.Down)){
                 chosenMovement = legalMoves.Down;
@@ -226,7 +247,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // TODO vibrate in place to indicate we couldn't move?
             // Decision cooldown halved.
             currentDecisionCooldown = decisionCooldown / 2;
-            Debug.Log("We had no legal moves");
+            if(debugLogging){
+                Debug.Log("We had no legal moves");
+            }
         }
         
         
@@ -236,19 +259,27 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
             if(chosenMovement == legalMoves.Up){
                 newYposition--;
-                Debug.Log("Attempting to move Up");
+                if(debugLogging){
+                    Debug.Log("Attempting to move Up");
+                }
             }
             else if(chosenMovement == legalMoves.Down){
                 newYposition++;
-                Debug.Log("Attempting to move Down");
+                if(debugLogging){
+                    Debug.Log("Attempting to move Down");
+                }
             }
             else if(chosenMovement == legalMoves.Right){
                 newXposition++;
-                Debug.Log("Attempting to move Right");
+                if(debugLogging){
+                    Debug.Log("Attempting to move Right");
+                }
             }
             else{
                 newXposition--;
-                Debug.Log("Attempting to move Left");
+                if(debugLogging){
+                    Debug.Log("Attempting to move Left");
+                }
             }
             
             
@@ -258,8 +289,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // It didn't succeed for some reason.
             if(potentialTile == null){
                 
-                Debug.Log("We were unable to move this enemy into a valid tile after having calculated legal tiles because it was occupied. Need to synchronize sooner.");
-                
+                if(debugLogging){
+                    Debug.Log("We were unable to move this enemy into a valid tile after having calculated legal tiles because it was occupied. Need to synchronize sooner.");
+                }
+
                 currentDecisionCooldown = decisionCooldown / 2;
             }
             // It succeeded
@@ -267,12 +300,11 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
                 gridPosition.x = potentialTile.gridX;
                 gridPosition.y = potentialTile.gridY;
 
-                var potentialTilePosition = potentialTile.transform.position;
-                gameObject.transform.position = new Vector3(potentialTilePosition.x, potentialTilePosition.y + tileHeightOffset, potentialTilePosition.z);
+                gameObject.transform.position = new Vector3(potentialTile.transform.position.x, potentialTile.transform.position.y + tileHeightOffset, potentialTile.transform.position.z);
 
                 currentDecisionCooldown = decisionCooldown;
 
-                sprite.sortingOrder = 2 + gridPosition.y;
+                sprite.sortingOrder = 2 + (gridPosition.y * 3);
 
             }
         }
@@ -289,10 +321,14 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public virtual void SpawnAttack(){
 
-        Debug.Log("attak spawned.");
+        if(debugLogging){
+            Debug.Log("attak spawned.");
+        }
 
         AS.PlayOneShot(attackSound);
-        Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
+        GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
+        //projectile.GetComponent<EnemyProjectile>().UpdateSortingOrder(sprite.sortingOrder + 1);
+        projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);
 
     }
 
@@ -300,7 +336,10 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     private List<legalMoves> determineLegalMoves(){
         // Get the boundaries from the battleGrid.
         Vector2 legalBoundaries = battleGrid.getEnemyBoundaries();
-        Debug.Log("maximum boundaries: x: " + legalBoundaries.x + " .   y: " + legalBoundaries.y );
+        if(debugLogging){
+            Debug.Log("maximum boundaries: x: " + legalBoundaries.x + " .   y: " + legalBoundaries.y );
+        }
+        
         // Get the tiles the player owns.
         var playerArea = battleGrid.playerTileLength;
 
@@ -311,7 +350,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // And the location is empty
             if(battleGrid.grid[gridPosition.x, gridPosition.y+1].entityOnTile == null){
                 legalMoveList.Add(legalMoves.Down);
-                Debug.Log("Down is a legal move");
+                if(debugLogging){
+                    Debug.Log("Down is a legal move");
+                }
             } 
         }
         // If our position is not the bottom, we can move down.
@@ -319,7 +360,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // And the location is empty
             if(battleGrid.grid[gridPosition.x, gridPosition.y-1].entityOnTile == null){
                 legalMoveList.Add(legalMoves.Up);
-                                Debug.Log("Up is a legal move");
+                if(debugLogging){
+                    Debug.Log("Up is a legal move");
+                }
             } 
         }
         // If our x position is not at the rightmost enemy boundary, we can move right.
@@ -327,7 +370,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // And the location is empty
             if(battleGrid.grid[gridPosition.x+1, gridPosition.y].entityOnTile == null){
                 legalMoveList.Add(legalMoves.Right);  
-                                Debug.Log("Right is a legal move");
+                if(debugLogging){
+                    Debug.Log("Right is a legal move");
+                }
             } 
         }
         // If our x position is not at the playerArea limit.
@@ -335,7 +380,9 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
             // And the location is empty
             if(battleGrid.grid[gridPosition.x-1, gridPosition.y].entityOnTile == null){
                 legalMoveList.Add(legalMoves.Left);
-                                Debug.Log("Left is a legal move");
+                if(debugLogging){
+                    Debug.Log("Left is a legal move");
+                }
             } 
         }
 

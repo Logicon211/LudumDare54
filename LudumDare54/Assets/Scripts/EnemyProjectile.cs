@@ -42,6 +42,7 @@ public class EnemyProjectile : MonoBehaviour
 
             // Hurt this dude.
             other.gameObject.GetComponent<PlayerCharacter>().Damage(damage);
+            Destroy(this.gameObject);
         }
     }
 

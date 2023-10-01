@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
 		if (playerScript != null)
 			CheckGameOver();
 
-		if (Input.GetKeyUp(KeyCode.E)) {
+		if (Input.GetKeyUp(KeyCode.E) && !isInAbilityQueueScreen) {
 			EnableAbilityQueueMenu();
 		}
 
@@ -208,6 +208,10 @@ public class GameManager : MonoBehaviour {
 	// 	victory = true;
 	// 	enemySpawner.SpawnFinalBoss();
 	// }
+
+	public void PlayClip(AudioClip clip) {
+		oneShotAudioSource.PlayOneShot(clip);
+	}
 
 	public void PauseGame() {
 		paused = true;
@@ -342,6 +346,7 @@ public class GameManager : MonoBehaviour {
 	public void DisableAbilityQueueMenu() {
 		abilityQueueMenuObject.SetActive(false);
 		disableLowPassFilter();
+		isInAbilityQueueScreen = false;
 		UnPauseGame();
 	}
 

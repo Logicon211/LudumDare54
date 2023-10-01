@@ -20,8 +20,8 @@ public class BearEnemy : EnemyAi
 
         Debug.Log("attak spawned.");
 
-        Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
-
+        GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
+        projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);
     }
 
     public void StartAttackSound() {

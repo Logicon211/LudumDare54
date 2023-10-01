@@ -17,7 +17,6 @@ public class ShotgunProjectileLD54 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -26,10 +25,10 @@ public class ShotgunProjectileLD54 : MonoBehaviour
 
     }
 
-        void OnBecameInvisible()
-        {
-            Destroy(this.gameObject);
-        }
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {

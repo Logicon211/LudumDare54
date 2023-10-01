@@ -13,12 +13,22 @@ public class EnemyProjectile : MonoBehaviour
     private Rigidbody2D rigidbody;
 
     public float timeToLive = 4f;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = this.GetComponent<Rigidbody2D>();
         rigidbody.velocity = -transform.right * startingSpeed;
+    }
+
+    public void UpdateSortingOrder(int sortingOrder){
+        Debug.Log("UpdateSortingOrder: " + sortingOrder);
+        if(spriteRenderer == null){
+            spriteRenderer.sortingOrder = sortingOrder;
+            Debug.Log("sorting order updated.");
+        }
+        Debug.Log("spriteRenderer was null when we wanted to update the sorting order.");
     }
 
     // Update is called once per frame

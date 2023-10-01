@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour {
 		abilityQueueMenu = abilityQueueMenuObject.GetComponent<AbilityQueueMenu>();
 		currentEnemyList = new List<GameObject>();
 
+		PlayMainMusic();
+
 		SpawnEnemies(initialEnemySpawnList);
 
 	}
@@ -99,10 +101,6 @@ public class GameManager : MonoBehaviour {
 		// CheckForWaveChange();
 		if (playerScript != null)
 			CheckGameOver();
-
-		if (Input.GetKeyUp(KeyCode.LeftShift)) {
-			NextBattlePopup();
-		}
 
 		if (Input.GetKeyUp(KeyCode.E)) {
 			EnableAbilityQueueMenu();
@@ -123,7 +121,7 @@ public class GameManager : MonoBehaviour {
 
 	public void StartCutScene(int cutSceneIndex) {
 		AS.volume = volumeMax;
-		ResumeMainMusic();
+		// ResumeMainMusic();
 
 		Debug.Log("START SCENE INDEX: " + cutSceneIndex);
 		currentCutSceneIndex = cutSceneIndex;
@@ -221,14 +219,6 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1;
 	}
 
-	public void PlayShopMusic() {
-		changeToShopMusic = true;
-	}
-
-	public void ResumeMainMusic() {
-		changeToShopMusic = false;
-	}
-
 	public void PlayMainMusic() {
 		AS.clip = mainTheme;
 		AS.Play();
@@ -243,14 +233,6 @@ public class GameManager : MonoBehaviour {
 		AS.clip = finalBossTheme;
 		AS.Play();
 	}
-
-	// public void PlayErrorNoise() {
-	// 	if(changeToShopMusic) {
-	// 		shopTheme.PlayOneShot(errorPurchaseNoise);
-	// 	} else {
-	// 		AS.PlayOneShot(errorPurchaseNoise);
-	// 	}
-	// }
 
 	public void enableLowPassFilter() {
 		lpFilter.enabled = true;

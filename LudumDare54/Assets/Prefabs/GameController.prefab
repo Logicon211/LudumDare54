@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9056041868227847231}
   - component: {fileID: 1688189897099913927}
   m_Layer: 0
-  m_Name: ShopThemeController
+  m_Name: OneShotAudioController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,12 +298,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAbilityRefreshTime: 5
   abilityRefreshAvailable: 0
-  mainTheme: {fileID: 8300000, guid: 5d7f75549e81e2148a55aafc11b926b4, type: 3}
+  mainTheme: {fileID: 8300000, guid: 3a56b0810c248dd49b5a53b78ff054b7, type: 3}
   finalBossTheme: {fileID: 8300000, guid: 2aa0fa93dbe3c0c46bf5a66fa6ec6f70, type: 3}
   midBossTheme: {fileID: 8300000, guid: 6b1936cccba520e4ca1b25821c555884, type: 3}
-  oneShotAudioSource: {fileID: 0}
+  oneShotAudioSource: {fileID: 1688189897099913927}
   errorPurchaseNoise: {fileID: 0}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: d5715fe2e8f5dc0429cb082eaacdf195, type: 3}
   volumeMax: 0.2
   battleOptionMenu: {fileID: 0}
   abilityQueueMenuObject: {fileID: 0}

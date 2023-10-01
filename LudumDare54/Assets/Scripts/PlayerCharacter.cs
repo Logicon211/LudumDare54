@@ -26,6 +26,9 @@ public class PlayerCharacter : MonoBehaviour
     
     private Animator animator;
 
+    public GameObject nextMutationQueuedIcon;
+    private SpriteRenderer nextMutationQueuedSprite;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -48,6 +51,7 @@ public class PlayerCharacter : MonoBehaviour
         MovePlayerObject();
         grid.SetPlayer(gameObject.GetComponent<PlayerCharacter>());
         playerSprite.enabled = true;
+        nextMutationQueuedSprite = nextMutationQueuedIcon.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -57,7 +61,16 @@ public class PlayerCharacter : MonoBehaviour
             Move();
             Attack();
         }
-        healthText.text = health.ToString();
+        if(healthText) {
+            healthText.text = "HP: " + health.ToString();
+        }
+        if(nextMutationQueuedSprite) {
+            if (manager.mutationQueue.Count > 0) {
+                nextMutationQueuedSprite.sprite = manager.mutationQueue[0].icon;
+            } else {
+                nextMutationQueuedSprite.sprite = null;
+            }
+        }
     }
 
     void Attack()
@@ -192,6 +205,10 @@ public class PlayerCharacter : MonoBehaviour
         if(!isDead) {
             isDead = true;
             Debug.Log("dead lol");
+
+            if(healthText) {
+                healthText.text = "DEAD";
+            }
             
         }
         gameObject.SetActive(false);

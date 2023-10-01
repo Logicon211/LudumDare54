@@ -41,6 +41,7 @@ public class PlayerCharacter : MonoBehaviour
         position.Set(1, 1);
         currentTile = grid.GetTile(1, 1);
         MovePlayerObject();
+        grid.SetPlayer(gameObject.GetComponent<PlayerCharacter>());
         playerSprite.enabled = true;
     }
 
@@ -194,5 +195,9 @@ public class PlayerCharacter : MonoBehaviour
     public void DisableOnDeath()
     {
         //does something
+    }
+
+    public Tile GetCurrentTile() {
+        return currentTile;
     }
 }

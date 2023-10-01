@@ -22,6 +22,8 @@ public class BattleGrid : MonoBehaviour
     private Vector2Int enemyGridBoundaries;
 
     public bool isInitialized = false;
+
+    public PlayerCharacter player;
     
     // Start is called before the first frame update
     void Start()
@@ -55,9 +57,14 @@ public class BattleGrid : MonoBehaviour
         
     }
 
+    public void SetPlayer(PlayerCharacter player)
+    {
+        this.player = player;
+    }
+
     public Tile getPlayerTile() {
         // TODO: get player's tile
-        return grid[0,0];
+        return player.GetCurrentTile();
     }
 
     public Tile GetTile(int x, int y) {

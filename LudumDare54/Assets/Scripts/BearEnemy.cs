@@ -15,4 +15,20 @@ public class BearEnemy : EnemyAi
 //     {
         
 //     }
+
+    public override void SpawnAttack(){
+
+        Debug.Log("attak spawned.");
+
+        Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
+
+    }
+
+    public void StartAttackSound() {
+        AS.Play();
+    }
+
+    public void StopAttackSound() {
+        AS.Stop();
+    }
 }

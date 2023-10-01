@@ -8,8 +8,8 @@ public class BarrelProjectile : MonoBehaviour {
     public float timeToLive;
     public float timeTillExplosion;
     public float markerTimer;
-    Player player;
-    Barrel barrel;
+    public int damage = 5;
+    public bool timedExplosion = false;
     Animator animator;
     bool hasAppeared;
     SpriteRenderer sprite;
@@ -18,7 +18,6 @@ public class BarrelProjectile : MonoBehaviour {
     private BattleGrid grid;
 
   void Start() {
-    barrel = GameObject.FindObjectOfType<Barrel>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     animator = gameObject.GetComponentInChildren<Animator>();
     timeTillExplosion = timeToLive + markerTimer;
@@ -32,24 +31,25 @@ public class BarrelProjectile : MonoBehaviour {
 
   void FixedUpdate() {
     timeTillExplosion -= Time.deltaTime;
+    if (currentTile.entityOnTile) {
+
+    }
     if (!hasAppeared && timeTillExplosion <= timeToLive - markerTimer) {
         animator.SetBool("ShowBarrel", true);
         hasAppeared = true;
-        Instantiate(teleport, transform.position, new Quaternion(), barrel.gameArea.transform);
+        Instantiate(teleport, transform.position, new Quaternion());
     }
-    if (timeTillExplosion <= 0f) {
+    if (( timedExplosion && timeTillExplosion <= 0f) || currentTile.entityOnTile) {
         CheckForHit();
-        GameObject barrelExplosion = Instantiate(explosion, transform.position, new Quaternion(), barrel.gameArea.transform);
-        if (barrel.GetLevel() > 2) {
-            barrelExplosion.gameObject.transform.localScale *= 1.7f; 
-        }
-        currentTile.entityOnTile = null;
+        GameObject barrelExplosion = Instantiate(explosion, transform.position, new Quaternion());
+        currentTile.bombOnTile = null;
         Destroy(gameObject);
     }
   }
 
   void CheckForHit() {
-
+    if (currentTile.entityOnTile) {
+      currentTile.entityOnTile.GetComponent<EnemyAi>().Damage(damage);
+    }
   }
-
 }

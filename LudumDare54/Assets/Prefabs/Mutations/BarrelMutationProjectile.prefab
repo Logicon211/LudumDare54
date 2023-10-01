@@ -94,7 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -149,15 +149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6102306441952100605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409fbd515ce7cd54f8b827cadbdc9dd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e71a7eb52552274f865292566bd29cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9174872887290341322, guid: b3117e9218839ee46b1e6aba30d3f357,
-    type: 3}
+  explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   teleport: {fileID: 156964, guid: 55d9dca6fda674649b3dc9a1089b5ebc, type: 3}
-  timeToLive: 4
+  timeToLive: -1
   timeTillExplosion: 0
-  markerTimer: 0.1
+  markerTimer: 0
+  damage: 5
+  timedExplosion: 0
 --- !u!212 &8407444758708950696
 SpriteRenderer:
   m_ObjectHideFlags: 0

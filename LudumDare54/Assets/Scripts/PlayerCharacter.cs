@@ -234,4 +234,8 @@ public class PlayerCharacter : MonoBehaviour
     public Tile GetCurrentTile() {
         return currentTile;
     }
+
+    public BattleGrid GetGrid() {
+        return grid;
+    }
 }

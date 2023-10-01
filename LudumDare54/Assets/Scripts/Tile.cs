@@ -7,7 +7,11 @@ public class Tile : MonoBehaviour
     public int gridX;
     public int gridY;
 
+    // Anything that can block movement
     public GameObject entityOnTile;
+
+    // Placeables that enemies can walk on
+    public GameObject bombOnTile;
 
     public Sprite playerTile;
     public Sprite enemyTile;

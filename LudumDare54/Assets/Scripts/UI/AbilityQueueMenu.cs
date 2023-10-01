@@ -39,20 +39,20 @@ public class AbilityQueueMenu : MonoBehaviour
     public void AddRandomAbilitiesToSelection() {
         // TODO: instantiate random drawn abilities here
         // gameManager.mutationDeck
+        List<GameObject> tempList = new List<GameObject>(gameManager.mutationDeck);
         for(int i = 0; i < 5; i++) {
-            int randomIndex = Random.Range(0, gameManager.mutationDeck.Count);
-            // drawnAbilities.Add(gameManager.mutationDeck[randomIndex]);
-            // TODO: instantiate these onto the UI element
+            int randomIndex = Random.Range(0, tempList.Count);
+
             GameObject mutationButtonObject = Instantiate(mutationButton, drawnPositions[i]);
-            // Debug.Log("CHECKING POS");
-            // Debug.Log(new Vector3(drawnPositions[i].position.x, drawnPositions[i].position.y, drawnPositions[i].position.z));
-            // mutationButton.transform.position = new Vector3(drawnPositions[i].position.x, drawnPositions[i].position.y, drawnPositions[i].position.z);
+
             drawnAbilities[FindNextEmptyIndex(drawnAbilities)] = mutationButtonObject; //Add(mutationButtonObject);
             MutationButton mutationButtonCreated = mutationButtonObject.GetComponent<MutationButton>();
             mutationButtonCreated.SetAbilityQueueMenu(this);
-            mutationButtonCreated.SetMutation(gameManager.mutationDeck[randomIndex]);
+            mutationButtonCreated.SetMutation(tempList[randomIndex]);
+            tempList.RemoveAt(randomIndex);
             // mutationButtonCreated.buttonIndex = i;
             destroyWhenClosed.Add(mutationButtonObject);
+            
         }
     }
 

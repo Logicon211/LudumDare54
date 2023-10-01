@@ -68,6 +68,10 @@ public class BattleGrid : MonoBehaviour
         return player.GetCurrentTile();
     }
 
+    public Tile GetTile(Vector2Int vec) {
+        return grid[vec.x, vec.y];
+    }
+
     public Tile GetTile(int x, int y) {
         return grid[x, y];
     }

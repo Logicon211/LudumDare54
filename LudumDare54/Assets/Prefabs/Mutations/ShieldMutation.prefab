@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1358687895506408289
+--- !u!1 &6410466602431061584
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7442151829565567461}
-  - component: {fileID: 8029085408312729460}
+  - component: {fileID: 2763947951864936188}
+  - component: {fileID: 4927706837300946816}
   m_Layer: 0
-  m_Name: LazerMutationPrefab
+  m_Name: ShieldMutation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7442151829565567461
+--- !u!4 &2763947951864936188
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358687895506408289}
+  m_GameObject: {fileID: 6410466602431061584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.1347294, y: -0.17959264, z: -0.043335184}
+  m_LocalPosition: {x: 12.199602, y: -0.4971495, z: -0.28504086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8029085408312729460
+--- !u!114 &4927706837300946816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358687895506408289}
+  m_GameObject: {fileID: 6410466602431061584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bece72530c5fe994f8fc946f586cac74, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e17e260aaf85564bbe9910a78bf7670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2e00105687bc7384dbe610cdd9449a85, type: 3}
-  description: Craig blasts out a beam of pure A.N.I.M.E. energy to deal XYZ damage
-    targets in a line.
-  mutationName: Lazer beam
-  lazerPrefab: {fileID: 1076169643464021779, guid: 19bcdeb00150da142badadcdcbc72381,
-    type: 3}
+  icon: {fileID: 21300000, guid: 089ccb0abaab78140aa23b1033a0a2ea, type: 3}
+  description: Craig's Radiation Shield will block 20 damage. Slowly dissipates
+  mutationName: Shield
+  shieldValue: 20

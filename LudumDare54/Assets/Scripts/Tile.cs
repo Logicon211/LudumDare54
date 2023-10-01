@@ -64,4 +64,10 @@ public class Tile : MonoBehaviour
     public BattleGrid GetGrid() {
         return grid;
     }
+
+    public void Damage(int damage) {
+        if (!isPlayerTile && entityOnTile) {
+            entityOnTile.GetComponent<EnemyAi>().Damage(damage);
+        }
+    }
 }

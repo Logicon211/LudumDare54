@@ -33,6 +33,10 @@ public class PlayerCharacter : MonoBehaviour
     public AudioClip laserNoise;
     public AudioClip hurtNoise;
 
+    public GameObject shield;
+    public TMPro.TMP_Text shieldHPText;
+    private float shieldHP = 0;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -75,6 +79,15 @@ public class PlayerCharacter : MonoBehaviour
             } else {
                 nextMutationQueuedSprite.sprite = null;
             }
+        }
+
+        if(shieldHP >= 1) {
+            shield.SetActive(true);
+            shieldHP -= Time.deltaTime;
+            shieldHPText.text = ((int)shieldHP).ToString();
+        } else {
+            shield.SetActive(false);
+            shieldHP = 0;
         }
     }
 
@@ -204,15 +217,20 @@ public class PlayerCharacter : MonoBehaviour
     // Incoming damage
     public void Damage(int damageTaken)
     {
-        health -= damageTaken;
+        if(shieldHP > 0) {
+            shieldHP -= damageTaken;
+            // TODO: PLAY shield hit noise
+        } else {
+            health -= damageTaken;
 
-        if (health <= 0f && !isDead) {
-            Kill();
+            if (health <= 0f && !isDead) {
+                Kill();
+            }
+            else{
+                // hit animation or something
+                manager.PlayClip(hurtNoise);
+            }   
         }
-        else{
-            // hit animation or something
-            manager.PlayClip(hurtNoise);
-        }   
     }
 
     public void Kill()
@@ -227,6 +245,10 @@ public class PlayerCharacter : MonoBehaviour
             
         }
         gameObject.SetActive(false);
+    }
+
+    public void TurnOnShield(float shieldValue) {
+        shieldHP = shieldValue;
     }
 
     public int GetHealth() 

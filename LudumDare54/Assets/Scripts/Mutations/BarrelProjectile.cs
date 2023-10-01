@@ -51,7 +51,7 @@ public class BarrelProjectile : MonoBehaviour {
 
   void CheckForHit() {
     if (currentTile.entityOnTile) {
-      currentTile.entityOnTile.GetComponent<EnemyAi>().Damage(damage);
+      currentTile.Damage(damage);
     }
   }
 }

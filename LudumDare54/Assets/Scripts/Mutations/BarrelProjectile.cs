@@ -17,7 +17,7 @@ public class BarrelProjectile : MonoBehaviour {
     private Tile currentTile;
     private BattleGrid grid;
 
-  void StartBarrel() {
+  void Start() {
     barrel = GameObject.FindObjectOfType<Barrel>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     animator = gameObject.GetComponentInChildren<Animator>();
@@ -43,6 +43,7 @@ public class BarrelProjectile : MonoBehaviour {
         if (barrel.GetLevel() > 2) {
             barrelExplosion.gameObject.transform.localScale *= 1.7f; 
         }
+        currentTile.entityOnTile = null;
         Destroy(gameObject);
     }
   }

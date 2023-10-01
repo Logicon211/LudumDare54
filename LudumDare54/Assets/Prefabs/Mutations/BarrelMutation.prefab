@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd122710af1a174b8c4928b3c34af8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  description: 
-  mutationName: 
-  projectile: {fileID: 0}
+  icon: {fileID: 1031913205, guid: 2adacfc7e9c7f5d438db002058465000, type: 3}
+  description: Drop a barrel 3 tiles away
+  mutationName: Barrel
+  projectile: {fileID: 6102306441952100605, guid: ba5a67bc14f8bee4986788ee4e6a3411,
+    type: 3}
   grid: {fileID: 0}
   originTile: {fileID: 0}

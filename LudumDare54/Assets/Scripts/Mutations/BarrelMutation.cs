@@ -14,7 +14,7 @@ public class BarrelMutation : Mutation
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,12 +25,17 @@ public class BarrelMutation : Mutation
 
     public override void useAbility() {
         // get target tile
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<BattleGrid>();
+        Debug.Log("chad test grid: " + grid);
+        originTile = grid.getPlayerTile();
         Tile targetTile = grid.GetTile(originTile.gridX + range, originTile.gridY);
-        if (targetTile.entityOnTile != null)
+        Debug.Log("chad test tile: " + targetTile.entityOnTile);
+        if (targetTile.entityOnTile == null)
         { 
-            GameObject proj = Resources.Load("BarrelProjectile") as GameObject;
-            BarrelProjectile bpObject = Instantiate(proj, targetTile.GetTransform(), Quaternion.identity).GetComponent<BarrelProjectile>();
+            Debug.Log("Placing barrel");
+            BarrelProjectile bpObject = Instantiate(projectile, targetTile.GetTransform(), Quaternion.identity).GetComponent<BarrelProjectile>();
             bpObject.InitializeBarrel(targetTile, grid);
+            targetTile.entityOnTile = gameObject;
         }
     }
 }

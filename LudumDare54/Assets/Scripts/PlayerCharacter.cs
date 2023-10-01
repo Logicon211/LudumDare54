@@ -99,7 +99,14 @@ public class PlayerCharacter : MonoBehaviour
             if (attackTile.entityOnTile != null )
             {
                 Debug.Log("Enemy hit");
-                attackTile.entityOnTile.GetComponent<EnemyAi>().Damage(1);
+                EnemyAi enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
+                if(enemy) {
+                    enemy.Damage(1);
+                }
+                RobotBomb bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
+                if(bomb) {
+                    bomb.Damage(1);
+                }
                 AS.PlayOneShot(laserNoise);
 
                 Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);

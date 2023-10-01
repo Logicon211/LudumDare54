@@ -11,7 +11,8 @@ public class RobotEnemy : EnemyAi
 
         AS.PlayOneShot(attackSound);
         // TELEPORT SOME BOMBS
-        // Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
-
+        Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
+        GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
+        bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
     }
 }

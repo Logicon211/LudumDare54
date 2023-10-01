@@ -348,11 +348,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 21db3550c1c88ed40a3d6917734dc8f0, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.311
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -453,11 +453,12 @@ MonoBehaviour:
   attackCooldown: 3.2
   currentAttackCooldown: 2
   enemyName: Robot
-  attacks: []
+  attacks:
+  - {fileID: 4598850337159330720, guid: 014bc82abcefe8d43886e4d52933070a, type: 3}
   healthText: {fileID: 4678655458022733986}
-  tileHeightOffset: 0.2
+  tileHeightOffset: 0.3
   attackLocation: {fileID: 4400146860129812329}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 9bf3c28f85bcf5a45800d3c9902370dd, type: 3}
 --- !u!95 &8312444005128351811
 Animator:
   serializedVersion: 5

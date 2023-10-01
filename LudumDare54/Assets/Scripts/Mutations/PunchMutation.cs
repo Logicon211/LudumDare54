@@ -11,6 +11,8 @@ public class PunchMutation : Mutation
     public int columnRange = 3;
     public int damage = 5;
 
+    public GameObject projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class PunchMutation : Mutation
             Vector2Int vec = new Vector2Int(originX + 1, y);
             if (IsValidTile(grid, vec)) {
                 grid.GetTile(vec).Damage(damage);
+                Instantiate(projectile, grid.GetTile(originX, y).GetTransform(), Quaternion.identity);
             }
         }
     }

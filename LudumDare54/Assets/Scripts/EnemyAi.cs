@@ -327,7 +327,6 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
         AS.PlayOneShot(attackSound);
         GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
-        //projectile.GetComponent<EnemyProjectile>().UpdateSortingOrder(sprite.sortingOrder + 1);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);
 
     }

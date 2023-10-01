@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
 	public bool abilityRefreshAvailable = false;
 
 	private bool paused = false;
-	private bool inCutScene = false;
 	private bool victory = false;
 	private bool loss = false;
 
@@ -73,6 +72,16 @@ public class GameManager : MonoBehaviour {
 	private List<GameObject> currentEnemyList;
 	private bool waitingForNextRound = false;
 
+	public int numberOfRoundsUntillBoss = 1;
+	private bool onLastBattle = false;
+	private int currentRoundNumber = 0;
+	public bool isInCutScene = false;
+
+	public AudioClip errorSound;
+
+	public GameObject bossEnemy;
+
+
 	private void Awake() {
 		// Load powerups
 		// LoadPowerups();
@@ -107,6 +116,10 @@ public class GameManager : MonoBehaviour {
 			EnableAbilityQueueMenu();
 		}
 
+		if(Input.GetKeyUp(KeyCode.Y)) {
+			StartCutScene();
+		}
+
 		// Debug.Log("CURRENT ENEMY LIST LENGTH: " + currentEnemyList.Count);
 		if (currentEnemyList.Count <= 0 && !waitingForNextRound) {
 			waitingForNextRound = true;
@@ -120,23 +133,26 @@ public class GameManager : MonoBehaviour {
 	// 	// spawnManager.SpawnWave(currentLevel);
 	// }
 
-	public void StartCutScene(int cutSceneIndex) {
+	public void StartCutScene() {
+		string bossCutsceneName = "BossScene";
 		AS.volume = volumeMax;
+		isInCutScene = true;
 		// ResumeMainMusic();
-
-		Debug.Log("START SCENE INDEX: " + cutSceneIndex);
-		currentCutSceneIndex = cutSceneIndex;
-		SceneManager.LoadScene(cutscenes[cutSceneIndex], LoadSceneMode.Additive);
+		SceneManager.LoadScene(bossCutsceneName, LoadSceneMode.Additive);
 		listener.enabled = false; // Disabling the main cameras audio listener so that we have exactly one listener
 		PauseGame();
 	}
 
 	public void StopCutScene() {
-		Debug.Log("END SCENE INDEX: " + currentCutSceneIndex);
-		SceneManager.UnloadSceneAsync(cutscenes[currentCutSceneIndex]);
+		string bossCutsceneName = "BossScene";
+		SceneManager.UnloadSceneAsync(bossCutsceneName);
+		IEnumerator coroutine = DisableCutSceneLock(0.5f);
+		StartCoroutine(coroutine);
 		listener.enabled = true;
 		// SetEnemyCountToZero();
-		UnPauseGame();
+		if(!isInBattleOptionScreen) {
+			UnPauseGame();
+		}
 	}
 
 	public void CheckGameOver() {
@@ -164,6 +180,15 @@ public class GameManager : MonoBehaviour {
 	// 	SceneManager.LoadScene("GameOverScreen", LoadSceneMode.Single);
 	// }
 
+	private IEnumerator DisableCutSceneLock(float waitTime)
+    {
+		while (true)
+        {
+			yield return new WaitForSecondsRealtime(waitTime);
+			isInCutScene = false;
+			yield break;
+		}
+	}
     private IEnumerator GameOverCoRoutine(float waitTime)
     {
         while (true)
@@ -180,7 +205,13 @@ public class GameManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(waitTime);
 			Debug.Log("ABOUT TO BRING UP POPUP");
-			NextBattlePopup();
+			if(onLastBattle) {
+				if (SceneManager.GetActiveScene().name != "VictoryScene") {
+					SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
+				}
+			} else {
+				NextBattlePopup();
+			}
 			yield break;
         }
     }
@@ -275,16 +306,36 @@ public class GameManager : MonoBehaviour {
 			isInBattleOptionScreen = true;
 			NextBattlePopup popUp = battleOptionMenu.GetComponent<NextBattlePopup>();
 			enableLowPassFilter();
-			// popUp.PopUp(powerupList);
-			// TODO: Generate next battle options
-			NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
-			generatedBattleOptions[0] = new NextBattleObject();
-			generatedBattleOptions[0].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
-			generatedBattleOptions[1] = new NextBattleObject();
-			generatedBattleOptions[1].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
-			generatedBattleOptions[2] = new NextBattleObject();
-			generatedBattleOptions[2].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
-			popUp.PopUp(generatedBattleOptions);
+
+			currentRoundNumber++;
+			if(currentRoundNumber >= numberOfRoundsUntillBoss) {
+				// Do boss battle
+				StartCutScene();
+
+				List<GameObject> bossList = new List<GameObject>();
+				bossList.Add(bossEnemy);
+				NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
+				generatedBattleOptions[0] = new NextBattleObject();
+				generatedBattleOptions[0].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
+				generatedBattleOptions[1] = new NextBattleObject();
+				generatedBattleOptions[1].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
+				generatedBattleOptions[2] = new NextBattleObject();
+				generatedBattleOptions[2].SetValues(GenerateHealthOptions(), bossList, GenerateMutationOptions());
+				popUp.PopUp(generatedBattleOptions);
+
+				onLastBattle = true;
+			} else {
+				NextBattleObject[] generatedBattleOptions = new NextBattleObject[3];
+				generatedBattleOptions[0] = new NextBattleObject();
+				generatedBattleOptions[0].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				generatedBattleOptions[1] = new NextBattleObject();
+				generatedBattleOptions[1].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				generatedBattleOptions[2] = new NextBattleObject();
+				generatedBattleOptions[2].SetValues(GenerateHealthOptions(), GenerateEnemyOptions(), GenerateMutationOptions());
+				popUp.PopUp(generatedBattleOptions);
+
+			}
+
 		} else {
 			Debug.Log("No Battle Option menu set in scene, cant open menu...");
 		}
@@ -340,7 +391,7 @@ public class GameManager : MonoBehaviour {
 			enableLowPassFilter();
 			PauseGame();
 		} else {
-			// TODO: Add error sound or something
+			AS.PlayOneShot(errorSound);
 		}
 	}
 

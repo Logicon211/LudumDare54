@@ -66,6 +66,7 @@ MonoBehaviour:
   hurtNoise: {fileID: 8300000, guid: d5715fe2e8f5dc0429cb082eaacdf195, type: 3}
   shield: {fileID: 3526615806533502979}
   shieldHPText: {fileID: 1014171730059160570}
+  shieldDeflect: {fileID: 8300000, guid: b78892b90c9f9c24388a225a435a8838, type: 3}
 --- !u!61 &8791945822063954692
 BoxCollider2D:
   m_ObjectHideFlags: 0

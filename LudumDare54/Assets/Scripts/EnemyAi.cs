@@ -28,7 +28,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     public float currentAttackCooldown = 2f; // May need to be tweaked.
     public string enemyName;
 
-    private Animator animator;
+    protected Animator animator;
     public List<GameObject> attacks;
 
     public TMPro.TMP_Text healthText;
@@ -81,10 +81,11 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
          healthText.text = health.ToString();
     }
 
-    private void FixedUpdate() {
+    protected void FixedUpdate() {
         if (isDead) {
             return;
         }
+
         //Countdown decision cooldown
         if (currentDecisionCooldown > 0f) {
             currentDecisionCooldown -= Time.deltaTime;
@@ -172,7 +173,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     // Negative means the player is lower
     // 0 means we are aligned
     // Positive means the player is higher
-    private int AlignedWithPlayer(Tile playerTile){
+    protected int AlignedWithPlayer(Tile playerTile){
         var combined = gridPosition.y - playerTile.gridY;
         if(debugLogging){
             Debug.Log("Player Y: " + playerTile.gridY + "     Enemy Y: " + gridPosition.y + ". Outcome: " + combined);
@@ -200,7 +201,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         return true;
     }
 
-    public void Move(Tile playerTile, int alignment)
+    protected virtual void Move(Tile playerTile, int alignment)
     {
         if(debugLogging){
             Debug.Log("Move Method reached");
@@ -349,7 +350,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     }
 
     // This method might belong on the BattleGrid instead.
-    private List<legalMoves> determineLegalMoves(){
+    protected List<legalMoves> determineLegalMoves(){
         // Get the boundaries from the battleGrid.
         Vector2 legalBoundaries = battleGrid.getEnemyBoundaries();
         if(debugLogging){
@@ -405,7 +406,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         return legalMoveList;
     }
 
-    private enum legalMoves {
+    protected enum legalMoves {
         Up,
         Right,
         Down,

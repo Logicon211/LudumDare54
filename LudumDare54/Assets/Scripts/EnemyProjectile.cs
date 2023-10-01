@@ -36,7 +36,9 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("TRIGGERING COLLISION");
         if (other.gameObject.tag == "Player") {
+            Debug.Log("HITS PLAYER");
 
             // Hurt this dude.
             other.gameObject.GetComponent<PlayerCharacter>().Damage(damage);

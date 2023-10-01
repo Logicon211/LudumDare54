@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     public bool isPlayerTile = true;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
+    private BattleGrid grid;
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -44,5 +45,13 @@ public class Tile : MonoBehaviour
     {
         entityOnTile = null;
         Debug.Log("Removing entity from tile " + entityOnTile);
+    }
+
+    public void SetGrid(BattleGrid gridIn) {
+        grid = gridIn;
+    }
+
+    public BattleGrid GetGrid() {
+        return grid;
     }
 }

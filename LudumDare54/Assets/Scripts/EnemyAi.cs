@@ -14,7 +14,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     //Player tracker (might not be needed, could just get player position from grid)
     private GameObject player;
-    private BattleGrid battleGrid;
+    protected BattleGrid battleGrid;
     
     //Prevent us from dying twice
     private bool isDead = false;

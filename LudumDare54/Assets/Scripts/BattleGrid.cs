@@ -38,6 +38,7 @@ public class BattleGrid : MonoBehaviour
                 newTile.gridX = x;
                 newTile.gridY = y;
                 grid[x, y] = newTile;
+                newTile.SetGrid(this);
                 // 0, 1, 2
                 if(x > playerTileLength) {
                     newTile.isPlayerTile = false;
@@ -139,6 +140,21 @@ public class BattleGrid : MonoBehaviour
                 Tile potentialTile = grid[xPos, yPos];
                 if (potentialTile.entityOnTile == null){
                     potentialTile.entityOnTile = ai.gameObject;
+                    return potentialTile;
+                }
+            }
+        }
+    }
+
+    public Tile getEnemyBombSpawnLocation(){
+        lock(lock_){
+
+            while(true){
+                var xPos = Random.Range(0, playerTileLength+1);
+                var yPos = Random.Range(0, 3);
+                Debug.Log("Attempting to spawn Bomb at: x: " + xPos + ".   y: " + yPos);
+                Tile potentialTile = grid[xPos, yPos];
+                if (potentialTile.entityOnTile == null){
                     return potentialTile;
                 }
             }

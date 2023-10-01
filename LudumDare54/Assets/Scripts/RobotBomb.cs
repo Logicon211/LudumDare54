@@ -18,9 +18,11 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
 
     private bool isDead = false;
     private Tile onTile;
+
+    private GameManager gameManager;
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -37,9 +39,46 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
             // TODO: write explode code
             Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 
+            BattleGrid grid = onTile.GetGrid();
+            // Check adjacent tiles to explode and damage:
+            int x = onTile.gridX;
+            int y = onTile.gridY;
+
+            Explode(x, y, grid);
+            if(x - 1 >=0) {
+                Explode(x-1, y, grid);
+            }
+            if(x + 1<= 6) {
+                Explode(x+1, y, grid);
+            }
+            if(y - 1 >= 0) {
+                Explode(x, y-1, grid);
+            }
+            if(y + 1 <= 3) {
+                Explode(x, y+1, grid);
+            }
+            if(x - 1 >=0 && y-1 >=0) {
+                Explode(x-1, y-1, grid);
+            }
+            if(x - 1 >=0 && y+1 >=3) {
+                Explode(x-1, y+1, grid);
+            }
+            if(x + 1 >=6 && y+1 >=3) {
+                Explode(x+1, y+1, grid);
+            }
+            if(x + 1 >=6 && y-1 >=0) {
+                Explode(x+1, y-1, grid);
+            }
             Destroy(gameObject);
         }
 
+    }
+
+    public void Explode(int x, int y, BattleGrid grid) {
+        if(grid.getPlayerTile().Equals(grid.grid[x, y])) {
+            gameManager.GetPlayer().Damage(damage);
+        }
+        Instantiate(explosion, new Vector3(grid.grid[x, y].transform.position.x, grid.grid[x, y].transform.position.y, grid.grid[x, y].transform.position.z), Quaternion.identity);
     }
 
     public void Damage(int damageTaken)

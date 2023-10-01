@@ -185,10 +185,10 @@ public class PlayerCharacter : MonoBehaviour
     public void MovePlayerObject() {
         Tile tile = grid.GetTile(position.x, position.y);
         transform.position = tile.GetTransform();
-        tile.SetEntityOnTile(gameObject);
         if (currentTile != null) {
             currentTile.RemoveEntityOnTile();
         }
+        tile.SetEntityOnTile(gameObject);
         currentTile = tile;
     }
 
@@ -234,5 +234,9 @@ public class PlayerCharacter : MonoBehaviour
 
     public Tile GetCurrentTile() {
         return currentTile;
+    }
+
+    public BattleGrid GetGrid() {
+        return grid;
     }
 }

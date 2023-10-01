@@ -904,6 +904,41 @@ PrefabInstance:
       propertyPath: abilityQueueMenuObject
       value: 
       objectReference: {fileID: 2088237822}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: isInAbilityQueueScreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationDeck.Array.data[0]
+      value: 
+      objectReference: {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationDeck.Array.data[1]
+      value: 
+      objectReference: {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationDeck.Array.data[2]
+      value: 
+      objectReference: {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationDeck.Array.data[3]
+      value: 
+      objectReference: {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationDeck.Array.data[4]
+      value: 
+      objectReference: {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3,
+        type: 3}
     - target: {fileID: 1688189896142580202, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_Name

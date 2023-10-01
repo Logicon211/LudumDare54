@@ -316,9 +316,19 @@ MonoBehaviour:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  mutationQueue: []
+  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
+  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
+  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
+  - {fileID: 8671088179486330394, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
+  - {fileID: 8671088179486330394, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
+  - {fileID: 8671088179486330394, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
+  mutationQueue:
+  - {fileID: 8029085408312729460, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
+  - {fileID: 6786844164265499854, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
   allPossibleMutations:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
+  - {fileID: 8671088179486330394, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
+  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
   allPossibleEnemies:
   - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
   - {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4, type: 3}

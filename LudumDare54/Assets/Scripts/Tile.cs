@@ -7,7 +7,11 @@ public class Tile : MonoBehaviour
     public int gridX;
     public int gridY;
 
+    // Anything that can block movement
     public GameObject entityOnTile;
+
+    // Placeables that enemies can walk on
+    public GameObject bombOnTile;
 
     public Sprite playerTile;
     public Sprite enemyTile;
@@ -17,6 +21,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
     private BattleGrid grid;
+    public SpriteRenderer shadowRenderer;
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -29,6 +34,11 @@ public class Tile : MonoBehaviour
             spriteRenderer.sprite = playerTile;
         } else {
             spriteRenderer.sprite = enemyTile;
+        }
+        if (entityOnTile || bombOnTile) {
+            shadowRenderer.enabled = true;
+        } else {
+            shadowRenderer.enabled = false;
         }
     }
 

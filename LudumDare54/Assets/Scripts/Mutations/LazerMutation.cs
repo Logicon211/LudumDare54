@@ -20,8 +20,10 @@ public GameObject lazerPrefab;
         
     }
 
-    public override void useAbility() {
-        Debug.Log("TODO: setup punch ability");
-        //Instantiate lazer prefab
+    public override void useAbility(GameObject playerRef) {
+        Debug.Log("TODO: setup lazer ability");
+        
+        Instantiate(lazerPrefab, new Vector3(playerRef.transform.position.x + 4.6f, playerRef.transform.position.y+ 0.8f, playerRef.transform.position.z), Quaternion.identity);
+
     }
 }

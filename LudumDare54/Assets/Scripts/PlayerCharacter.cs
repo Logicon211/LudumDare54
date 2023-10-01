@@ -113,7 +113,7 @@ public class PlayerCharacter : MonoBehaviour
         if (manager.mutationQueue.Count > 0)
         {
             Debug.Log("Using " + manager.mutationQueue[0].GetName());
-            manager.mutationQueue[0].useAbility();
+            manager.mutationQueue[0].useAbility(gameObject);
             manager.mutationQueue.RemoveAt(0);
             Debug.Log("Mutations left: " + manager.mutationQueue.Count);
         }

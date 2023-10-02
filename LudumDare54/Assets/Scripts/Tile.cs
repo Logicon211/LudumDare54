@@ -36,7 +36,11 @@ public class Tile : MonoBehaviour
             spriteRenderer.sprite = enemyTile;
         }
         if (entityOnTile || bombOnTile) {
-            shadowRenderer.enabled = true;
+            // This logic should be moved to the SetEntityOnTile method.
+            if(entityOnTile.GetComponent<tileCracks>() == null){
+                shadowRenderer.enabled = true;
+            }
+
         } else {
             shadowRenderer.enabled = false;
         }

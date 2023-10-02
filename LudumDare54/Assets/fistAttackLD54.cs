@@ -22,11 +22,13 @@ public class fistAttackLD54 : MonoBehaviour
 
     public void handSlamJamBringTheBam(){
 
+        Debug.Log("Fist has Slammed");
+
         // We are done with our fist animation
         thisFist.SetActive(false);
 
         //Is the player on the tile?
-        var tileEntity = targetTile.entityOnTile;
+        GameObject tileEntity = targetTile.entityOnTile;
         if(tileEntity != null){
             if (tileEntity.gameObject.tag == "Player") {
                 // Hurt this dude.

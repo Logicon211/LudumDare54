@@ -463,19 +463,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeSpeed: 1.5
   sprite:
-  - {fileID: 21300000, guid: 9f1eaa16b2d458345941d751f7f13065, type: 3}
-  - {fileID: 21300000, guid: 1d82b1354872a4548bb82b9c8a89a394, type: 3}
-  - {fileID: 21300000, guid: 7f663e48fa3f3084780782257afbd8e0, type: 3}
-  - {fileID: 21300000, guid: ac49393bb3555754eaff6f803110bff5, type: 3}
-  - {fileID: 21300000, guid: 10360bf378498574d97be81f3cdf53e2, type: 3}
-  - {fileID: 21300000, guid: a739e5fe0cb878640b37500b92a1e486, type: 3}
+  - {fileID: 21300000, guid: d4762dc42d3b8014c804ebe5958d162c, type: 3}
+  - {fileID: 21300000, guid: 90ab817c0f2469f4582b4bbe01056cbc, type: 3}
+  - {fileID: 21300000, guid: 08fb9fd94f9719a42924e315ed07e7ff, type: 3}
+  - {fileID: 21300000, guid: 1aca5f921fc285a418f17321fd532f2a, type: 3}
+  - {fileID: 21300000, guid: b24aa28ab7386ca4fb83d0e7d2b970c4, type: 3}
+  - {fileID: 21300000, guid: 8a90c29cbed030143b2e25536e88a4bc, type: 3}
+  - {fileID: 21300000, guid: 5e3919d6929d64145bdaa499a6ff86ab, type: 3}
+  - {fileID: 21300000, guid: fa74e9810c3d14444a10c9df38f39015, type: 3}
   voiceLines:
-  - {fileID: 8300000, guid: 2cac6d11ed580854f82bb834c0066f09, type: 3}
-  - {fileID: 8300000, guid: 2cac6d11ed580854f82bb834c0066f09, type: 3}
-  - {fileID: 8300000, guid: 2cac6d11ed580854f82bb834c0066f09, type: 3}
-  - {fileID: 8300000, guid: 16a038d436f1aad4b9e8a936d6fe2571, type: 3}
-  - {fileID: 8300000, guid: 354712a748d8ffb4d80139d4504bd7a6, type: 3}
-  - {fileID: 8300000, guid: af9bf851b3b5bd947b52ca8fb6a81378, type: 3}
+  - {fileID: 8300000, guid: f7ed565a87afd544eb64f1dab99e35df, type: 3}
+  - {fileID: 8300000, guid: 0baf1ef9b5a43c044804ab5657442b72, type: 3}
+  - {fileID: 8300000, guid: 87f9352d66564714ba0509ff31053aad, type: 3}
+  - {fileID: 8300000, guid: 494bd2f941c4ddc42b3b15bcd2ced5c1, type: 3}
+  - {fileID: 8300000, guid: 09553c114372f4c4b97162ad301299c8, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 3e7f3c6513e153847842ea0bab9190d9, type: 3}
+  - {fileID: 8300000, guid: 502977cc600152548b35599547a734d4, type: 3}
   disableInputForSeconds: 0.6
   gui: {fileID: 0}
   audioSource: {fileID: 0}

@@ -103,6 +103,7 @@ public class BattleGrid : MonoBehaviour
 
     // Attempt to move an enemy into a tile, returns true if it succeeded?
     private readonly object lock_ = new object();
+    private readonly object bomblock_ = new object();
     public Tile moveEnemyIntoTile(EnemyAi entity, int x, int y){
             // We could synchronize at a different location if this ends up locking the game up. IE: Create a method on tiles to update the entity on it, and synchronize that.
         lock(lock_){
@@ -151,15 +152,21 @@ public class BattleGrid : MonoBehaviour
     }
 
     public Tile getEnemyBombSpawnLocation(){
-        lock(lock_){
+        lock(bomblock_){
 
-            while(true){
-                var xPos = Random.Range(0, playerTileLength+1);
-                var yPos = Random.Range(0, 3);
-                Debug.Log("Attempting to spawn Bomb at: x: " + xPos + ".   y: " + yPos);
-                Tile potentialTile = grid[xPos, yPos];
-                if (potentialTile.entityOnTile == null){
-                    return potentialTile;
+            bool isEveryTileFull = grid[0,0].entityOnTile && grid[1,0].entityOnTile && grid[2,0].entityOnTile && grid[0,1].entityOnTile && grid[1,1].entityOnTile && grid[2,1].entityOnTile && grid[0,2].entityOnTile && grid[1,2].entityOnTile && grid[2,2].entityOnTile;
+
+            if(isEveryTileFull) {
+                return null;
+            } else {
+                while(true){
+                    var xPos = Random.Range(0, playerTileLength+1);
+                    var yPos = Random.Range(0, 3);
+                    Debug.Log("Attempting to spawn Bomb at: x: " + xPos + ".   y: " + yPos);
+                    Tile potentialTile = grid[xPos, yPos];
+                    if (potentialTile.entityOnTile == null){
+                        return potentialTile;
+                    }
                 }
             }
         }

@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: d8374bfa673583043a5ac661d91c7c0e, type: 3}
-  description: 5 damage blast attack hitting the first enemy in front of you
+  description: 3 damage blast attack hitting the first enemy in front of you
   mutationName: Radiation Blast
-  damage: 5
+  damage: 3

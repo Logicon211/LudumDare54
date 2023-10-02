@@ -110,7 +110,9 @@ public class IntroSpriteFlow : MonoBehaviour
 		}
 
 		if (Input.anyKeyDown && initialInputLock <= 0) {//.GetKeyDown(KeyCode.RightArrow)) {
-			voiceAudioSource.Stop();
+			if(slideIndex < slideToStopMusicAndJingle) {
+				voiceAudioSource.Stop();
+			}
 			if(choiceSlidesEnabled) {
 				slideIndex++;
 				if(slideIndex < choiceSpriteArray[currentChoice].Length){

@@ -17,7 +17,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
     protected BattleGrid battleGrid;
     
     //Prevent us from dying twice
-    private bool isDead = false;
+    protected bool isDead = false;
 
     //private Rigidbody2D enemyBody;
     // public GameObject enemyGameObject;
@@ -81,7 +81,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
          healthText.text = health.ToString();
     }
 
-    protected void FixedUpdate() {
+    protected virtual void FixedUpdate() {
         if (isDead) {
             return;
         }

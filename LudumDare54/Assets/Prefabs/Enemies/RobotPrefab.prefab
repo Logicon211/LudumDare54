@@ -450,7 +450,7 @@ MonoBehaviour:
   health: 20
   decisionCooldown: 3
   currentDecisionCooldown: 2.5
-  attackCooldown: 3.5
+  attackCooldown: 4
   currentAttackCooldown: 2
   enemyName: Robot
   attacks:

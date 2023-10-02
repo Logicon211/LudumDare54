@@ -5,15 +5,63 @@ using UnityEngine;
 public class RobotEnemy : EnemyAi
 {
 
+    private static readonly object lock_ = new object();
+
     public override void SpawnAttack(){
 
         Debug.Log("attak spawned.");
+        lock(lock_){
+            AS.PlayOneShot(attackSound);
+            // TELEPORT SOME BOMBS
+            Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
+            if(bombSpawnTile){
+                GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
+                bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
+            }
+        }
+    }
 
-        AS.PlayOneShot(attackSound);
-        // TELEPORT SOME BOMBS
-        Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
-        GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
-        bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
+    protected override void FixedUpdate() {
+        if (isDead) {
+            return;
+        }
+
+        //Countdown decision cooldown
+        if (currentDecisionCooldown > 0f) {
+            currentDecisionCooldown -= Time.deltaTime;
+        }
+
+        //Countdown attack cooldown
+        if (currentAttackCooldown > 0f) {
+            currentAttackCooldown -= Time.deltaTime;
+        }
+
+
+        if( currentDecisionCooldown <= 0){
+            // If both cooldowns, check player position
+            var playerTile = battleGrid.getPlayerTile();
+            // If player position lined up
+            var alignment = AlignedWithPlayer(playerTile);
+
+            if( currentAttackCooldown <= 0){
+
+                Attack();
+
+                // if(ClearLineToPlayer(playerTile)){
+                //     Debug.Log("Attack time");
+                //     Attack();
+                // }
+                // else{
+                //     Debug.Log("Aligned, off cooldown, no line of sight, move time");
+                //     Move(playerTile, alignment);
+                // }
+            }
+            // else move
+            else{
+                Move(playerTile, alignment);
+            }
+            // else player position not lined up
+        }
     }
 
     protected override void Move(Tile playerTile, int alignment)

@@ -14,6 +14,11 @@ public class AbilityRefreshBar : MonoBehaviour
     private float maxAbilityRefreshTime;
 
     public GameObject abilityRefreshText;
+
+    public AudioClip abilityRefreshReady;
+    private AudioSource AS;
+
+    private bool playedSound = false;
     
     // Start is called before the first frame update
     void Start()
@@ -22,16 +27,22 @@ public class AbilityRefreshBar : MonoBehaviour
         barRenderer = bar.Find("BarSprite").gameObject.GetComponent<SpriteRenderer>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         maxAbilityRefreshTime = gameManager.maxAbilityRefreshTime;
-        currentTimeRemaining = gameManager.maxAbilityRefreshTime;
+        currentTimeRemaining = 0f;
+        AS = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTimeRemaining -= Time.deltaTime;
-        if(currentTimeRemaining <= 0f) {
+        if(currentTimeRemaining >= maxAbilityRefreshTime) {
             gameManager.abilityRefreshAvailable = true;
-            currentTimeRemaining = 0f;
+            currentTimeRemaining = maxAbilityRefreshTime;
+            if(!playedSound){
+                AS.PlayOneShot(abilityRefreshReady);
+                playedSound = true;
+            }
+        } else {
+            currentTimeRemaining += Time.deltaTime;
         }
 
         if (gameManager.abilityRefreshAvailable) {
@@ -43,7 +54,8 @@ public class AbilityRefreshBar : MonoBehaviour
     }
 
     public void resetAbilityCountdown() {
-        currentTimeRemaining = maxAbilityRefreshTime;
+        currentTimeRemaining = 0f;
+        playedSound = false;
     }
 
     public float SetBar()

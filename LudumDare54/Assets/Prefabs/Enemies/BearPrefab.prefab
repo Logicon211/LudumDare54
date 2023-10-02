@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
-  health: 40
+  health: 45
   decisionCooldown: 3
   currentDecisionCooldown: 2.5
   attackCooldown: 3.2
@@ -366,7 +366,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 21db3550c1c88ed40a3d6917734dc8f0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.311
+  m_Volume: 0.209
   m_Pitch: 1
   Loop: 1
   Mute: 0

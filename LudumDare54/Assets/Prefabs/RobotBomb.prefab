@@ -575,8 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5583cb25782ee7245aff3ccce8d43ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
-  damage: 5
+  timer: 4
+  damage: 10
   health: 10
   HPText: {fileID: 8459351545797680097}
   timertext: {fileID: 7019943449659749147}

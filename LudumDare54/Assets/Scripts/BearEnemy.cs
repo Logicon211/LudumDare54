@@ -15,6 +15,7 @@ public class BearEnemy : EnemyAi
 //     {
         
 //     }
+    private bool isAttacking = false;
 
     public override void SpawnAttack(){
 
@@ -28,11 +29,31 @@ public class BearEnemy : EnemyAi
         if(!AS.isPlaying) {
             AS.Play();
         }
+        isAttacking = true;
     }
 
     public void StopAttackSound() {
         if(AS) {
             AS.Stop();
         }
+        IEnumerator coroutine = DisableAttackLock(0.5f);
+        StartCoroutine(coroutine);
     }
+
+    protected override void Move(Tile playerTile, int alignment)
+    {
+        if(!isAttacking){
+            base.Move(playerTile, alignment);
+        }
+    }
+
+    private IEnumerator DisableAttackLock(float waitTime)
+    {
+		while (true)
+        {
+			yield return new WaitForSeconds(waitTime);
+			isAttacking = false;
+			yield break;
+		}
+	}
 }

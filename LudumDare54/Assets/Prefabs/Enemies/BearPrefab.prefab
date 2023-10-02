@@ -324,7 +324,7 @@ MonoBehaviour:
   decisionCooldown: 3
   currentDecisionCooldown: 2.5
   attackCooldown: 3.2
-  currentAttackCooldown: 2
+  currentAttackCooldown: 2.5
   enemyName: Bear
   attacks:
   - {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5, type: 3}

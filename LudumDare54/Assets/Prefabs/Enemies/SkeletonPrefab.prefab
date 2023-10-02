@@ -126,8 +126,8 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 0}
   health: 20
   decisionCooldown: 3
-  currentDecisionCooldown: 2.5
-  attackCooldown: 3.2
+  currentDecisionCooldown: 2
+  attackCooldown: 3
   currentAttackCooldown: 2
   enemyName: Skeleton
   attacks:

@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesHit: []
-  damage: 2
+  damage: 3
   timeToLive: 5
   numPenetrations: 0
   hitEffect: {fileID: 699238079655380226, guid: 7cb82002a4f3915459fd5376581274ee,

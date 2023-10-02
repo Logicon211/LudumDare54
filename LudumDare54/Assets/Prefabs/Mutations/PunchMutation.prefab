@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 21a236fd3a4267f419261f2474d30b4f, type: 3}
-  description: Punch the 3 tiles horizontally in front of you for X damaged
+  description: Punch the 3 tiles horizontally in front of you for 10 damaged
   mutationName: Power Punch
   range: 1
   columnRange: 3
-  damage: 5
+  damage: 10
   projectile: {fileID: 1681410745762069196, guid: ef54df6b7569d7440ab7dee0b73a3c56,
     type: 3}

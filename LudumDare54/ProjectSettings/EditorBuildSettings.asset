@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/LoadingScene.unity
     guid: 341d782ee9704674c8d0df66362204bf
   - enabled: 1
-    path: Assets/Scenes/Logan Test Scene.unity
+    path: Assets/Scenes/Final Scenes/MainScene.unity
     guid: eea3eb399d337c648a2c891c17d841c2
   - enabled: 1
     path: Assets/Scenes/Final Scenes/VictoryScene.unity

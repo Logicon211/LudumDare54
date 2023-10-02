@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
-  health: 20
-  decisionCooldown: 3
+  health: 30
+  decisionCooldown: 1.8
   currentDecisionCooldown: 2
-  attackCooldown: 3
+  attackCooldown: 2.3
   currentAttackCooldown: 2
   enemyName: Skeleton
   attacks:

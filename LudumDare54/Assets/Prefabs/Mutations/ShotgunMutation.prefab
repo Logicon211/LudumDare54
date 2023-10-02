@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e5ddb72a214e73444a22b90e3fd10503, type: 3}
-  description: Craig summons his ancestral weapon to blast away his foes. Bullets
+  description: Craig summons his ancestral boomstick to blast away his foes. Bullets
     fly out at random and each deal 3 damage
   mutationName: Shotgun
   shotgunPrefab: {fileID: 8946390476863228909, guid: 07ff0e9bec0613a4bbc467fa6840ac59,

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 21a236fd3a4267f419261f2474d30b4f, type: 3}
-  description: Punch the 3 tiles horizontally in front of you for 15 damage
+  description: Unleash a trio of SIMULTANEOUS punches that hit the 3 tiles closest
+    to Craig dealing 15 damage
   mutationName: Power Punch
   range: 1
   columnRange: 3

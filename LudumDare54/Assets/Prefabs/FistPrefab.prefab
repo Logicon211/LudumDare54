@@ -49,6 +49,7 @@ MonoBehaviour:
   targetTile: {fileID: 0}
   thisFist: {fileID: 1790813598197369036}
   cracks: {fileID: 3172517697988563963, guid: 2d997e98ef5dc6d4b925bb7355feb594, type: 3}
+  fistSprite: {fileID: 1886796639731197220}
 --- !u!1 &8421714692854383774
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +242,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 212617234916502392, guid: 4f6fa8b665a2a884da12dc38aeb7699d,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212617234916502392, guid: 4f6fa8b665a2a884da12dc38aeb7699d,
+        type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
@@ -304,3 +310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fistRef: {fileID: 1237822466645257580}
+--- !u!212 &1886796639731197220 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212617234916502392, guid: 4f6fa8b665a2a884da12dc38aeb7699d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791414176347246172}
+  m_PrefabAsset: {fileID: 0}

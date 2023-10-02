@@ -7,16 +7,23 @@ public class RobotEnemy : EnemyAi
 
     private static readonly object lock_ = new object();
 
+
+    public void Awake() {
+        currentAttackCooldown += Random.Range(-1f, 2f);
+        currentDecisionCooldown = Random.Range(-1f, 1f);
+    }
     public override void SpawnAttack(){
 
         Debug.Log("attak spawned.");
         lock(lock_){
-            AS.PlayOneShot(attackSound);
-            // TELEPORT SOME BOMBS
-            Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
-            if(bombSpawnTile){
-                GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
-                bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
+            if(!isDead) {
+                AS.PlayOneShot(attackSound);
+                // TELEPORT SOME BOMBS
+                Tile bombSpawnTile = battleGrid.getEnemyBombSpawnLocation();
+                if(bombSpawnTile){
+                    GameObject bomb = Instantiate(attacks[0], new Vector3(bombSpawnTile.transform.position.x, bombSpawnTile.transform.position.y, bombSpawnTile.transform.position.z), Quaternion.identity);
+                    bomb.GetComponent<RobotBomb>().SetTile(bombSpawnTile);
+                }
             }
         }
     }

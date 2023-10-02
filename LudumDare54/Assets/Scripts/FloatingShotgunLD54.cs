@@ -13,7 +13,7 @@ public class FloatingShotgunLD54 : MonoBehaviour
 
     private float damage = 2;
     private float projectileSpeed = 5f;
-    private int numberOfProjectiles = 6;
+    public int numberOfProjectiles = 8;
 
     public float accuracy = 8f;
     private bool fired = false;

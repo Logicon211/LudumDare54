@@ -8,6 +8,8 @@ public class fistAttackLD54 : MonoBehaviour
     public Tile targetTile;
     public GameObject thisFist;
     public GameObject cracks;
+
+    public SpriteRenderer fistSprite;
     // Start is called before the first frame update
     void Start()
     {

@@ -7,7 +7,7 @@ public class tileCracks : MonoBehaviour
 
 
     public Tile myTile;
-    private float timeToLive = 5f;
+    public float timeToLive = 6f;
 
     // Start is called before the first frame update
     void Start()

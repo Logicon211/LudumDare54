@@ -75,6 +75,10 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerSprite && currentTile) {
+            playerSprite.sortingOrder = 2 + (currentTile.gridY * 3);
+        }
+
         if(!manager.IsPaused()) {
             Move();
             Attack();
@@ -137,7 +141,6 @@ public class PlayerCharacter : MonoBehaviour
 
     void RegularAttack()
     {
-        animator.SetTrigger("BasicAttack");
         for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
             Tile attackTile = grid.GetTile(x, position.y);
             if (attackTile.entityOnTile != null )
@@ -160,6 +163,7 @@ public class PlayerCharacter : MonoBehaviour
                     continue;
                 }
 
+                animator.SetTrigger("BasicAttack");
                 AS.PlayOneShot(laserNoise);
 
                 Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);
@@ -171,7 +175,6 @@ public class PlayerCharacter : MonoBehaviour
 
     public void BoostedAttack(int damage)
     {
-        animator.SetTrigger("BasicAttack");
         for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
             Tile attackTile = grid.GetTile(x, position.y);
             if (attackTile.entityOnTile != null )
@@ -194,6 +197,7 @@ public class PlayerCharacter : MonoBehaviour
                     continue;
                 }
                 // The manager clip player is louder
+                animator.SetTrigger("BasicAttack");
                 manager.PlayClip(laserNoise);
 
                 Instantiate(bigHitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);

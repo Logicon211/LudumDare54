@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 089ccb0abaab78140aa23b1033a0a2ea, type: 3}
-  description: Craig's Radiation Shield will block 10 damage. Slowly dissipates
+  description: Craig's Radiation Shielding will block 10 damage. Damage to shield
+    will not spill over into Craig.  Slowly dissipates
   mutationName: Shield
   shieldValue: 10

@@ -20,6 +20,8 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
     private Tile onTile;
 
     private GameManager gameManager;
+
+    public SpriteRenderer sprite;
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -29,6 +31,8 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
     void Update()
     {
         timer -= Time.deltaTime;
+
+        sprite.sortingOrder = 2 + (onTile.gridY * 3);
         
         if(HPText) {
             HPText.text = health.ToString();

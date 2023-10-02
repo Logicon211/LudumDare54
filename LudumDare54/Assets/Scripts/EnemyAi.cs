@@ -33,7 +33,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
 
     public TMPro.TMP_Text healthText;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
     public float tileHeightOffset = 0f;
     public Transform attackLocation;
@@ -70,7 +70,7 @@ public class EnemyAi: MonoBehaviour, IDamageable<int>, IKillable
         AS = gameObject.GetComponent<AudioSource>();
     }
 
-     private void Update () {
+     protected virtual void Update () {
         if (isDead) {
             currentKillTimer -= Time.deltaTime;
             if(currentKillTimer <= 0f) {

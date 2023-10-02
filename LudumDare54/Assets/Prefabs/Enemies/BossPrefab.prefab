@@ -270,7 +270,7 @@ MonoBehaviour:
   currentDecisionCooldown: 0.9
   attackCooldown: 1
   currentAttackCooldown: 2
-  enemyName: Timy Tim Master of Time
+  enemyName: Timey Tim Master of Time
   attacks: []
   healthText: {fileID: 5191642112002153897}
   tileHeightOffset: 1

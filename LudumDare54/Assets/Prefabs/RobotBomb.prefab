@@ -577,10 +577,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 4
   damage: 10
-  health: 10
+  health: 8
   HPText: {fileID: 8459351545797680097}
   timertext: {fileID: 7019943449659749147}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
+  sprite: {fileID: 7338566976435910792}
 --- !u!1001 &8729611789587574086
 PrefabInstance:
   m_ObjectHideFlags: 0

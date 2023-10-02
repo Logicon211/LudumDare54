@@ -356,9 +356,28 @@ public class GameManager : MonoBehaviour {
 		int maxNumberOfEnemies = (int)Random.Range(3, 8);
 		List<GameObject> enemyList = new List<GameObject>();
 		for(int i = 0; i < maxNumberOfEnemies; i++) {
-			enemyList.Add(allPossibleEnemies[(int)Random.Range(0, allPossibleEnemies.Count)]);
+			// Check for too many robots
+			if(CountRobots(enemyList) < 3) {
+				Debug.Log("ADDING POTENTIAL ROBOT ENEMIES");
+				enemyList.Add(allPossibleEnemies[(int)Random.Range(0, allPossibleEnemies.Count)]);
+			} else {
+				Debug.Log("ADDING NON ROBOT ENEMIES");
+				enemyList.Add(allPossibleEnemies[(int)Random.Range(0, allPossibleEnemies.Count-1)]);
+			}
 		}
 		return enemyList;
+	}
+
+	private int CountRobots(List<GameObject> enemyList) {
+		int count = 0;
+		foreach (GameObject enemy in enemyList)
+		{
+			if(enemy.GetComponent<EnemyAi>().enemyName == "Robot") {
+				count++;
+			}
+		}
+		Debug.Log("COUNT IS " + count);
+		return count;
 	}
 
 	private GameObject GenerateMutationOptions() {

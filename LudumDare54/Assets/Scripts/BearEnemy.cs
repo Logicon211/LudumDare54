@@ -16,13 +16,31 @@ public class BearEnemy : EnemyAi
         
 //     }
     private bool isAttacking = false;
+    private float initialVolume;
+
+
+    public void Awake() {
+        AS = gameObject.GetComponent<AudioSource>();
+        initialVolume = AS.volume;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if(gameManager.IsPaused()) {
+            AS.volume = 0f;
+        } else {
+            AS.volume = initialVolume;
+        }
+    }
 
     public override void SpawnAttack(){
 
         // Debug.Log("attak spawned.");
-
-        GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
-        projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);
+        if(isAttacking){
+            GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
+            projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);
+        }
     }
 
     public void StartAttackSound() {

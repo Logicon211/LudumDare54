@@ -53,7 +53,7 @@ public class PunchMutation : Mutation
             Vector2Int vec = new Vector2Int(originX + 1, y);
             if (IsValidTile(grid, vec)) {
                 grid.GetTile(vec).Damage(damage);
-                Instantiate(projectile, grid.GetTile(originX, y).GetTransform(), Quaternion.identity);
+                Instantiate(projectile, new Vector3(grid.GetTile(originX, y).GetTransform().x, grid.GetTile(originX, y).GetTransform().y, -1), Quaternion.identity);
             }
         }
     }

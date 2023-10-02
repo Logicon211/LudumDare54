@@ -23,7 +23,11 @@ public GameObject lazerPrefab;
     public override void useAbility(GameObject playerRef) {
         Debug.Log("TODO: setup lazer ability");
         
-        Instantiate(lazerPrefab, new Vector3(playerRef.transform.position.x + 4.6f, playerRef.transform.position.y+ 0.8f, playerRef.transform.position.z), Quaternion.identity);
+        PlayerCharacter player = playerRef.GetComponent<PlayerCharacter>();
+
+        LaserProjectile2 laser = Instantiate(lazerPrefab, new Vector3(playerRef.transform.position.x + 4.6f, playerRef.transform.position.y+ 0.8f, playerRef.transform.position.z), Quaternion.identity).GetComponent<LaserProjectile2>();
+        laser.SetDamagingTiles(player.GetCurrentTile());
+
 
     }
 }

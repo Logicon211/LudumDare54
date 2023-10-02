@@ -204,7 +204,10 @@ public class PlayerCharacter : MonoBehaviour
         Tile tile = grid.GetTile(position.x, position.y);
         transform.position = tile.GetTransform();
         if (currentTile != null) {
-            currentTile.RemoveEntityOnTile();
+                //So we don't remove cracks.
+                if(currentTile.entityOnTile == gameObject){
+                    currentTile.RemoveEntityOnTile();
+                }
         }
         tile.SetEntityOnTile(gameObject);
         currentTile = tile;

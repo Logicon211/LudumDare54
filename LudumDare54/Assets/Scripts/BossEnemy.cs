@@ -13,6 +13,7 @@ public class BossEnemy : EnemyAi
 
     public List<GameObject> gunAttacks;
     public float movementCooldown = 0.5f;
+    public GameObject fistAttack;
 
     // Update is called once per frame
     protected void FixedUpdate()
@@ -27,15 +28,13 @@ public class BossEnemy : EnemyAi
             currentAttackCooldown -= Time.deltaTime;
         }
 
+
+        if( currentDecisionCooldown <= 0){
         // If both cooldowns, check player position
         var playerTile = battleGrid.getPlayerTile();
     
         // Is player position lined up
         var alignment = AlignedWithPlayer(playerTile);
-
-
-        if( currentDecisionCooldown <= 0){
-
 
             // If our attack is off cooldown we are doing an attack.
             if( currentAttackCooldown <= 0){
@@ -158,9 +157,16 @@ public class BossEnemy : EnemyAi
     }
 
     public void spawnFistAttack(){
-        
+
     }
 
+
+    public void SummonFist(){
+        Tile currentPlayerTile = battleGrid.getPlayerTile();
+        GameObject fist = Instantiate(fistAttack, currentPlayerTile.transform.position, Quaternion.identity);
+       // projectile.getComponent(battleGrid.getPlayerTile;
+        fist.GetComponent<fistAttackLD54>().targetTile = currentPlayerTile;
+    }
 
 
     public void SpawnGunAttack(){

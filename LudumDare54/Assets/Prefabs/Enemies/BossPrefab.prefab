@@ -168,7 +168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.514
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -284,6 +284,10 @@ MonoBehaviour:
   movementCooldown: 0.5
   fistAttack: {fileID: 6688563521010792128, guid: f6df4139b4ac3d141985bb91072b407b,
     type: 3}
+  fistCooldown: 3
+  currentFistCooldown: 3
+  summonFistNoise: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
+  shootNoise: {fileID: 8300000, guid: 0e14607f35b5a064ba3c403869ae34c2, type: 3}
 --- !u!1 &7998053704028145165
 GameObject:
   m_ObjectHideFlags: 0

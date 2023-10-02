@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BaseBlastMutation : Mutation
 {
+
+    public int damage = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,7 @@ public class BaseBlastMutation : Mutation
     public override void useAbility(GameObject playerRef) {
         Debug.Log("TODO: setup base blast ability");
         
+        playerRef.GetComponent<PlayerCharacter>().BoostedAttack(damage);
         // Instantiate(lazerPrefab, new Vector3(playerRef.transform.position.x + 4.6f, playerRef.transform.position.y+ 0.8f, playerRef.transform.position.z), Quaternion.identity);
 
     }

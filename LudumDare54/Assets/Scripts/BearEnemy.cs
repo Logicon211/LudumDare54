@@ -31,6 +31,8 @@ public class BearEnemy : EnemyAi
     }
 
     public void StopAttackSound() {
-        AS.Stop();
+        if(AS) {
+            AS.Stop();
+        }
     }
 }

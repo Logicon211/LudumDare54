@@ -37,7 +37,7 @@ public class fistAttackLD54 : MonoBehaviour
         }
 
         // Instantiate the cracked ground.
-        GameObject crack = Instantiate(cracks, targetTile.transform.position, Quaternion.identity);
+        GameObject crack = Instantiate(cracks, new Vector3(targetTile.transform.position.x+0.25f, targetTile.transform.position.y, targetTile.transform.position.z), Quaternion.Euler(0f, 0f, 80.934f)); /*Quaternion.identity);*/
        // projectile.getComponent(battleGrid.getPlayerTile;
         crack.GetComponent<tileCracks>().myTile = targetTile;
         // give it a reference to the tile.

@@ -55,6 +55,8 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   hitEffect: {fileID: 699238079655380226, guid: 7cb82002a4f3915459fd5376581274ee,
     type: 3}
+  bigHitEffect: {fileID: 1101477100061289339, guid: 731f1ceca6cfdd3429f51c622256d99d,
+    type: 3}
   grid: {fileID: 0}
   manager: {fileID: 0}
   MovementCooldown: 0.1

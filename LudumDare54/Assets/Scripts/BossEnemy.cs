@@ -18,6 +18,9 @@ public class BossEnemy : EnemyAi
     public float fistCooldown = 3f;
     public float currentFistCooldown = 3f;
 
+    public AudioClip summonFistNoise;
+    public AudioClip shootNoise;
+
     // Update is called once per frame
     protected void FixedUpdate()
     {
@@ -173,6 +176,7 @@ public class BossEnemy : EnemyAi
 
 
     public void SummonFist(){
+        AS.PlayOneShot(summonFistNoise);
         Tile currentPlayerTile = battleGrid.getPlayerTile();
         GameObject fist = Instantiate(fistAttack, currentPlayerTile.transform.position, Quaternion.identity);
        // projectile.getComponent(battleGrid.getPlayerTile;
@@ -183,6 +187,7 @@ public class BossEnemy : EnemyAi
     public void SpawnGunAttack(){
 
         Debug.Log("attack spawned.");
+        AS.PlayOneShot(shootNoise);
         // Spawn his three bullet projectiles.
         foreach (GameObject attack in gunAttacks)
         {

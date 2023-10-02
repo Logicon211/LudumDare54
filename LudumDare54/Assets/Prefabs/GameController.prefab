@@ -343,8 +343,8 @@ MonoBehaviour:
   initialEnemySpawnList:
   - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
   - {fileID: 8447526338186515970, guid: 1197b19271db1a94db2cb2814323d7bc, type: 3}
-  numberOfRoundsUntillBoss: 10
+  numberOfRoundsUntillBoss: 1
   isInCutScene: 0
   errorSound: {fileID: 8300000, guid: 5976e633048aaf8448c088a76e3cb0b4, type: 3}
-  bossEnemy: {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4,
+  bossEnemy: {fileID: 7082877181016011367, guid: 7596c9b88b274004294fc498ae10c4e5,
     type: 3}

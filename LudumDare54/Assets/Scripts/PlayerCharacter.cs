@@ -110,14 +110,18 @@ public class PlayerCharacter : MonoBehaviour
             Tile attackTile = grid.GetTile(x, position.y);
             if (attackTile.entityOnTile != null )
             {
+                EnemyAi enemy = null;
+                RobotBomb bomb = null;
                 Debug.Log("Enemy hit");
-                EnemyAi enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
+                enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
                 if(enemy) {
                     enemy.Damage(1);
                 }
-                RobotBomb bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
-                if(bomb) {
-                    bomb.Damage(1);
+                if (attackTile.entityOnTile != null) {
+                    bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
+                    if(bomb) {
+                        bomb.Damage(1);
+                    }
                 }
 
                 if(!bomb && !enemy){
@@ -133,21 +137,29 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    void BoostedAttack(int damage)
+    public void BoostedAttack(int damage)
     {
         animator.SetTrigger("BasicAttack");
         for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
             Tile attackTile = grid.GetTile(x, position.y);
             if (attackTile.entityOnTile != null )
             {
+                EnemyAi enemy = null;
+                RobotBomb bomb = null;
                 Debug.Log("Enemy hit");
-                EnemyAi enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
+                enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
                 if(enemy) {
                     enemy.Damage(damage);
                 }
-                RobotBomb bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
-                if(bomb) {
-                    bomb.Damage(damage);
+                if (attackTile.entityOnTile != null) {
+                    bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
+                    if(bomb) {
+                        bomb.Damage(damage);
+                    }
+                }
+
+                if(!bomb && !enemy){
+                    continue;
                 }
                 // The manager clip player is louder
                 manager.PlayClip(laserNoise);

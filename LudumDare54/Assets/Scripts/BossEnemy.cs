@@ -15,6 +15,9 @@ public class BossEnemy : EnemyAi
     public float movementCooldown = 0.5f;
     public GameObject fistAttack;
 
+    public float fistCooldown = 3f;
+    public float currentFistCooldown = 3f;
+
     // Update is called once per frame
     protected void FixedUpdate()
     {
@@ -26,6 +29,10 @@ public class BossEnemy : EnemyAi
         //Countdown attack cooldown
         if (currentAttackCooldown > 0f) {
             currentAttackCooldown -= Time.deltaTime;
+        }
+
+        if (currentFistCooldown > 0f) {
+            currentFistCooldown -= Time.deltaTime;
         }
 
 
@@ -53,16 +60,20 @@ public class BossEnemy : EnemyAi
 
         //Gun attack if we are lined up.
         if(alignment == 0){
-            animator.SetTrigger("GunAttack");
+            animator.SetTrigger("GunAttack");   
+            // Reset both cooldowns
+            currentDecisionCooldown = decisionCooldown;
+            currentAttackCooldown = attackCooldown;
+
         }
-
-
-
-        animator.SetTrigger("OtherAttack");
-
-        // Reset both cooldowns
-        currentDecisionCooldown = decisionCooldown;
-        currentAttackCooldown = attackCooldown;
+        else{
+            if( currentFistCooldown <= 0){
+                animator.SetTrigger("OtherAttack");
+                currentDecisionCooldown = decisionCooldown;
+                currentAttackCooldown = attackCooldown;
+                currentFistCooldown = fistCooldown;
+            }
+        }
     }
 
     protected override void Move(Tile playerTile, int alignment)

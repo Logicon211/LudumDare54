@@ -24,7 +24,7 @@ public class tileCracks : MonoBehaviour
     void FixedUpdate(){
         timeToLive -= Time.deltaTime;
         if(timeToLive < 0){
-
+            KillCracks();
         }
     }
 

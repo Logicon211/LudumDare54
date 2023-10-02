@@ -1625,40 +1625,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: fistAttack
-      value: 
-      objectReference: {fileID: 6688563521010792128, guid: f6df4139b4ac3d141985bb91072b407b,
-        type: 3}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: tileHeightOffset
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: gunAttacks.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: gunAttacks.Array.data[0]
-      value: 
-      objectReference: {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5,
-        type: 3}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: gunAttacks.Array.data[1]
-      value: 
-      objectReference: {fileID: 8191741363996112965, guid: ef8a6603e2febcc4c9b4464aa6412f7c,
-        type: 3}
-    - target: {fileID: 9216062423316190462, guid: 7596c9b88b274004294fc498ae10c4e5,
-        type: 3}
-      propertyPath: gunAttacks.Array.data[2]
-      value: 
-      objectReference: {fileID: 2835454092647464839, guid: aba7260af43c0524e8dc14270ee716c8,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

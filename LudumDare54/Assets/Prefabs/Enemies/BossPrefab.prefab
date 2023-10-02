@@ -273,10 +273,17 @@ MonoBehaviour:
   enemyName: 
   attacks: []
   healthText: {fileID: 5191642112002153897}
-  tileHeightOffset: 0
+  tileHeightOffset: 1
   attackLocation: {fileID: 6211957723308677279}
   attackSound: {fileID: 0}
-  gunAttacks: []
+  deathExplosion: {fileID: 0}
+  gunAttacks:
+  - {fileID: 5146089050479900520, guid: 265aadef9c15b454ba755be24daf1ac5, type: 3}
+  - {fileID: 8191741363996112965, guid: ef8a6603e2febcc4c9b4464aa6412f7c, type: 3}
+  - {fileID: 2835454092647464839, guid: aba7260af43c0524e8dc14270ee716c8, type: 3}
+  movementCooldown: 0.5
+  fistAttack: {fileID: 6688563521010792128, guid: f6df4139b4ac3d141985bb91072b407b,
+    type: 3}
 --- !u!1 &7998053704028145165
 GameObject:
   m_ObjectHideFlags: 0

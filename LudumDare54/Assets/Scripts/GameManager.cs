@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
 	public int numberOfRoundsUntillBoss = 1;
 	private bool onLastBattle = false;
-	private int currentRoundNumber = 0;
+	public int currentRoundNumber = 0;
 	public bool isInCutScene = false;
 
 	public AudioClip errorSound;

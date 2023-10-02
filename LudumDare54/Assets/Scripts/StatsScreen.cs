@@ -11,6 +11,7 @@ public class StatsScreen : MonoBehaviour
     public GameObject[] iconAndContainers = new GameObject[5];
     public TMP_Text[] iconTexts = new TMP_Text[5];
 
+    public TMP_Text roundsRemaining;
     public struct MutationTuple
     {
         public Mutation mutation;
@@ -53,6 +54,7 @@ public class StatsScreen : MonoBehaviour
 
         // HashSet<Mutation, int> totalCount = new HashSet<Mutation, int>();
         UpdateStatScreen();
+        roundsRemaining.text = (gameManager.numberOfRoundsUntillBoss - gameManager.currentRoundNumber) + " battles remaining until you reach the top! ";
     }
 
     void UpdateStatScreen() {

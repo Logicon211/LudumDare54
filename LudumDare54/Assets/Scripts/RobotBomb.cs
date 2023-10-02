@@ -37,14 +37,14 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
             timertext.text = ((int)timer).ToString();
         }
 
+        BattleGrid grid = onTile.GetGrid();
+        // Check adjacent tiles to explode and damage:
+        int x = onTile.gridX;
+        int y = onTile.gridY;
         if(timer <= 0f) {
             // TODO: write explode code
             // Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 
-            BattleGrid grid = onTile.GetGrid();
-            // Check adjacent tiles to explode and damage:
-            int x = onTile.gridX;
-            int y = onTile.gridY;
 
             Explode(x, y, grid);
             if(x - 1 >=0) {
@@ -72,15 +72,46 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
                 Explode(x+1, y-1, grid);
             }
             Destroy(gameObject);
+        } else {
+            // Set Flashing:
+            if(x - 1 >=0) {
+                SetFlashing(grid.grid[x-1, y], true);
+            }
+            if(x + 1 < 6) {
+                SetFlashing(grid.grid[x+1, y], true);
+            }
+            if(y - 1 >= 0) {
+                SetFlashing(grid.grid[x, y-1], true);
+            }
+            if(y + 1 < 3) {
+                SetFlashing(grid.grid[x, y+1], true);
+            }
+            if(x - 1 >=0 && y-1 >=0) {
+                SetFlashing(grid.grid[x-1, y-1], true);
+            }
+            if(x - 1 >=0 && y+1 <3) {
+                SetFlashing(grid.grid[x-1, y+1], true);
+            }
+            if(x + 1 <6 && y+1 <3) {
+                SetFlashing(grid.grid[x+1, y+1], true);
+            }
+            if(x + 1 <6 && y-1 >=0) {
+                SetFlashing(grid.grid[x+1, y-1], true);
+            }
         }
 
     }
 
     public void Explode(int x, int y, BattleGrid grid) {
+        SetFlashing(grid.grid[x, y], false);
         if(grid.getPlayerTile().Equals(grid.grid[x, y])) {
             gameManager.GetPlayer().Damage(damage);
         }
         Instantiate(explosion, new Vector3(grid.grid[x, y].transform.position.x, grid.grid[x, y].transform.position.y, grid.grid[x, y].transform.position.z), Quaternion.identity);
+    }
+
+    public void SetFlashing(Tile tile, bool flashing) {
+        tile.enableFlashing = flashing;
     }
 
     public void Damage(int damageTaken)
@@ -98,6 +129,35 @@ public class RobotBomb : MonoBehaviour, IDamageable<int>
     public void Kill()
     {
         if(!isDead) {
+            BattleGrid grid = onTile.GetGrid();
+            int x = onTile.gridX;
+            int y = onTile.gridY;
+            // Set Flashing:
+            if(x - 1 >=0) {
+                SetFlashing(grid.grid[x-1, y], false);
+            }
+            if(x + 1 < 6) {
+                SetFlashing(grid.grid[x+1, y], false);
+            }
+            if(y - 1 >= 0) {
+                SetFlashing(grid.grid[x, y-1], false);
+            }
+            if(y + 1 < 3) {
+                SetFlashing(grid.grid[x, y+1], false);
+            }
+            if(x - 1 >=0 && y-1 >=0) {
+                SetFlashing(grid.grid[x-1, y-1], false);
+            }
+            if(x - 1 >=0 && y+1 <3) {
+                SetFlashing(grid.grid[x-1, y+1], false);
+            }
+            if(x + 1 <6 && y+1 <3) {
+                SetFlashing(grid.grid[x+1, y+1], false);
+            }
+            if(x + 1 <6 && y-1 >=0) {
+                SetFlashing(grid.grid[x+1, y-1], false);
+            }
+
             isDead = true;
             Destroy(gameObject);
         }

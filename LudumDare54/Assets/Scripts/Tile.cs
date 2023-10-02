@@ -22,6 +22,8 @@ public class Tile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BattleGrid grid;
     public SpriteRenderer shadowRenderer;
+    public GameObject flashingTile;
+    public bool enableFlashing = false;
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -39,6 +41,12 @@ public class Tile : MonoBehaviour
             shadowRenderer.enabled = true;
         } else {
             shadowRenderer.enabled = false;
+        }
+
+        if(enableFlashing) {
+            flashingTile.SetActive(true);
+        } else {
+            flashingTile.SetActive(false);
         }
     }
 

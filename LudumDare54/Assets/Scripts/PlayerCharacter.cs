@@ -10,6 +10,7 @@ public class PlayerCharacter : MonoBehaviour
     public int health;
     public Vector2Int position = new Vector2Int();
     public GameObject hitEffect;
+    public GameObject bigHitEffect;
 
     public BattleGrid grid;
     public GameManager manager;
@@ -121,6 +122,32 @@ public class PlayerCharacter : MonoBehaviour
                 AS.PlayOneShot(laserNoise);
 
                 Instantiate(hitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);
+                //Random.Range(-0.5f, 0.4f)
+                break;
+            }
+        }
+    }
+
+    void BoostedAttack(int damage)
+    {
+        animator.SetTrigger("BasicAttack");
+        for (int x = position.x + 1; x < grid.grid.GetLength(0) ; x++) {
+            Tile attackTile = grid.GetTile(x, position.y);
+            if (attackTile.entityOnTile != null )
+            {
+                Debug.Log("Enemy hit");
+                EnemyAi enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
+                if(enemy) {
+                    enemy.Damage(damage);
+                }
+                RobotBomb bomb = attackTile.entityOnTile.GetComponent<RobotBomb>();
+                if(bomb) {
+                    bomb.Damage(damage);
+                }
+                // The manager clip player is louder
+                manager.PlayClip(laserNoise);
+
+                Instantiate(bigHitEffect, new Vector3(Random.Range(-0.4f, 0.4f)+attackTile.GetTransform().x, Random.Range(0f, 0.9f) + attackTile.GetTransform().y, 0), Quaternion.identity);
                 //Random.Range(-0.5f, 0.4f)
                 break;
             }

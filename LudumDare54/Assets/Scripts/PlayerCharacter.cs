@@ -40,6 +40,11 @@ public class PlayerCharacter : MonoBehaviour
     private float shieldHP = 0;
     public AudioClip shieldDeflect;
 
+    private float flashTime = 1f;
+    private float currentFlashTime = 0f;
+    private bool isFlashing = false;
+    private Color originalColor;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -47,7 +52,8 @@ public class PlayerCharacter : MonoBehaviour
         GameObject m = GameObject.FindGameObjectWithTag("GameController");
 
         animator = gameObject.GetComponentInChildren<Animator>();
-        playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        // playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        originalColor = playerSprite.color;
 
         if (g != null) {
             Debug.Log("grid not found");
@@ -91,6 +97,31 @@ public class PlayerCharacter : MonoBehaviour
         } else {
             shield.SetActive(false);
             shieldHP = 0;
+        }
+    }
+
+    private IEnumerator FlashRed(float duration, float flashSpeed)
+    {
+        isFlashing = true;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            playerSprite.color = Color.Lerp(originalColor, Color.red, Mathf.PingPong(elapsedTime * flashSpeed, 1f));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerSprite.color = originalColor;
+        isFlashing = false;
+    }
+
+    public void StartFlashing(float duration, float flashSpeed)
+    {
+        if (!isFlashing)
+        {
+            StartCoroutine(FlashRed(duration, flashSpeed));
         }
     }
 
@@ -268,6 +299,7 @@ public class PlayerCharacter : MonoBehaviour
             manager.PlayClip(shieldDeflect);
         } else {
             health -= damageTaken;
+            StartFlashing(1.5f, 7f);
 
             if (health <= 0f && !isDead) {
                 Kill();

@@ -63,7 +63,7 @@ MonoBehaviour:
   MovementCooldown: 0.1
   CurrentMovementCooldown: 0
   healthText: {fileID: 0}
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 7410941706891184286}
   nextMutationQueuedIcon: {fileID: 667235182359401320}
   laserNoise: {fileID: 8300000, guid: 07e931c2ef55bd144bdb52ef9ec6945b, type: 3}
   hurtNoise: {fileID: 8300000, guid: d5715fe2e8f5dc0429cb082eaacdf195, type: 3}

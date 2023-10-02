@@ -19,7 +19,7 @@ public class BearEnemy : EnemyAi
 
     public override void SpawnAttack(){
 
-        Debug.Log("attak spawned.");
+        // Debug.Log("attak spawned.");
 
         GameObject projectile = Instantiate(attacks[Random.Range(0, attacks.Count)], attackLocation.position, Quaternion.identity);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = (sprite.sortingOrder + 1);

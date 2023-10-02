@@ -107,22 +107,22 @@ public class BattleGrid : MonoBehaviour
     public Tile moveEnemyIntoTile(EnemyAi entity, int x, int y){
             // We could synchronize at a different location if this ends up locking the game up. IE: Create a method on tiles to update the entity on it, and synchronize that.
         lock(lock_){
-            Debug.Log("Attempting to move enemy to: x: " + x + ".   y: " + y);
+            // Debug.Log("Attempting to move enemy to: x: " + x + ".   y: " + y);
             Tile potentialTile = grid[x,y];
             // If the tile is empty
             if(potentialTile.entityOnTile == null){
                 // Remove the entity from it's old tile, add it to it's new tile.
-                Debug.Log("Moving this entity onto a null tile.");
+                // Debug.Log("Moving this entity onto a null tile.");
 
                 // We need to null out the previous tile we were on.
                 // Not sure if this if check is necessary, scared about the possibility.
                 // If the entity on the previousTile was us, then null it out.
                 if(grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile == entity.gameObject){
-                    Debug.Log("Freeing up old tile.");
+                    // Debug.Log("Freeing up old tile.");
                     grid[entity.gridPosition.x,entity.gridPosition.y].entityOnTile = null;
                 }
                 else{
-                    Debug.Log("We tried to null out an entity on a tile that was not this entity.");
+                    // Debug.Log("We tried to null out an entity on a tile that was not this entity.");
                 }
                 // Set up to the new tile.
                 potentialTile.entityOnTile = entity.gameObject;
@@ -141,7 +141,7 @@ public class BattleGrid : MonoBehaviour
             while(true){
                 var xPos = Random.Range(playerTileLength+1, gridXLength);
                 var yPos = Random.Range(0, 3);
-                Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
+                // Debug.Log("Attempting to spawn enemy at: x: " + xPos + ".   y: " + yPos);
                 Tile potentialTile = grid[xPos, yPos];
                 if (potentialTile.entityOnTile == null){
                     potentialTile.entityOnTile = ai.gameObject;

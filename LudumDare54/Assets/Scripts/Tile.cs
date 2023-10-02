@@ -66,7 +66,7 @@ public class Tile : MonoBehaviour
     public void RemoveEntityOnTile()
     {
         entityOnTile = null;
-        Debug.Log("Removing entity from tile " + entityOnTile);
+        // Debug.Log("Removing entity from tile " + entityOnTile);
     }
 
     public void SetGrid(BattleGrid gridIn) {
@@ -78,8 +78,13 @@ public class Tile : MonoBehaviour
     }
 
     public void Damage(int damage) {
-        if (!isPlayerTile && entityOnTile) {
-            entityOnTile.GetComponent<EnemyAi>().Damage(damage);
+        if (entityOnTile) {
+            if(entityOnTile.GetComponent<EnemyAi>()){
+                entityOnTile.GetComponent<EnemyAi>().Damage(damage);
+            } else if(entityOnTile.GetComponent<RobotBomb>()){
+                Debug.Log("ROBOT BOMB HIT WITH SOMETHING");
+                entityOnTile.GetComponent<RobotBomb>().Damage(damage);
+            }
         }
     }
 }

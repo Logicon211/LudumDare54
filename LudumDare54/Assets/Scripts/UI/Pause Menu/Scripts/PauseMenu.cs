@@ -14,19 +14,23 @@ public class PauseMenu : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            isPaused = !isPaused;
-            if(isPaused) {
-                Time.timeScale = 0;
-            } else {
-                if(!gameManager.isInBattleOptionScreen) {
-                    Time.timeScale = 1;
+            if(!gameManager.isInAbilityQueueScreen && !gameManager.isInBattleOptionScreen){
+                isPaused = !isPaused;
+                if(isPaused) {
+                    Time.timeScale = 0;
+                } else {
+                    if(!gameManager.isInBattleOptionScreen) {
+                        Time.timeScale = 1;
+                    }
                 }
             }
         }
 
         if(isPaused) {
+            gameManager.PauseMenu(true);
             pauseMenu.SetActive(true);
         } else {
+            gameManager.PauseMenu(false);
             pauseMenu.SetActive(false);
         }
     }

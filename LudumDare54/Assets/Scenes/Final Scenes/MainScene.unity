@@ -906,9 +906,32 @@ PrefabInstance:
       objectReference: {fileID: 2088237822}
     - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
         type: 3}
+      propertyPath: mutationQueue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
       propertyPath: numberOfRoundsUntillBoss
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationQueue.Array.data[0]
+      value: 
+      objectReference: {fileID: 7124965926367856341, guid: d2df1b25bbc9cbf4a868c624070739c0,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationQueue.Array.data[1]
+      value: 
+      objectReference: {fileID: 8029085408312729460, guid: 3a904e5473b400c408bd30bc10ca9dd4,
+        type: 3}
+    - target: {fileID: 1688189896142580201, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: mutationQueue.Array.data[2]
+      value: 
+      objectReference: {fileID: 7124965926367856341, guid: d2df1b25bbc9cbf4a868c624070739c0,
+        type: 3}
     - target: {fileID: 1688189896142580202, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_Name

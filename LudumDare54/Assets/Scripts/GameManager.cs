@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour {
 			CheckGameOver();
 
 		if (Input.GetKeyUp(KeyCode.E) && !isInAbilityQueueScreen) {
-			Debug.Log("HITTING E");
+			// Debug.Log("HITTING E");
 			EnableAbilityQueueMenu();
 		}
 
@@ -253,6 +253,13 @@ public class GameManager : MonoBehaviour {
 	public void UnPauseGame() {
 		paused = false;
 		Time.timeScale = 1;
+	}
+
+	public void PauseMenu(bool pause) {
+		paused = pause;
+		if(isInAbilityQueueScreen || isInBattleOptionScreen) {
+			paused = true;
+		}
 	}
 
 	public void PlayMainMusic() {

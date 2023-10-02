@@ -144,7 +144,7 @@ public class PlayerCharacter : MonoBehaviour
             {
                 EnemyAi enemy = null;
                 RobotBomb bomb = null;
-                Debug.Log("Enemy hit");
+                // Debug.Log("Enemy hit");
                 enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
                 if(enemy) {
                     enemy.Damage(1);
@@ -178,7 +178,7 @@ public class PlayerCharacter : MonoBehaviour
             {
                 EnemyAi enemy = null;
                 RobotBomb bomb = null;
-                Debug.Log("Enemy hit");
+                // Debug.Log("Enemy hit");
                 enemy = attackTile.entityOnTile.GetComponent<EnemyAi>();
                 if(enemy) {
                     enemy.Damage(damage);
@@ -207,10 +207,10 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (manager.mutationQueue.Count > 0)
         {
-            Debug.Log("Using " + manager.mutationQueue[0].GetName());
+            // Debug.Log("Using " + manager.mutationQueue[0].GetName());
             manager.mutationQueue[0].useAbility(gameObject);
             manager.mutationQueue.RemoveAt(0);
-            Debug.Log("Mutations left: " + manager.mutationQueue.Count);
+            // Debug.Log("Mutations left: " + manager.mutationQueue.Count);
         }
         else 
         {
@@ -261,16 +261,16 @@ public class PlayerCharacter : MonoBehaviour
     bool IsValidMove(Vector2Int newPosition)
     {
         Vector2Int boundaries = grid.getPlayerBoundaries();
-        Debug.Log(boundaries.x);
+        // Debug.Log(boundaries.x);
         // Vector2Int boundaries = GetGridBoundaries(grid);
         // Check if its in the boundaries
         if (newPosition.x < 0 || newPosition.x > boundaries.x || newPosition.y < 0 || newPosition.y > boundaries.y ) {
-            Debug.Log("Bad Move " + newPosition);
+            // Debug.Log("Bad Move " + newPosition);
             return false;
         }
         // Check if theres no entity on the new tile
         if (grid.GetTile(newPosition.x, newPosition.y).entityOnTile != null) {
-            Debug.Log("Bad Move: Entity on tile");
+            // Debug.Log("Bad Move: Entity on tile");
             return false;
         }
         return true;

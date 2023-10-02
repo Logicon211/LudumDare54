@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d254bff799dd1c40aa3a09f585f09ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAbilityRefreshTime: 5
+  maxAbilityRefreshTime: 7
   abilityRefreshAvailable: 0
   mainTheme: {fileID: 8300000, guid: 3a56b0810c248dd49b5a53b78ff054b7, type: 3}
   finalBossTheme: {fileID: 8300000, guid: 2aa0fa93dbe3c0c46bf5a66fa6ec6f70, type: 3}
@@ -311,39 +311,27 @@ MonoBehaviour:
   isInBattleOptionScreen: 0
   isInAbilityQueueScreen: 0
   mutationDeck:
-  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
-  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
-  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
-  - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
-  - {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3, type: 3}
-  - {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3, type: 3}
-  - {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3, type: 3}
-  - {fileID: 6410466602431061584, guid: d244834b624a6b24498dab7fcf713313, type: 3}
-  - {fileID: 6410466602431061584, guid: d244834b624a6b24498dab7fcf713313, type: 3}
   - {fileID: 4814283463394258955, guid: 171454bcab81bab4aa3ae73b18f7ae89, type: 3}
   - {fileID: 4814283463394258955, guid: 171454bcab81bab4aa3ae73b18f7ae89, type: 3}
   - {fileID: 4814283463394258955, guid: 171454bcab81bab4aa3ae73b18f7ae89, type: 3}
-  mutationQueue:
-  - {fileID: 4927706837300946816, guid: d244834b624a6b24498dab7fcf713313, type: 3}
-  - {fileID: 6786844164265499854, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
-  - {fileID: 8029085408312729460, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
+  - {fileID: 4814283463394258955, guid: 171454bcab81bab4aa3ae73b18f7ae89, type: 3}
+  - {fileID: 4814283463394258955, guid: 171454bcab81bab4aa3ae73b18f7ae89, type: 3}
+  mutationQueue: []
   allPossibleMutations:
   - {fileID: 4050008971854997627, guid: d2df1b25bbc9cbf4a868c624070739c0, type: 3}
   - {fileID: 8671088179486330394, guid: f8e517e957c230f489cdd5fb203a03c1, type: 3}
   - {fileID: 1358687895506408289, guid: 3a904e5473b400c408bd30bc10ca9dd4, type: 3}
   - {fileID: 814020562872809321, guid: dae5f5fddad84f2488f56b8b748792c3, type: 3}
+  - {fileID: 6410466602431061584, guid: d244834b624a6b24498dab7fcf713313, type: 3}
   allPossibleEnemies:
   - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
   - {fileID: 2465808598374760144, guid: 44cb0d8182f18034d9b1bb6695b0a2b4, type: 3}
   - {fileID: 8447526338186515970, guid: 1197b19271db1a94db2cb2814323d7bc, type: 3}
   initialEnemySpawnList:
   - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
-  - {fileID: 8447526338186515970, guid: 1197b19271db1a94db2cb2814323d7bc, type: 3}
-  numberOfRoundsUntillBoss: 1
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
+  - {fileID: 7082877181016011367, guid: e5c9486eb75a44e47801778b63b4a3e1, type: 3}
+  numberOfRoundsUntillBoss: 9
   isInCutScene: 0
   errorSound: {fileID: 8300000, guid: 5976e633048aaf8448c088a76e3cb0b4, type: 3}
   bossEnemy: {fileID: 7082877181016011367, guid: 7596c9b88b274004294fc498ae10c4e5,

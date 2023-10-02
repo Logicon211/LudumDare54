@@ -120,5 +120,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
-  damage: 15
+  damage: 25
   spriteRenderer: {fileID: 8407444758708950696}

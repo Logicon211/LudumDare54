@@ -7,6 +7,7 @@ public class PlayerCharacter : MonoBehaviour
     // Which way to move the character, not used anymore
     enum Direction {Up, Right, Down, Left, None};
 
+    public int maxHealth;
     public int health;
     public Vector2Int position = new Vector2Int();
     public GameObject hitEffect;

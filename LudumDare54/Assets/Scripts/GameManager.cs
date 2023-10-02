@@ -342,7 +342,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private int GenerateHealthOptions() {
-		return (int)Random.Range(0, 10);
+		return (int)Random.Range(0, 5);
 	}
 
 	private List<GameObject> GenerateEnemyOptions() {
@@ -361,6 +361,9 @@ public class GameManager : MonoBehaviour {
 	public void SetNextBattle(NextBattleObject battleObject) {
 		Debug.Log("TODO: Setting next battle: " + battleObject.amountOfHealthRegained);
 		playerScript.health += (int)battleObject.amountOfHealthRegained;
+		if(playerScript.health > playerScript.maxHealth) {
+			playerScript.health = playerScript.maxHealth;
+		}
 
 		mutationDeck.Add(battleObject.mutation);
 

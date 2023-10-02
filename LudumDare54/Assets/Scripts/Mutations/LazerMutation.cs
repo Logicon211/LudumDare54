@@ -28,6 +28,5 @@ public GameObject lazerPrefab;
         LaserProjectile2 laser = Instantiate(lazerPrefab, new Vector3(playerRef.transform.position.x + 4.6f, playerRef.transform.position.y+ 0.8f, playerRef.transform.position.z), Quaternion.identity).GetComponent<LaserProjectile2>();
         laser.SetDamagingTiles(player.GetCurrentTile());
 
-
     }
 }

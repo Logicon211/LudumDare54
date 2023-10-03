@@ -39,13 +39,15 @@ public class Tile : MonoBehaviour
         }
         if (entityOnTile || bombOnTile) {
             // This logic should be moved to the SetEntityOnTile method.
-            if(entityOnTile.GetComponent<tileCracks>() == null){
-                shadowRenderer.enabled = true;
-            }
-            // Some terrible hack to maybe stop the phantom shadow
-            if(entityOnTile.GetComponent<PlayerCharacter>() != null) {
-                if(!entityOnTile.GetComponent<PlayerCharacter>().GetCurrentTile().Equals(this)) {
-                    RemoveEntityOnTile();
+            if(entityOnTile) {
+                if(entityOnTile.GetComponent<tileCracks>() == null){
+                    shadowRenderer.enabled = true;
+                }
+                // Some terrible hack to maybe stop the phantom shadow
+                if(entityOnTile.GetComponent<PlayerCharacter>() != null) {
+                    if(!entityOnTile.GetComponent<PlayerCharacter>().GetCurrentTile().Equals(this)) {
+                        RemoveEntityOnTile();
+                    }
                 }
             }
 

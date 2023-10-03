@@ -280,17 +280,20 @@ public class PlayerCharacter : MonoBehaviour
         return true;
     }
 
+     private readonly object lock_ = new object();
     public void MovePlayerObject() {
-        Tile tile = grid.GetTile(position.x, position.y);
-        transform.position = tile.GetTransform();
-        if (currentTile != null) {
-                //So we don't remove cracks.
-                if(currentTile.entityOnTile == gameObject){
-                    currentTile.RemoveEntityOnTile();
-                }
+        lock(lock_){
+            Tile tile = grid.GetTile(position.x, position.y);
+            transform.position = tile.GetTransform();
+            if (currentTile != null) {
+                    //So we don't remove cracks.
+                    if(currentTile.entityOnTile == gameObject){
+                        currentTile.RemoveEntityOnTile();
+                    }
+            }
+            tile.SetEntityOnTile(gameObject);
+            currentTile = tile;
         }
-        tile.SetEntityOnTile(gameObject);
-        currentTile = tile;
     }
 
     public Vector2Int GetPosition() { return position; }

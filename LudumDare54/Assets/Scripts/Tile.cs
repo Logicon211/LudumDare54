@@ -42,6 +42,12 @@ public class Tile : MonoBehaviour
             if(entityOnTile.GetComponent<tileCracks>() == null){
                 shadowRenderer.enabled = true;
             }
+            // Some terrible hack to maybe stop the phantom shadow
+            if(entityOnTile.GetComponent<PlayerCharacter>() != null) {
+                if(!entityOnTile.GetComponent<PlayerCharacter>().GetCurrentTile().Equals(this)) {
+                    RemoveEntityOnTile();
+                }
+            }
 
         } else {
             shadowRenderer.enabled = false;

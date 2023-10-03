@@ -909,6 +909,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 1688189897099913927, guid: efe30090d881811478a8e571525223f6,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.533
+      objectReference: {fileID: 0}
     - target: {fileID: 5122341043443781487, guid: efe30090d881811478a8e571525223f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1555,11 +1560,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7675927588573158446, guid: 62146846e95150b49b528e20887bcc86,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7675927589442381185, guid: 62146846e95150b49b528e20887bcc86,
         type: 3}
       propertyPath: m_Name
